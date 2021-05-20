@@ -8,20 +8,8 @@ import {of} from 'rxjs';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  page: string;
-
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onPageChange(): void {
-    const bodyRect = document.body.getBoundingClientRect();
-    const pageRect = document.getElementById(this.page).getBoundingClientRect();
-    const offset = pageRect.top - bodyRect.top;
-    console.log('Offset is: ' + offset);
-
-    window.scrollTo(0, offset);
-    // document.getElementById(this.page).scrollIntoView();
   }
 }

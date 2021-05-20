@@ -1,0 +1,36 @@
+@import "../../node_modules/@angular/material/theming";
+
+@mixin app-component-theme($theme) {
+  $primary:    map-get($theme, primary);
+  $accent:     map-get($theme, accent);
+  $warn:       map-get($theme, warn);
+  $foreground: map-get($theme, foreground);
+
+  .app-primary-text {
+    color: mat-color($primary, text) !important;
+  }
+
+  .app-foreground-text {
+    color: mat-color($foreground, text) !important;
+  }
+
+  a:link {
+    color: mat-color($accent, text);
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: mat-color($accent, text);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: mat-color($accent, text);
+    text-decoration: underline;
+  }
+
+  a:active {
+    color: mat-color($accent, text);
+    text-decoration: underline;
+  }
+}

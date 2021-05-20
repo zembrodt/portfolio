@@ -1,0 +1,29 @@
+<mat-toolbar>
+  <div fxLayout="row"
+       fxLayoutAlign="center center"
+       style="width: 100%">
+    <div fxFlex="20"
+         fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="16px">
+      <a class="app-foreground-text" href="https://github.com/zembrodt" target="_blank">
+        <fa-icon [icon]="githubIcon"></fa-icon>
+      </a>
+      <a class="app-foreground-text" href="https://linkedin.com/in/ryanzembrodt" target="_blank">
+        <fa-icon [icon]="linkedInIcon"></fa-icon>
+      </a>
+    </div>
+    <a fxFlex="60" class="mat-subheading-1 app-foreground-text email" href="mailto:ryan.zembrodt@gmail.com">ryan.zembrodt@gmail.com</a>
+    <div fxFlex>
+      <button mat-stroke-button
+              color="primary"
+              class="resume"
+              fxLayout="row"
+              fxLayoutAlign="space-around center"
+              (click)="onResumeClick()">
+        <mat-icon>description_outline</mat-icon>
+        <span>Resume</span>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>

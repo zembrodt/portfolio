@@ -1,0 +1,16 @@
+@import "~@angular/material/theming";
+
+@mixin dashboard-theme($theme) {
+  $accent: map-get($theme, accent);
+
+  .img-border {
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    border: 2px solid mat-color($accent);
+    border-radius: 4px;
+    top: 10px;
+    left: 10px;
+    z-index: -1;
+  }
+}

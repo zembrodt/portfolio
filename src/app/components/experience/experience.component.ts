@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-work',
-  templateUrl: './work.component.html',
-  styleUrls: ['./work.component.css']
+  selector: 'app-experience',
+  templateUrl: './experience.component.html',
+  styleUrls: ['./experience.component.css']
 })
-export class WorkComponent implements OnInit {
+export class ExperienceComponent implements OnInit {
 
   duplicate = Array(25);
 

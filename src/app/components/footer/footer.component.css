@@ -1,0 +1,14 @@
+.footer {
+  width: 100%;
+}
+
+.email {
+  text-align: center;
+  margin: 0;
+}
+
+.resume {
+  text-align: center;
+  vertical-align: middle;
+  float: right;
+}

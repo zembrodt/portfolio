@@ -1,0 +1,52 @@
+/*.dashboard {*/
+/*  overflow-y: scroll;*/
+/*}*/
+.content {
+  width: 75%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.intro {
+  margin-top: 200px;
+}
+
+.pic-of-me {
+  float: right;
+  position: relative;
+  display: inline-block;
+}
+
+.pic-of-me img {
+  border-radius: 4px;
+  max-width: 80%;
+  box-shadow: 3px 3px 10px black;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+  transform: translateX(0px) translateY(0px);
+}
+
+.pic-of-me img:hover {
+  transform: translateX(6px) translateY(6px);
+  box-shadow: 0 0 0 black;
+}
+
+.blurb {
+  max-width: 500px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+}
+
+.name-display {
+  margin: 0;
+}
+
+.job-title-display {
+  margin: 0;
+  text-align: left;
+}

@@ -14,4 +14,8 @@ export class ProjectDetailComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onProjectClick(): void {
+    console.log('Clicked on card ' + this.projectId + '!');
+  }
+
 }

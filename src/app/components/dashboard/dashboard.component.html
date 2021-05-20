@@ -1,0 +1,32 @@
+<div class="dashboard">
+  <app-navbar></app-navbar>
+  <div fxLayout="column"
+       fxLayoutAlign="center"
+       fxLayoutGap="250px"
+       class="content">
+    <div fxLayout="row" fxLayoutAlign="center center" class="intro">
+      <div fxLayout="column"
+           fxLayoutAlign="center start"
+           fxLayoutGap="16px"
+           class="intro-blurb">
+        <span>Hello, my name is</span>
+        <span class="mat-display-3 name-display">Ryan Zembrodt.</span>
+        <span class="mat-display-1 job-title-display">I'm a Software Engineer.</span>
+        <div class="blurb">
+          Currently based in Cincinnati, OH and employed at <a href="https://www.flooid.com/">Flooid</a>.
+          I have a strong passion for full-stack development and anything programming.
+        </div>
+      </div>
+      <div class="pic-of-me">
+          <img src="assets/images/main_pic.png">
+          <div class="img-border"></div>
+      </div>
+    </div>
+    <app-about id="about"></app-about>
+    <app-skills id="skills"></app-skills>
+    <app-experience id="experience"></app-experience>
+    <app-projects id="projects"></app-projects>
+    <app-contact id="contact"></app-contact>
+  </div>
+  <app-footer class="footer"></app-footer>
+</div>
