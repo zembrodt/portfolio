@@ -1,3 +1,7 @@
+.skill {
+  opacity: 0;
+}
+
 .skill-card {
   user-select: none;
   -webkit-user-select: none;

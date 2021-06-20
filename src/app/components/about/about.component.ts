@@ -1,4 +1,8 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {VisibleService} from '../../services/visible/visible.service';
+import {SkillsComponent} from '../skills/skills.component';
 
 const ABOUT_IMG_DURATION = 1000;
 const ABOUT_IMG_EASING = 'ease-out';
@@ -8,11 +12,31 @@ const ABOUT_IMG_EASING = 'ease-out';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements AfterViewInit {
+export class AboutComponent implements OnInit, OnDestroy {
+  static PAGE = 'about';
+  skillsPage = SkillsComponent.PAGE;
 
-  constructor() { }
+  private ngUnsubscribe = new Subject();
 
-  ngAfterViewInit(): void {
+  constructor(private visibleService: VisibleService) {}
+
+  ngOnInit(): void {
+    this.visibleService.isVisible(AboutComponent.PAGE)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((isVisible) => {
+        console.log('ABOUT :: isVisible: ' + isVisible);
+        if (isVisible) {
+          this.animateImages();
+          this.unsubscribe();
+        }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe();
+  }
+
+  private animateImages(): void {
     const backpackingEl = document.querySelector('#backpacking') as HTMLElement;
     const golfingEl = document.querySelector('#golfing') as HTMLElement;
     const campingEl = document.querySelector('#camping') as HTMLElement;
@@ -46,4 +70,10 @@ export class AboutComponent implements AfterViewInit {
     });
   }
 
+  private unsubscribe(): void {
+    if (this.ngUnsubscribe) {
+      this.ngUnsubscribe.next();
+      this.ngUnsubscribe.complete();
+    }
+  }
 }

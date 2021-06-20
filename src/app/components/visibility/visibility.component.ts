@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, HostListener, Input, OnInit} from '@angular/core';
+import {VisibleService} from '../../services/visible/visible.service';
 
 const VISIBILITY_OFFSET = 300;
 const FADE_IN_DURATION = 1000;
@@ -16,7 +17,7 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
   @Input()
   offset = VISIBILITY_OFFSET;
 
-  constructor() {}
+  constructor(private visibleService: VisibleService) {}
 
   ngOnInit(): void {
     if (this.name === null || this.name === undefined || this.name.length === 0) {
@@ -38,8 +39,8 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
       const element = document.querySelector('#visibility-' + this.name) as HTMLElement;
       // Check if element is on screen
       if (element.offsetTop + this.offset < window.innerHeight + window.pageYOffset) {
-        console.log('We\'re on the screen!');
         this.visible = true;
+        this.visibleService.toggleVisible(this.name);
         element.animate({
           opacity: 1
         }, {
@@ -47,8 +48,6 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
           fill: 'forwards',
           easing: 'ease-in'
         });
-      } else {
-        console.log('We\'re NOT on the screen!');
       }
     }
   }
