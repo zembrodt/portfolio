@@ -5,15 +5,15 @@
 @include mat-core();
 
 // Light theme
-$light-primary: mat-palette($mat-gray);
-$light-accent:  mat-palette($mat-green, A400, A200, A700);
+$light-primary: mat-palette($mat-blue-gray);
+$light-accent:  mat-palette($mat-cyan);
 $light-warn:    mat-palette($mat-deep-orange);
 
 $light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
 
 // Alternate dark theme
-$dark-primary: mat-palette($mat-gray);
-$dark-accent:  mat-palette($mat-green, A400, A200, A700);
+$dark-primary: mat-palette($mat-blue-gray);
+$dark-accent:  mat-palette($mat-cyan);//, A400, A200, A700);
 $dark-warn:    mat-palette($mat-deep-orange);
 
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn)

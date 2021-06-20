@@ -1,10 +1,12 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {SettingsState} from '../../core/settings/settings.state';
 import {Select, Store} from '@ngxs/store';
 import {takeUntil} from 'rxjs/operators';
 import {DARK_THEME, LIGHT_THEME} from '../../core/settings/settings.model';
 import {ToggleTheme} from '../../core/settings/settings.actions';
+
+const NAVBAR_ANIMATE_DURATION = 1000;
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +16,7 @@ import {ToggleTheme} from '../../core/settings/settings.actions';
 export class NavbarComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject();
   private currentTheme: string;
+  private previousOffsetY = 0;
 
   @Select(SettingsState.theme) theme$: Observable<string>;
   page: string;
@@ -31,16 +34,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  onPageChange(): void {
-    const bodyRect = document.body.getBoundingClientRect();
-    const pageRect = document.getElementById(this.page).getBoundingClientRect();
-    const offset = pageRect.top - bodyRect.top;
-    console.log('Offset is: ' + offset);
-
-    window.scrollTo(0, offset);
-    // document.getElementById(this.page).scrollIntoView();
-  }
-
   onThemeChange(): void {
     this.store.dispatch(new ToggleTheme());
   }
@@ -55,5 +48,28 @@ export class NavbarComponent implements OnInit, OnDestroy {
         console.error('Invalid theme value: ' + this.currentTheme);
         return 'error_outline';
     }
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(): void {
+    const element = document.querySelector('#navbar') as HTMLElement;
+    if (this.previousOffsetY > window.pageYOffset) {
+      // Scrolling up
+      element.animate({
+        top: '0px'
+      }, {
+        duration: NAVBAR_ANIMATE_DURATION,
+        fill: 'forwards'
+      });
+    } else {
+      // Scrolling down
+      element.animate({
+        top: String(-element.clientHeight) + 'px'
+      }, {
+        duration: NAVBAR_ANIMATE_DURATION,
+        fill: 'forwards'
+      });
+    }
+    this.previousOffsetY = window.pageYOffset;
   }
 }

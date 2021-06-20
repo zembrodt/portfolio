@@ -1,8 +1,33 @@
-<mat-card (click)="onProjectClick()">
-  <mat-card-header>
-    <mat-card-title>Project Detail {{projectId}}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>This is my project!!</p>
-  </mat-card-content>
+<mat-card (click)="openDialog()"
+          matRipple
+          class="project-card">
+  <div class="mat-h2">{{project.title}}</div>
+  <p>{{project.description}}</p>
+  <ng-container *ngIf="project.screenshotUrl">
+    <p>screenshot here</p>
+  </ng-container>
+  <div *ngIf="project.technologies && project.technologies.length > 0"
+       fxLayout="row"
+       fxLayoutAlign="center center"
+       fxLayoutGap="8px">
+    <ng-container *ngFor="let techIcon of project.technologies">
+      <i class="skill-icon app-skill-icon devicon-{{techIcon}}"></i>
+    </ng-container>
+  </div>
+  <div fxLayout="row"
+       fxLayoutAlign="right center"
+       fxLayoutGap="8px">
+    <a *ngIf="project.projectUrl"
+       href="{{project.projectUrl}}" target="_blank">
+      <mat-icon>launch</mat-icon>
+    </a>
+    <a *ngIf="project.githubUrl"
+       href="{{project.githubUrl}}" target="_blank">
+      <fa-icon [icon]="githubIcon"></fa-icon>
+    </a>
+    <a *ngIf="project.docsUrl"
+       href="{{project.docsUrl}}" target="_blank">
+      <mat-icon>article</mat-icon>
+    </a>
+  </div>
 </mat-card>

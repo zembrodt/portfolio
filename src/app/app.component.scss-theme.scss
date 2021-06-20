@@ -14,23 +14,32 @@
     color: mat-color($foreground, text) !important;
   }
 
-  a:link {
+  .app-accent-text {
+    color: mat-color($accent, text) !important;
+  }
+
+  a.navbar-link:link, a.navbar-link:visited {
+    color: mat-color($foreground, text);
+    text-decoration: none;
+  }
+
+  a:link, a:visited {
     color: mat-color($accent, text);
     text-decoration: none;
   }
 
-  a:visited {
+  a:hover, a:active {
+    color: mat-color($accent, text);
+    text-decoration: underline;
+  }
+
+  a.navbar-link:hover {
     color: mat-color($accent, text);
     text-decoration: none;
   }
 
-  a:hover {
-    color: mat-color($accent, text);
-    text-decoration: underline;
-  }
-
-  a:active {
-    color: mat-color($accent, text);
-    text-decoration: underline;
+  .app-border-line {
+    padding-bottom: 4px;
+    border-bottom: 1px solid mat-color($foreground, divider);
   }
 }

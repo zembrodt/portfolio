@@ -1,1 +1,12 @@
-<h4>Work Detail {{workId}}</h4>
+<mat-card class="experience-card">
+  <div class="experience-detail"
+       fxLayout="row"
+       fxLayoutGap="center">
+    <div class="mat-h1 title-line">{{experience.company}}</div>
+    <div class="mat-h3 title-line align-right">{{experience.dates}}</div>
+  </div>
+  <div class="mat-h3">{{experience.title}}</div>
+  <ul>
+    <li *ngFor="let detail of experience.details">{{detail}}</li>
+  </ul>
+</mat-card>

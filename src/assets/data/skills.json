@@ -1,0 +1,104 @@
+[
+  {
+    "title": "Go",
+    "content": "go content",
+    "icon": "go-plain",
+    "featured": true
+  },
+  {
+    "title": "Java",
+    "content": "",
+    "icon": "java-plain",
+    "featured": true
+  },
+  {
+    "title": "Angular",
+    "content": "",
+    "icon": "angularjs-plain",
+    "featured": true
+  },
+  {
+    "title": "Python",
+    "content": "",
+    "icon": "python-plain",
+    "featured": true
+  },
+  {
+    "title": "JavaScript",
+    "content": "",
+    "icon": "javascript-plain",
+    "featured": true
+  },
+  {
+    "title": "C/C++",
+    "content": "",
+    "icon": "c-plain",
+    "featured": false
+  },
+  {
+    "title": "Django",
+    "content": "",
+    "icon": "django-plain",
+    "featured": false
+  },
+  {
+    "title": "MS SQL Server",
+    "content": "",
+    "icon": "microsoftsqlserver-plain",
+    "featured": false
+  },
+  {
+    "title": "PostgreSQL",
+    "content": "",
+    "icon": "postgresql-plain",
+    "featured": false
+  },
+  {
+    "title": "Google Cloud",
+    "content": "",
+    "icon": "googlecloud-plain",
+    "featured": false
+  },
+  {
+    "title": "Apache",
+    "content": "",
+    "icon": "apache-plain",
+    "featured": false
+  },
+  {
+    "title": "Docker",
+    "content": "",
+    "icon": "docker-plain",
+    "featured": false
+  },
+  {
+    "title": "Git",
+    "content": "",
+    "icon": "git-plain",
+    "featured": false
+  },
+  {
+    "title": "Heroku",
+    "content": "",
+    "icon": "heroku-plain",
+    "featured": false
+  },
+  {
+    "title": "CSS",
+    "content": "",
+    "icon": "css3-plain",
+    "featured": false
+  },
+  {
+    "title": "HTML",
+    "content": "",
+    "icon": "html5-plain",
+    "featured": false
+  },
+  {
+    "title": "Spring",
+    "content": "",
+    "icon": "spring-plain",
+    "featured": false
+  }
+]

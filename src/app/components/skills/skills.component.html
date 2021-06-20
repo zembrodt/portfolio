@@ -1,2 +1,26 @@
-<h2>Skills</h2>
-<p>A list of my skills!</p>
+<div class="skills-container">
+  <div class="mat-subheading-2">Some technologies I've worked with include...</div>
+  <div class="skills"
+       fxLayout="row wrap"
+       fxLayout.xs="column"
+       fxLayoutAlign="center"
+       fxLayoutGap="16px grid">
+    <div *ngFor="let skill of skills"
+         class="skill"
+         fxFlex="0 1 calc(12.5% - 16px)"
+         fxFlex.lg="0 1 calc(17.5% - 16px)"
+         fxFlex.md="0 1 calc(25% - 16px)"
+         fxFlex.sm="0 1 calc(33.3% - 16px)"
+         fxFlex.xs="0 1 calc(50% - 16px)"
+         fxLayoutAlign="center">
+      <mat-card class="skill-card">
+        <mat-card-content fxLayout="row"
+                          fxLayoutAlign="center center"
+                          fxLayoutGap="8px">
+          <i class="mat-h2 skill-icon app-skill-icon devicon-{{skill.icon}}"></i>
+          <div class="mat-body-1">{{skill.title}}</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

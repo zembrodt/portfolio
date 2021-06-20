@@ -1,6 +1,37 @@
-<h2>About Me</h2>
-<div style="width: 600px; font-size: 20px">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Congue eu consequat ac felis donec et odio pellentesque. Lorem donec massa sapien faucibus. Egestas sed tempus urna et pharetra pharetra massa massa. Netus et malesuada fames ac turpis egestas integer. Sed libero enim sed faucibus turpis in eu mi. Elementum integer enim neque volutpat ac tincidunt vitae semper. Hac habitasse platea dictumst quisque sagittis. Eu tincidunt tortor aliquam nulla facilisi cras. Enim diam vulputate ut pharetra sit. Sit amet dictum sit amet justo donec enim diam. Vitae sapien pellentesque habitant morbi tristique senectus. Urna nunc id cursus metus. Eu scelerisque felis imperdiet proin. Eros in cursus turpis massa tincidunt dui ut. Enim neque volutpat ac tincidunt vitae semper quis. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras. A erat nam at lectus urna duis convallis. Aliquam malesuada bibendum arcu vitae elementum. Odio ut enim blandit volutpat maecenas volutpat.</p>
-  <p>Convallis convallis tellus id interdum. In nibh mauris cursus mattis molestie a iaculis at. Fames ac turpis egestas integer eget aliquet nibh. A diam sollicitudin tempor id eu. Tempor nec feugiat nisl pretium. Vitae tortor condimentum lacinia quis. Sit amet risus nullam eget felis eget nunc lobortis. Egestas congue quisque egestas diam in arcu. Sodales ut eu sem integer. Viverra orci sagittis eu volutpat odio facilisis mauris. Eget nullam non nisi est sit amet. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum. A lacus vestibulum sed arcu non odio euismod lacinia. In est ante in nibh mauris. Velit sed ullamcorper morbi tincidunt ornare massa eget egestas. Porta nibh venenatis cras sed felis. Commodo odio aenean sed adipiscing diam. Orci nulla pellentesque dignissim enim sit amet venenatis. Donec et odio pellentesque diam volutpat commodo. Id faucibus nisl tincidunt eget.</p>
-  <p>Vivamus arcu felis bibendum ut tristique et egestas quis. Euismod in pellentesque massa placerat duis ultricies. Vitae tempus quam pellentesque nec nam aliquam sem et. Purus gravida quis blandit turpis cursus in hac. Ut placerat orci nulla pellentesque dignissim enim sit amet venenatis. Fermentum dui faucibus in ornare. Consectetur adipiscing elit pellentesque habitant. Eros in cursus turpis massa tincidunt dui ut. Ut aliquam purus sit amet luctus. Mi tempus imperdiet nulla malesuada. Id neque aliquam vestibulum morbi blandit cursus risus at ultrices. Enim facilisis gravida neque convallis a cras semper. Donec adipiscing tristique risus nec. Maecenas volutpat blandit aliquam etiam erat velit. Maecenas volutpat blandit aliquam etiam erat velit scelerisque in.</p>
+<div class="about"
+     fxLayout="column"
+     fxLayoutAlign="center">
+  <div class="mat-display-1 app-border-line">About Me</div>
+  <div fxLayout="row"
+       fxLayout.lt-lg="column"
+       fxLayoutAlign="center"
+       fxLayoutGap="24px">
+    <div fxFlex="50">
+      <p>
+        Hi, I'm Ryan! I have enjoyed coding as one of my main hobbies since I was 15, and have been fortunate enough to explore
+        this passion as a Computer Science major at the University of Kentucky, and now as a professional software developer.
+        I have experience working as a full-stack engineer on both a smaller development team at <a href="">Ashland</a>
+        (now <a href="">Valvoline</a>), and on a much larger team at my current company <a href="">Flooid</a>. I try to keep
+        up with other programming-related technologies for smaller hobby projects outside of work.
+      </p>
+      <p>
+        When I'm not coding you can find me at the golf course, backpacking on the trail, or visiting a local brewery!
+      </p>
+    </div>
+    <div class="pics"
+         fxLayout="row"
+         fxLayoutAlign="center"
+         fxLayoutGap="24px"
+         fxFlex="50">
+      <img id="backpacking" class="about-img" src="assets/images/backpacking.png"/>
+      <div fxLayout="column"
+           fxLayoutGap="24px">
+        <img id="golfing" class="about-img hanging-right img-stagger" src="assets/images/golf.png"/>
+        <img id="camping" class="about-img img-stagger" src="assets/images/camp.png"/>
+      </div>
+    </div>
+  </div>
+  <app-visibility [name]="'skills'">
+    <app-skills id="skills" class="about-skills"></app-skills>
+  </app-visibility>
 </div>

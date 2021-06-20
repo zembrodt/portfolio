@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Software Engineer",
+    "company": "Flooid",
+    "dates": "June 2019 - Present",
+    "details": [
+      "Implemented and owned features required by client",
+      "Investigate and develop fixes for defects on both local and remote machines",
+      "Ownership of changes within base product codebase used by all clients",
+      "Training of several additional developers in working with the codebase and our product"
+    ],
+    "featured": true
+  },
+  {
+    "title": "Web Developer",
+    "company": "Valvoline",
+    "dates": "October 2017 - December 2017",
+    "details": [
+      "Worked within development team using the Agile methodology",
+      "Assisted in developing fixes for several Valvoline web applications"
+    ],
+    "featured": true
+  },
+  {
+    "title": "Web Developer Co-op",
+    "company": "Ashland",
+    "dates": "January 2014 - May 2015",
+    "details": [
+      "Assisted in developing several web applications using Java and the Spring framework",
+      "Created new tables and modified existing ones within Microsoft SQL Server",
+      "Wrote technical documentation for developed web applications"
+    ],
+    "featured": true
+  },
+  {
+    "title": "QA / Performance Engineer",
+    "company": "Tata Consultancy Services",
+    "dates": "June 2016 - August 2017",
+    "details": [
+      "Assisted in creating test scripts and writing technical documentation",
+      "Wrote test cases for client applications",
+      "Executed test cases for client applications and documented results"
+    ],
+    "featured": false
+  }
+]

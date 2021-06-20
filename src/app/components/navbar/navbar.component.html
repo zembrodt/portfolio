@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar id="navbar">
   <div fxLayout="row" style="width: 100%">
     <div class="profile-pic" fxFlex="20">
       <span class="mat-title">Ryan Zembrodt</span>
@@ -11,18 +11,12 @@
          fxFlex="60"
          fxLayoutGap="16px"
          class="links mat-subheading-2">
-      <a class="app-foreground-text" href="#about">About</a>
-      <a class="app-foreground-text" href="#skills">Skills</a>
-      <a class="app-foreground-text" href="#experience">Experience</a>
-      <a class="app-foreground-text" href="#projects">Projects</a>
-      <a class="app-foreground-text" href="#contact">Contact</a>
+      <a class="navbar-link" href="#about">About</a>
+      <a class="navbar-link" href="#skills">Skills</a>
+      <a class="navbar-link" href="#experience">Experience</a>
+      <a class="navbar-link" href="#projects">Projects</a>
+      <a class="navbar-link" href="#contact">Contact</a>
     </div>
-  <!--  <mat-button-toggle-group [(ngModel)]="page" (change)="onPageChange()" name="displayPage">-->
-  <!--    <mat-button-toggle [value]="'experience'">Work</mat-button-toggle>-->
-  <!--    <mat-button-toggle [value]="'projects'" ngDefaultControl>Projects</mat-button-toggle>-->
-  <!--    <mat-button-toggle [value]="'about'" ngDefaultControl>About</mat-button-toggle>-->
-  <!--    <mat-button-toggle [value]="'contact'" ngDefaultControl>Contact</mat-button-toggle>-->
-  <!--  </mat-button-toggle-group>-->
     <div fxFlex style="text-align: right">
       <button mat-icon-button (click)="onThemeChange()">
         <mat-icon>{{getThemeIcon()}}</mat-icon>

@@ -1,4 +1,16 @@
-<h2>Experience</h2>
-<div *ngFor="let i of this.duplicate">
-  <app-experience-detail [workId]="i"></app-experience-detail>
+<div class="experience">
+  <div class="mat-display-1 app-border-line">Experience</div>
+  <mat-tab-group mat-align-tabs="center" dynamicHeight>
+    <ng-component *ngFor="let experience of experiences">
+      <mat-tab [label]="experience.company">
+        <app-experience-detail [experience]="experience"></app-experience-detail>
+      </mat-tab>
+    </ng-component>
+    <mat-tab label="Other">
+      <app-experience-detail
+        *ngFor="let experience of otherExperiences"
+        [experience]="experience"
+      ></app-experience-detail>
+    </mat-tab>
+  </mat-tab-group>
 </div>

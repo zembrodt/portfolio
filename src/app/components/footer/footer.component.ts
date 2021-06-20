@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
-const RESUME_PATH = 'http://zembrodt.com/assets/docs/ryan-zembrodt-resume.pdf';
+const RESUME_PATH = './assets/docs/ryan-zembrodt-resume.pdf';
 
 @Component({
   selector: 'app-footer',

@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import experiencesData from '../../../assets/data/experiences.json';
+
+export interface Experience {
+  title: string;
+  company: string;
+  dates: string;
+  details: string[];
+  featured: boolean;
+}
 
 @Component({
   selector: 'app-experience',
@@ -7,14 +16,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperienceComponent implements OnInit {
 
-  duplicate = Array(25);
+  experiences: Experience[] = [];
+  otherExperiences: Experience[] = [];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    for (let i = 0; i < this.duplicate.length; i++) {
-      this.duplicate[i] = i + 1;
-    }
+    experiencesData.forEach(experience => {
+      if (experience.featured) {
+        this.experiences.push(experience);
+      } else {
+        this.otherExperiences.push(experience);
+      }
+    });
   }
-
 }

@@ -1,4 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import projectsData from '../../../assets/data/projects.json';
+
+export interface Project {
+  title: string;
+  description: string;
+  projectUrl: string;
+  githubUrl: string;
+  docsUrl: string;
+  screenshotUrl: string;
+  technologies: string[];
+}
 
 @Component({
   selector: 'app-projects',
@@ -7,14 +18,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  duplicate = Array(25);
+  projects: Project[];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    for (let i = 0; i < this.duplicate.length; i++) {
-      this.duplicate[i] = i + 1;
-    }
+    this.projects = projectsData;
   }
-
 }

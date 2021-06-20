@@ -11,6 +11,19 @@ html {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.mat-tab-label-content {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mat-tab-header {
+  border-bottom: 0px solid !important;
+}
+
 @mixin custom-components-theme($theme) {
   @include app-component-theme($theme);
   @include dashboard-theme($theme);
@@ -25,6 +38,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: mat-color($foreground, text);
   }
 
+  $accent: map-get($light-theme, accent);
+  .app-skill-icon {
+    color: mat-color($accent, text);
+  }
 }
 
 .dark-theme {
@@ -34,5 +51,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   $primary: map-get($dark-theme, primary);
   .app-icon {
     color: mat-color($primary, text);
+  }
+
+  $accent: map-get($light-theme, accent);
+  .app-skill-icon {
+    color: mat-color($accent, text);
   }
 }

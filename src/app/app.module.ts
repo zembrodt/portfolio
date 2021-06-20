@@ -28,20 +28,25 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SkillsComponent } from './components/skills/skills.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatRippleModule} from '@angular/material/core';
+import {VisibilityComponent} from './components/visibility/visibility.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    ProjectsComponent,
-    ProjectDetailComponent,
     AboutComponent,
+    ContactComponent,
+    DashboardComponent,
     ExperienceComponent,
     ExperienceDetailComponent,
-    ContactComponent,
-    NavbarComponent,
     FooterComponent,
-    SkillsComponent
+    NavbarComponent,
+    ProjectsComponent,
+    ProjectDetailComponent,
+    SkillsComponent,
+    VisibilityComponent
   ],
     imports: [
         BrowserModule,
@@ -52,8 +57,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
         MatButtonModule,
         MatButtonToggleModule,
         MatCardModule,
+        MatDialogModule,
         MatIconModule,
+        MatRippleModule,
         MatSidenavModule,
+        MatTabsModule,
         MatToolbarModule,
         FormsModule,
         NgxsModule.forRoot(
