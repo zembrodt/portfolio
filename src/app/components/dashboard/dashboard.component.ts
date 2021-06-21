@@ -1,4 +1,5 @@
 import {AfterViewInit, Component} from '@angular/core';
+import {AboutComponent} from '../about/about.component';
 
 const INTRO_DURATION = 1500;
 const INTRO_EASTING = 'ease-out';
@@ -9,6 +10,8 @@ const INTRO_EASTING = 'ease-out';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements AfterViewInit {
+  aboutPage = AboutComponent.PAGE;
+
   constructor() { }
 
   ngAfterViewInit(): void {
@@ -55,10 +58,10 @@ export class DashboardComponent implements AfterViewInit {
 
     picOfMeEl.animate([{
       opacity: 0,
-      transform: 'translateY(-25%)'
+      transform: 'translateX(15%)'
     }, {
       opacity: 1,
-      transform: 'translateY(0%)'
+      transform: 'translateX(0%)'
     }], {
       duration: INTRO_DURATION,
       delay: 1000,

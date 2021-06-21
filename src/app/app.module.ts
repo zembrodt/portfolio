@@ -32,6 +32,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRippleModule} from '@angular/material/core';
 import {VisibilityComponent} from './components/visibility/visibility.component';
+import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import {VisibleService} from './services/visible/visible.service';
 
 @NgModule({
   declarations: [
@@ -71,8 +73,14 @@ import {VisibilityComponent} from './components/visibility/visibility.component'
         NgxsStoragePluginModule.forRoot({
           key: ['ZEMBRODT_PORTFOLIO_SETTINGS']
         }),
+        NgxsReduxDevtoolsPluginModule.forRoot({
+          disabled: environment.production
+        })
     ],
-  providers: [RedirectGuard],
+  providers: [
+    VisibleService,
+    RedirectGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

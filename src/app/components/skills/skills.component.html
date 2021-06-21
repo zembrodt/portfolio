@@ -5,7 +5,8 @@
        fxLayout.xs="column"
        fxLayoutAlign="center"
        fxLayoutGap="16px grid">
-    <div *ngFor="let skill of skills"
+    <div *ngFor="let skill of skills; let i = index;"
+         id="skill-{{i}}"
          class="skill"
          fxFlex="0 1 calc(12.5% - 16px)"
          fxFlex.lg="0 1 calc(17.5% - 16px)"

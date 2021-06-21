@@ -1,5 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import skillsData from '../../../assets/data/skills.json';
+import {VisibleService} from '../../services/visible/visible.service';
+import {Subject} from 'rxjs';
+import {shuffle} from '../../core/utils';
+import {takeUntil} from 'rxjs/operators';
 
 export interface Skill {
   title: string;
@@ -8,6 +12,8 @@ export interface Skill {
   featured: boolean;
 }
 
+const SKILL_DURATION = 500;
+const SKILL_EASING = 'ease-out';
 const shuffleBonusSkills = true;
 
 @Component({
@@ -15,12 +21,14 @@ const shuffleBonusSkills = true;
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent implements OnInit, OnDestroy {
+  static PAGE = 'skills';
+
+  private ngUnsubscribe = new Subject();
 
   skills: Skill[] = [];
 
-  constructor() {
-  }
+  constructor(private visibleService: VisibleService) {}
 
   ngOnInit(): void {
     let bonusSkills: Skill[] = [];
@@ -36,19 +44,46 @@ export class SkillsComponent implements OnInit {
       bonusSkills = shuffle(bonusSkills);
     }
     this.skills = this.skills.concat(bonusSkills);
+
+    this.visibleService.isVisible(SkillsComponent.PAGE)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((isVisible) => {
+        console.log('SKILLS :: isVisible=' + isVisible);
+        if (isVisible) {
+          this.animateSkills();
+          this.unsubscribe();
+        }
+    });
   }
-}
 
-function shuffle(array) {
-  let i: number = array.length;
-
-  while (i !== 0) {
-    const rand = Math.floor(Math.random() * i);
-    i--;
-
-    const swap = Object.assign({}, array[i]);
-    array[i] = Object.assign({}, array[rand]);
-    array[rand] = swap;
+  ngOnDestroy(): void {
+    this.unsubscribe();
   }
-  return array;
+
+  private animateSkills(): void {
+    const keyframes = [{
+      opacity: 0,
+      transform: 'translateY(-15px)'
+    }, {
+      opacity: 1,
+      transform: 'translateY(0%)'
+    }];
+
+    for (let i = 0; i < this.skills.length; i++) {
+      const skillEl = document.querySelector('#skill-' + i);
+      skillEl.animate(keyframes, {
+        duration: SKILL_DURATION,
+        fill: 'forwards',
+        easing: SKILL_EASING,
+        delay: i * 100
+      });
+    }
+  }
+
+  private unsubscribe(): void {
+    if (this.ngUnsubscribe) {
+      this.ngUnsubscribe.next();
+      this.ngUnsubscribe.complete();
+    }
+  }
 }
