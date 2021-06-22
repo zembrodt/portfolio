@@ -25,4 +25,8 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.projects = projectsData;
   }
+
+  titleToId(title: string): string {
+    return title.trim().replace(/\s+/g, '-').toLocaleLowerCase();
+  }
 }

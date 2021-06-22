@@ -8,3 +8,7 @@
 .links {
   margin: 0;
 }
+
+.navbar-link:hover {
+  cursor: pointer;
+}

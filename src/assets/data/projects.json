@@ -15,7 +15,7 @@
     "githubUrl": "https://github.com/zembrodt/music-display",
     "docsUrl": null,
     "screenshotUrl": "assets/images/music_display_screenshot.png",
-    "technologies": ["Angular", "TypeScript", "Go", "Heroku"]
+    "technologies": ["Angular", "TypeScript", "Go", "Heroku", "Netlify"]
   },
   {
     "title": "Neat App",

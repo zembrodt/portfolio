@@ -5,8 +5,10 @@ import {Select, Store} from '@ngxs/store';
 import {takeUntil} from 'rxjs/operators';
 import {DARK_THEME, LIGHT_THEME} from '../../core/settings/settings.model';
 import {ToggleTheme} from '../../core/settings/settings.actions';
+import {getTargetTsconfigPath} from '@angular/cdk/schematics/utils/project-tsconfig-paths';
 
 const NAVBAR_ANIMATE_DURATION = 1000;
+const NAVIGATION_PADDING = 12;
 const navMap = new Map<string, string>();
 navMap.set('#intro', '');
 navMap.set('#experience-details', '#nav-experience');
@@ -56,6 +58,15 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currentPage.complete();
   }
 
+  navigate(pageId: string): void {
+    const targetEl = document.querySelector(pageId) as HTMLElement;
+    const navbarHeight = (document.querySelector('#navbar') as HTMLElement).clientHeight;
+    // Scroll directly to element if going down, scroll up with offset for navbar if scrolling up
+    window.scrollTo(0, targetEl.offsetTop > window.pageYOffset ?
+      targetEl.offsetTop - NAVIGATION_PADDING :
+      targetEl.offsetTop - navbarHeight - NAVIGATION_PADDING);
+  }
+
   onThemeChange(): void {
     this.store.dispatch(new ToggleTheme());
   }
@@ -103,11 +114,12 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private findPage(): void {
-    const center = Math.floor((window.innerHeight / 2) + window.pageYOffset);
+    // "line" across the screen used to determine which "page" the user is viewing
+    const pageSelector = Math.floor((window.innerHeight / 3) + window.pageYOffset);
     let foundPage = false;
     for (const page of navMap.keys()) {
       const pageEl = document.querySelector(page) as HTMLElement;
-      if (center >= pageEl.offsetTop && center < pageEl.offsetTop + pageEl.clientHeight) {
+      if (pageSelector >= pageEl.offsetTop && pageSelector < pageEl.offsetTop + pageEl.clientHeight) {
         this.currentPage.next(page);
         foundPage = true;
         break;
