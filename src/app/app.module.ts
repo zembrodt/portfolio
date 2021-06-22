@@ -54,8 +54,9 @@ import {VisibleService} from './services/visible/visible.service';
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        FontAwesomeModule,
         FlexLayoutModule,
+        FontAwesomeModule,
+        FormsModule,
         MatButtonModule,
         MatButtonToggleModule,
         MatCardModule,
@@ -65,7 +66,6 @@ import {VisibleService} from './services/visible/visible.service';
         MatSidenavModule,
         MatTabsModule,
         MatToolbarModule,
-        FormsModule,
         NgxsModule.forRoot(
           [SettingsState],
           {developmentMode: !environment.production}

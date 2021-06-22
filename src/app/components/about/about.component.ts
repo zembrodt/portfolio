@@ -14,7 +14,6 @@ const ABOUT_IMG_EASING = 'ease-out';
 })
 export class AboutComponent implements OnInit, OnDestroy {
   static PAGE = 'about';
-  skillsPage = SkillsComponent.PAGE;
 
   private ngUnsubscribe = new Subject();
 

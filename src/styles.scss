@@ -2,14 +2,17 @@
 @import "./assets/styles/themes";
 @import "app/app.component.scss-theme";
 @import "app/components/dashboard/dashboard.component.scss-theme";
+@import "app/components/navbar/navbar.component.scss-theme";
 
 @include mat-core();
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; scrollbar-width: thin; }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
 
 .mat-tab-label-content {
   user-select: none;
@@ -24,9 +27,60 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-bottom: 0px solid !important;
 }
 
+/* General scrollbar styling */
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+
+/* Themed scrollbar styling */
+@mixin scrollbar-thumb-theme($thumb-color, $track-color) {
+  background-color: $thumb-color;
+  border: 3px solid $track-color;
+}
+
+@mixin scrollbar-track-theme($track-color) {
+  background: $track-color;
+}
+
+$thumb-color-light: mat-color(map-get($light-theme, accent), text);
+$track-color-light: mat-color(map-get($light-theme, background), app-bar);
+
+html.scrollbar-light {
+  scrollbar-color: $thumb-color-light $track-color-light;
+}
+
+body.scrollbar-light::-webkit-scrollbar-thumb {
+  @include scrollbar-thumb-theme($thumb-color-light, $track-color-light);
+}
+
+body.scrollbar-light::-webkit-scrollbar-track {
+  @include scrollbar-track-theme($track-color-light);
+}
+
+$thumb-color-dark: mat-color(map-get($dark-theme, accent), text);
+$track-color-dark: mat-color(map-get($dark-theme, background), app-bar);
+
+html.scrollbar-dark {
+  scrollbar-color: $thumb-color-dark $track-color-dark;
+}
+
+body.scrollbar-dark::-webkit-scrollbar-thumb {
+  @include scrollbar-thumb-theme($thumb-color-dark, $track-color-dark);
+}
+
+body.scrollbar-dark::-webkit-scrollbar-track {
+  @include scrollbar-track-theme($track-color-dark);
+}
+
+/* Application theming */
 @mixin custom-components-theme($theme) {
   @include app-component-theme($theme);
   @include dashboard-theme($theme);
+  @include navbar-theme($theme);
 }
 
 .light-theme {

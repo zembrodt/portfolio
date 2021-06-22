@@ -1,14 +1,15 @@
 <div id="dashboard">
   <app-navbar></app-navbar>
+  <div class="content-container">
   <div fxLayout="column"
        fxLayoutAlign="center"
        fxLayoutGap="256px"
        class="content">
-    <div fxLayout="row"
+    <div id="intro"
+         fxLayout="row"
          fxLayout.lt-lg="column"
          fxLayoutAlign="center center"
-         fxLayoutGap.lt-lg="32px"
-         class="intro">
+         fxLayoutGap.lt-lg="32px">
       <div fxLayout="column"
            fxLayoutAlign="center start"
            fxLayoutGap="16px"
@@ -25,18 +26,20 @@
           <img src="assets/images/main_pic.png">
       </div>
     </div>
-    <app-visibility [name]="aboutPage">
-      <app-about id="about"></app-about>
-    </app-visibility>
+
     <app-visibility [name]="'experience'">
-      <app-experience id="experience"></app-experience>
+      <app-experience></app-experience>
     </app-visibility>
     <app-visibility [name]="'projects'">
-      <app-projects id="projects"></app-projects>
+      <app-projects></app-projects>
+    </app-visibility>
+    <app-visibility [name]="aboutPage">
+      <app-about></app-about>
     </app-visibility>
     <app-visibility [name]="'contact'" [offset]="100">
-      <app-contact id="contact"></app-contact>
+      <app-contact></app-contact>
     </app-visibility>
+  </div>
   </div>
   <app-footer></app-footer>
 </div>
