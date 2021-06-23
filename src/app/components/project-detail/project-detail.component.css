@@ -8,6 +8,16 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.project-dialog {
-  width: 70%;
+.project-info {
+  width: 100%;
+  overflow: visible;
+}
+
+.screenshot {
+  border-radius: 4px;
+  box-shadow: 3px 3px 10px black;
+}
+
+.code {
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }

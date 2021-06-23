@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import experiencesData from '../../../assets/data/experiences.json';
+import {SkillsComponent} from '../skills/skills.component';
 
 export interface Experience {
   title: string;
@@ -15,6 +16,7 @@ export interface Experience {
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
+  skillsPage = SkillsComponent.PAGE;
 
   experiences: Experience[] = [];
   otherExperiences: Experience[] = [];

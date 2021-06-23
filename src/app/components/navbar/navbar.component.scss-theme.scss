@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+
+@mixin navbar-theme($theme) {
+  $accent: map-get($theme, accent);
+
+  #nav-underline {
+    position: absolute;
+    border-bottom: 1px solid mat-color($accent, text);
+  }
+}

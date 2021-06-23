@@ -1,13 +1,10 @@
-/*.dashboard {*/
-/*  overflow-y: scroll;*/
-/*}*/
 .content {
   width: 75%;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-.intro {
+#intro {
   margin-top: 200px;
 }
 

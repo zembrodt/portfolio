@@ -1,33 +1,41 @@
-<mat-card (click)="openDialog()"
-          matRipple
-          class="project-card">
-  <div class="mat-h2">{{project.title}}</div>
-  <p>{{project.description}}</p>
+<div class="project-detail"
+     fxLayout="row"
+     fxLayoutAlign="center stretch"
+     fxLayoutGap="24px">
+  <div class="project-info"
+       fxLayout="column"
+       fxLayoutAlign="center start"
+       fxLayoutGap="8px">
+    <div class="mat-h1">{{project.title}}</div>
+    <p>{{project.description}}</p>
+    <p>Technologies used:</p>
+    <div *ngIf="project.technologies && project.technologies.length > 0"
+         fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="8px">
+      <span class="code" *ngFor="let technology of project.technologies; let i = index">
+        {{technology}}
+        <ng-container *ngIf="i + 1 < project.technologies.length"> &#xB7; </ng-container>
+      </span>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="right center"
+         fxLayoutGap="8px">
+      <a *ngIf="project.projectUrl"
+         href="{{project.projectUrl}}" target="_blank" title="Project home">
+        <mat-icon>launch</mat-icon>
+      </a>
+      <a *ngIf="project.githubUrl"
+         href="{{project.githubUrl}}" target="_blank" title="Github">
+        <fa-icon [icon]="githubIcon" style="font-size: 20px"></fa-icon>
+      </a>
+      <a *ngIf="project.docsUrl"
+         href="{{project.docsUrl}}" target="_blank" title="Documentation">
+        <mat-icon>article</mat-icon>
+      </a>
+    </div>
+  </div>
   <ng-container *ngIf="project.screenshotUrl">
-    <p>screenshot here</p>
+    <img class="screenshot" src="{{project.screenshotUrl}}" width="65%" />
   </ng-container>
-  <div *ngIf="project.technologies && project.technologies.length > 0"
-       fxLayout="row"
-       fxLayoutAlign="center center"
-       fxLayoutGap="8px">
-    <ng-container *ngFor="let techIcon of project.technologies">
-      <i class="skill-icon app-skill-icon devicon-{{techIcon}}"></i>
-    </ng-container>
-  </div>
-  <div fxLayout="row"
-       fxLayoutAlign="right center"
-       fxLayoutGap="8px">
-    <a *ngIf="project.projectUrl"
-       href="{{project.projectUrl}}" target="_blank">
-      <mat-icon>launch</mat-icon>
-    </a>
-    <a *ngIf="project.githubUrl"
-       href="{{project.githubUrl}}" target="_blank">
-      <fa-icon [icon]="githubIcon"></fa-icon>
-    </a>
-    <a *ngIf="project.docsUrl"
-       href="{{project.docsUrl}}" target="_blank">
-      <mat-icon>article</mat-icon>
-    </a>
-  </div>
-</mat-card>
+</div>

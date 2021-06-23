@@ -1,12 +1,12 @@
-<div class="projects">
+<div id="projects">
   <div class="mat-display-1 app-border-line">Personal Projects</div>
   <div fxLayout="column"
        fxLayoutAlign="flex-start"
        fxLayoutGap="32px">
     <div *ngFor="let project of projects">
-      <app-project-detail
-        [project]="project"
-      ></app-project-detail>
+      <app-visibility [name]="titleToId(project.title)">
+        <app-project-detail [project]="project"></app-project-detail>
+      </app-visibility>
     </div>
   </div>
 </div>

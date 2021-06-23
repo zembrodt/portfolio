@@ -1,29 +1,47 @@
 [
   {
     "title": "PyMDb",
-    "description": "",
+    "description": "A python package that is able to parse IMDb dataset files and scrape info from IMDb",
     "projectUrl": null,
     "githubUrl": "https://github.com/zembrodt/pymdb",
     "docsUrl": "https://pymdb.readthedocs.io/en/latest/",
-    "screenshotUrl": null,
-    "technologies": ["python"]
+    "screenshotUrl": "assets/images/pymdb_screenshot.png",
+    "technologies": ["Python"]
   },
   {
     "title": "Music Display App",
-    "description": "",
-    "projectUrl": "",
+    "description": "A web app to display a user's currently playing track on Spotify",
+    "projectUrl": "https://music.zembrodt.com",
     "githubUrl": "https://github.com/zembrodt/music-display",
     "docsUrl": null,
-    "screenshotUrl": null,
-    "technologies": ["angular", "typescript", "go"]
+    "screenshotUrl": "assets/images/music_display_screenshot.png",
+    "technologies": ["Angular", "TypeScript", "Go", "Heroku", "Netlify"]
   },
   {
-    "title": "Bourbon App",
-    "description": "",
-    "projectUrl": null,
+    "title": "Neat App",
+    "description": "A web app for users to search and rate different whiskeys (under construction)",
+    "projectUrl": "https://drinkneat.app",
     "githubUrl": null,
     "docsUrl": null,
     "screenshotUrl": null,
-    "technologies": ["go", "postgresql", "angular", "typescript", "googlecloud", "docker"]
+    "technologies": ["Go", "PostgreSQL", "Angular", "TypeScript", "Google Cloud", "Docker"]
+  },
+  {
+    "title": "Portfolio",
+    "description": "My portfolio built as an Angular app (what you're currently viewing)",
+    "projectUrl": "https://zembrodt.com",
+    "githubUrl": "https://github.com/zembrodt/portfolio",
+    "docsUrl": null,
+    "screenshotUrl": "",
+    "technologies": ["Angular", "TypeScript", "Netlify"]
+  },
+  {
+    "title": "Legacy Portfolio",
+    "description": "My legacy portfolio built while in undergrad",
+    "projectUrl": "/legacy",
+    "githubUrl": "https://github.com/zembrodt/zembrodt.github.io",
+    "docsUrl": null,
+    "screenshotUrl": "assets/images/legacy_portfolio_screenshot.png",
+    "technologies": ["JavaScript", "HTML", "CSS"]
   }
 ]

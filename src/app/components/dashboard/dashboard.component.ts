@@ -58,7 +58,7 @@ export class DashboardComponent implements AfterViewInit {
 
     picOfMeEl.animate([{
       opacity: 0,
-      transform: 'translateX(15%)'
+      transform: 'translateX(5%)'
     }, {
       opacity: 1,
       transform: 'translateX(0%)'
