@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import "~@angular/material/theming";
 
 @mixin navbar-theme($theme) {
@@ -5,6 +6,6 @@
 
   #nav-underline {
     position: absolute;
-    border-bottom: 1px solid mat-color($accent, text);
+    border-bottom: 1px solid mat.get-color-from-palette($accent, text);
   }
 }
