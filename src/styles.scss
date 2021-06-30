@@ -1,10 +1,11 @@
+@use '~@angular/material' as mat;
 @import "~@angular/material/theming";
-@import "./assets/styles/themes";
+@import "themes";
 @import "app/app.component.scss-theme";
 @import "app/components/dashboard/dashboard.component.scss-theme";
 @import "app/components/navbar/navbar.component.scss-theme";
 
-@include mat-core();
+@include mat.core();
 
 html { scroll-behavior: smooth; scrollbar-width: thin; }
 html, body { height: 100%; }
@@ -46,8 +47,8 @@ body::-webkit-scrollbar-thumb {
   background: $track-color;
 }
 
-$thumb-color-light: mat-color(map-get($light-theme, accent), text);
-$track-color-light: mat-color(map-get($light-theme, background), app-bar);
+$thumb-color-light: mat.get-color-from-palette(map-get($light-theme, accent), text);
+$track-color-light: mat.get-color-from-palette(map-get($light-theme, background), app-bar);
 
 html.scrollbar-light {
   scrollbar-color: $thumb-color-light $track-color-light;
@@ -61,8 +62,8 @@ body.scrollbar-light::-webkit-scrollbar-track {
   @include scrollbar-track-theme($track-color-light);
 }
 
-$thumb-color-dark: mat-color(map-get($dark-theme, accent), text);
-$track-color-dark: mat-color(map-get($dark-theme, background), app-bar);
+$thumb-color-dark: mat.get-color-from-palette(map-get($dark-theme, accent), text);
+$track-color-dark: mat.get-color-from-palette(map-get($dark-theme, background), app-bar);
 
 html.scrollbar-dark {
   scrollbar-color: $thumb-color-dark $track-color-dark;
@@ -84,31 +85,31 @@ body.scrollbar-dark::-webkit-scrollbar-track {
 }
 
 .light-theme {
-  @include angular-material-theme($light-theme);
+  @include mat.all-component-themes($light-theme);
   @include custom-components-theme($light-theme);
 
   $foreground: map-get($light-theme, foreground);
   .app-icon {
-    color: mat-color($foreground, text);
+    color: mat.get-color-from-palette($foreground, text);
   }
 
   $accent: map-get($light-theme, accent);
   .app-skill-icon {
-    color: mat-color($accent, text);
+    color: mat.get-color-from-palette($accent, text);
   }
 }
 
 .dark-theme {
-  @include angular-material-theme($dark-theme);
+  @include mat.all-component-themes($dark-theme);
   @include custom-components-theme($dark-theme);
 
   $primary: map-get($dark-theme, primary);
   .app-icon {
-    color: mat-color($primary, text);
+    color: mat.get-color-from-palette($primary, text);
   }
 
   $accent: map-get($light-theme, accent);
   .app-skill-icon {
-    color: mat-color($accent, text);
+    color: mat.get-color-from-palette($accent, text);
   }
 }
