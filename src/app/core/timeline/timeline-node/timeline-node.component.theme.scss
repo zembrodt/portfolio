@@ -1,0 +1,14 @@
+@import "~@angular/material/theming";
+
+@mixin timeline-node-theme($theme) {
+  $accent:     map-get($theme, accent);
+  $background: map-get($theme, background);
+
+  app-timeline-node.primary-color {
+    background-color: mat-color($background, card);
+  }
+
+  app-timeline-node.accent-color {
+    background-color: mat-color($accent, text);
+  }
+}

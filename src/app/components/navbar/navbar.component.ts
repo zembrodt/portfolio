@@ -119,7 +119,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     let foundPage = false;
     for (const page of navMap.keys()) {
       const pageEl = document.querySelector(page) as HTMLElement;
-      if (pageSelector >= pageEl.offsetTop && pageSelector < pageEl.offsetTop + pageEl.clientHeight) {
+      if (pageEl && pageSelector >= pageEl.offsetTop && pageSelector < pageEl.offsetTop + pageEl.clientHeight) {
         this.currentPage.next(page);
         foundPage = true;
         break;

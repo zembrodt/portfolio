@@ -1,0 +1,7 @@
+.timeline-entry-header {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 15px;
+  text-align: center;
+}

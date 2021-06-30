@@ -1,0 +1,9 @@
+@import "~@angular/material/theming";
+
+@mixin timeline-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  .timeline-line {
+    background-color: mat-color($primary);
+  }
+}

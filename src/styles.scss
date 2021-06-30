@@ -2,7 +2,10 @@
 @import "./assets/styles/themes";
 @import "app/app.component.scss-theme";
 @import "app/components/dashboard/dashboard.component.scss-theme";
-@import "app/components/navbar/navbar.component.scss-theme";
+@import "app/components/navbar/navbar.component.theme";
+@import "app/core/timeline/timeline/timeline.component.theme";
+@import "app/core/timeline/timeline-entry/timeline-entry.component.theme";
+@import "app/core/timeline/timeline-node/timeline-node.component.theme";
 
 @include mat-core();
 
@@ -33,13 +36,13 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 /* Themed scrollbar styling */
 @mixin scrollbar-thumb-theme($thumb-color, $track-color) {
   background-color: $thumb-color;
-  border: 3px solid $track-color;
+  //border: 3px solid $track-color;
 }
 
 @mixin scrollbar-track-theme($track-color) {
@@ -81,6 +84,9 @@ body.scrollbar-dark::-webkit-scrollbar-track {
   @include app-component-theme($theme);
   @include dashboard-theme($theme);
   @include navbar-theme($theme);
+  @include timeline-theme($theme);
+  @include timeline-entry-theme($theme);
+  @include timeline-node-theme($theme);
 }
 
 .light-theme {
@@ -95,6 +101,17 @@ body.scrollbar-dark::-webkit-scrollbar-track {
   $accent: map-get($light-theme, accent);
   .app-skill-icon {
     color: mat-color($accent, text);
+  }
+
+  $primary: map-get($light-theme, primary);
+  $dark-foreground: map-get($dark-theme, foreground);
+  .mat-toolbar {
+    background: mat-color($primary, text);
+    color: mat-color($dark-foreground, text);
+
+    & a.app-foreground-text {
+      color: mat-color($dark-foreground, text) !important;
+    }
   }
 }
 
@@ -111,4 +128,9 @@ body.scrollbar-dark::-webkit-scrollbar-track {
   .app-skill-icon {
     color: mat-color($accent, text);
   }
+}
+
+/* Timeline styling */
+app-timeline-entry {
+  position: relative;
 }

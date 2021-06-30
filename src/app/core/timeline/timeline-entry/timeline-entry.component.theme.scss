@@ -1,0 +1,9 @@
+@import "~@angular/material/theming";
+
+@mixin timeline-entry-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  .timeline-entry-header {
+    background-color: mat-color($primary, text);
+  }
+}

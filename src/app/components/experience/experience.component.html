@@ -1,18 +1,52 @@
 <div id="experience">
   <div class="mat-display-1 app-border-line">Experience</div>
-  <mat-tab-group id="experience-details" mat-align-tabs="center" dynamicHeight>
-    <ng-component *ngFor="let experience of experiences">
-      <mat-tab [label]="experience.company">
-        <app-experience-detail [experience]="experience"></app-experience-detail>
-      </mat-tab>
-    </ng-component>
-    <mat-tab label="Other">
-      <app-experience-detail
-        *ngFor="let experience of otherExperiences"
-        [experience]="experience"
-      ></app-experience-detail>
-    </mat-tab>
-  </mat-tab-group>
+  <app-timeline [nodeColor]="'accent'">
+    <app-timeline-entry>
+      <app-timeline-entry-header>
+        Experience 1
+      </app-timeline-entry-header>
+      <app-timeline-entry-content>
+        This is my biggest experience!
+      </app-timeline-entry-content>
+    </app-timeline-entry>
+    <app-timeline-divider>2018</app-timeline-divider>
+    <app-timeline-entry>
+      <app-timeline-entry-header>
+        Experience 2
+      </app-timeline-entry-header>
+      <app-timeline-entry-content>
+        This is my second biggest experience!
+      </app-timeline-entry-content>
+    </app-timeline-entry>
+    <app-timeline-entry>
+      <app-timeline-entry-header>
+        Experience 3
+      </app-timeline-entry-header>
+      <app-timeline-entry-content>
+        This is actually my biggest experience!
+      </app-timeline-entry-content>
+    </app-timeline-entry>
+    <app-timeline-entry>
+      <app-timeline-entry-header>
+        Experience 4
+      </app-timeline-entry-header>
+      <app-timeline-entry-content>
+        BLAH 4
+      </app-timeline-entry-content>
+    </app-timeline-entry>
+    <app-timeline-entry>
+      <app-timeline-entry-header>
+        Experience 5
+      </app-timeline-entry-header>
+      <app-timeline-entry-content>
+        <ul>
+          <li>Blah 1</li>
+          <li>Blah 2</li>
+          <li>Blah 3</li>
+        </ul>
+      </app-timeline-entry-content>
+    </app-timeline-entry>
+  </app-timeline>
   <app-visibility [name]="skillsPage">
     <app-skills></app-skills>
   </app-visibility>

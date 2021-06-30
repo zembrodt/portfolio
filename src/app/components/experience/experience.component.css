@@ -1,3 +1,15 @@
 #experience-details {
   padding-bottom: 32px;
 }
+
+.timeline {
+  padding-bottom: 32px;
+}
+
+mgl-timeline-entry-header, mgl-timeline-entry-dot {
+  cursor: pointer;
+}
+
+mgl-timeline-entry-header {
+  border-radius: 3px;
+}

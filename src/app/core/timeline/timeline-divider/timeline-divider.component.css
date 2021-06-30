@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  position: relative;
+  margin-bottom: 50px;
+  width: calc(50% - 4px);
+}
+
+.timeline-divider-node {
+  padding: 15px;
+}

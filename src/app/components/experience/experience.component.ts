@@ -7,7 +7,6 @@ export interface Experience {
   company: string;
   dates: string;
   details: string[];
-  featured: boolean;
 }
 
 @Component({
@@ -19,17 +18,12 @@ export class ExperienceComponent implements OnInit {
   skillsPage = SkillsComponent.PAGE;
 
   experiences: Experience[] = [];
-  otherExperiences: Experience[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
     experiencesData.forEach(experience => {
-      if (experience.featured) {
-        this.experiences.push(experience);
-      } else {
-        this.otherExperiences.push(experience);
-      }
+      this.experiences.push(experience);
     });
   }
 }
