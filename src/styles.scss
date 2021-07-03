@@ -1,9 +1,13 @@
 @use '~@angular/material' as mat;
-@import "~@angular/material/theming";
-@import "themes";
-@import "app/app.component.scss-theme";
+@use 'sass:map';
+
+@import "styles/themes";
+@import "app/app.component.theme";
 @import "app/components/dashboard/dashboard.component.scss-theme";
-@import "app/components/navbar/navbar.component.scss-theme";
+@import "app/components/navbar/navbar.component.theme";
+@import "app/core/timeline/timeline/timeline.component.theme";
+@import "app/core/timeline/timeline-entry/timeline-entry.component.theme";
+@import "app/core/timeline/timeline-node/timeline-node.component.theme";
 
 @include mat.core();
 
@@ -13,6 +17,10 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   overflow-x: hidden;
+}
+
+.code-text {
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
 }
 
 .mat-tab-label-content {
@@ -34,21 +42,29 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 4px;
+}
+
+body.top-scroll::-webkit-scrollbar-thumb {
+  border-radius: 0 0 4px 4px;
+}
+
+body.bottom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 4px 4px 0 0;
 }
 
 /* Themed scrollbar styling */
 @mixin scrollbar-thumb-theme($thumb-color, $track-color) {
   background-color: $thumb-color;
-  border: 3px solid $track-color;
+  //border: 3px solid $track-color;
 }
 
 @mixin scrollbar-track-theme($track-color) {
   background: $track-color;
 }
 
-$thumb-color-light: mat.get-color-from-palette(map-get($light-theme, accent), text);
-$track-color-light: mat.get-color-from-palette(map-get($light-theme, background), app-bar);
+$thumb-color-light: mat.get-color-from-palette(map.get($light-theme, accent), text);
+$track-color-light: mat.get-color-from-palette(map.get($light-theme, background), app-bar);
 
 html.scrollbar-light {
   scrollbar-color: $thumb-color-light $track-color-light;
@@ -62,8 +78,8 @@ body.scrollbar-light::-webkit-scrollbar-track {
   @include scrollbar-track-theme($track-color-light);
 }
 
-$thumb-color-dark: mat.get-color-from-palette(map-get($dark-theme, accent), text);
-$track-color-dark: mat.get-color-from-palette(map-get($dark-theme, background), app-bar);
+$thumb-color-dark: mat.get-color-from-palette(map.get($dark-theme, accent), text);
+$track-color-dark: mat.get-color-from-palette(map.get($dark-theme, background), app-bar);
 
 html.scrollbar-dark {
   scrollbar-color: $thumb-color-dark $track-color-dark;
@@ -82,18 +98,22 @@ body.scrollbar-dark::-webkit-scrollbar-track {
   @include app-component-theme($theme);
   @include dashboard-theme($theme);
   @include navbar-theme($theme);
+  @include timeline-theme($theme);
+  @include timeline-entry-theme($theme);
+  @include timeline-node-theme($theme);
 }
 
 .light-theme {
   @include mat.all-component-themes($light-theme);
   @include custom-components-theme($light-theme);
+  @include mat.toolbar-theme($light-theme);
 
-  $foreground: map-get($light-theme, foreground);
+  $foreground: map.get($light-theme, foreground);
   .app-icon {
     color: mat.get-color-from-palette($foreground, text);
   }
 
-  $accent: map-get($light-theme, accent);
+  $accent: map.get($light-theme, accent);
   .app-skill-icon {
     color: mat.get-color-from-palette($accent, text);
   }
@@ -103,13 +123,18 @@ body.scrollbar-dark::-webkit-scrollbar-track {
   @include mat.all-component-themes($dark-theme);
   @include custom-components-theme($dark-theme);
 
-  $primary: map-get($dark-theme, primary);
+  $primary: map.get($dark-theme, primary);
   .app-icon {
     color: mat.get-color-from-palette($primary, text);
   }
 
-  $accent: map-get($light-theme, accent);
+  $accent: map.get($light-theme, accent);
   .app-skill-icon {
     color: mat.get-color-from-palette($accent, text);
   }
+}
+
+/* Timeline styling */
+app-timeline-entry {
+  position: relative;
 }

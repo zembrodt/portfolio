@@ -1,11 +1,11 @@
 @use '~@angular/material' as mat;
-@import "../../node_modules/@angular/material/theming";
+@use 'sass:map';
 
 @mixin app-component-theme($theme) {
-  $primary:    map-get($theme, primary);
-  $accent:     map-get($theme, accent);
-  $warn:       map-get($theme, warn);
-  $foreground: map-get($theme, foreground);
+  $primary:    map.get($theme, primary);
+  $accent:     map.get($theme, accent);
+  $warn:       map.get($theme, warn);
+  $foreground: map.get($theme, foreground);
 
   .app-primary-text {
     color: mat.get-color-from-palette($primary, text) !important;
@@ -19,11 +19,7 @@
     color: mat.get-color-from-palette($accent, text) !important;
   }
 
-  a.navbar-link:link, a.navbar-link:visited {
-    color: mat.get-color-from-palette($foreground, text);
-    text-decoration: none;
-  }
-
+  /* Link styling */
   a:link, a:visited {
     color: mat.get-color-from-palette($accent, text);
     text-decoration: none;
@@ -34,9 +30,15 @@
     text-decoration: underline;
   }
 
-  a.navbar-link:hover {
-    color: mat.get-color-from-palette($accent, text);
-    text-decoration: none;
+  /* Link styling within a mat-toolbar */
+  mat-toolbar {
+    a:link, a:visited {
+      color: inherit;
+    }
+
+    a:hover, a:active {
+      color: mat.get-color-from-palette($accent, text);
+    }
   }
 
   .app-border-line {

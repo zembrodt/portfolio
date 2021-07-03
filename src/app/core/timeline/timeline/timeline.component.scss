@@ -1,0 +1,34 @@
+@import "../../../../../node_modules/@angular/material/theming";
+
+:host {
+  position: relative;
+  display: block;
+  padding-top: 35px;
+
+  & .timeline {
+    //border: 2px solid red;
+  }
+
+  & .timeline-content-placeholder {
+    //border: 3px solid blue;
+    width: 100%;
+  }
+}
+
+.timeline-content {
+  position: absolute;
+  display: block;
+}
+
+.timeline-nodes {
+  min-width: 30px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 8px;
+  left: 20%;
+  transform: translateX(-50%);
+}

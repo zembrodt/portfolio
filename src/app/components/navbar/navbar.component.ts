@@ -11,7 +11,7 @@ const NAVBAR_ANIMATE_DURATION = 1000;
 const NAVIGATION_PADDING = 12;
 const navMap = new Map<string, string>();
 navMap.set('#intro', '');
-navMap.set('#experience-details', '#nav-experience');
+navMap.set('#experience-timeline', '#nav-experience');
 navMap.set('#skills', '#nav-skills');
 navMap.set('#projects', '#nav-projects');
 navMap.set('#about', '#nav-about');
@@ -20,7 +20,7 @@ navMap.set('#about', '#nav-about');
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private ngUnsubscribe = new Subject();
@@ -119,7 +119,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     let foundPage = false;
     for (const page of navMap.keys()) {
       const pageEl = document.querySelector(page) as HTMLElement;
-      if (pageSelector >= pageEl.offsetTop && pageSelector < pageEl.offsetTop + pageEl.clientHeight) {
+      if (pageEl && pageSelector >= pageEl.offsetTop && pageSelector < pageEl.offsetTop + pageEl.clientHeight) {
         this.currentPage.next(page);
         foundPage = true;
         break;
