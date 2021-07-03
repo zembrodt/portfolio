@@ -1,0 +1,48 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+
+@mixin app-component-theme($theme) {
+  $primary:    map.get($theme, primary);
+  $accent:     map.get($theme, accent);
+  $warn:       map.get($theme, warn);
+  $foreground: map.get($theme, foreground);
+
+  .app-primary-text {
+    color: mat.get-color-from-palette($primary, text) !important;
+  }
+
+  .app-foreground-text {
+    color: mat.get-color-from-palette($foreground, text) !important;
+  }
+
+  .app-accent-text {
+    color: mat.get-color-from-palette($accent, text) !important;
+  }
+
+  /* Link styling */
+  a:link, a:visited {
+    color: mat.get-color-from-palette($accent, text);
+    text-decoration: none;
+  }
+
+  a:hover, a:active {
+    color: mat.get-color-from-palette($accent, text);
+    text-decoration: underline;
+  }
+
+  /* Link styling within a mat-toolbar */
+  mat-toolbar {
+    a:link, a:visited {
+      color: inherit;
+    }
+
+    a:hover, a:active {
+      color: mat.get-color-from-palette($accent, text);
+    }
+  }
+
+  .app-border-line {
+    padding-bottom: 4px;
+    border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
+  }
+}

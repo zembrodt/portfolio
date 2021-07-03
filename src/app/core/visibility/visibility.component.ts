@@ -12,10 +12,8 @@ const FADE_IN_DURATION = 1000;
 export class VisibilityComponent implements OnInit, AfterViewInit {
   visible = false;
 
-  @Input()
-  name: string;
-  @Input()
-  offset = VISIBILITY_OFFSET;
+  @Input() name: string;
+  @Input() offset = VISIBILITY_OFFSET;
 
   constructor(private visibleService: VisibleService) {}
 

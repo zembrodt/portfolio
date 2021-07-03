@@ -1,18 +1,24 @@
 <div id="experience">
   <div class="mat-display-1 app-border-line">Experience</div>
-  <mat-tab-group id="experience-details" mat-align-tabs="center" dynamicHeight>
-    <ng-component *ngFor="let experience of experiences">
-      <mat-tab [label]="experience.company">
-        <app-experience-detail [experience]="experience"></app-experience-detail>
-      </mat-tab>
-    </ng-component>
-    <mat-tab label="Other">
-      <app-experience-detail
-        *ngFor="let experience of otherExperiences"
-        [experience]="experience"
-      ></app-experience-detail>
-    </mat-tab>
-  </mat-tab-group>
+  <app-timeline id="experience-timeline" [nodeColor]="'primary'" [enableAnimations]="true">
+    <ng-container *ngFor="let experience of experiences; let i = index">
+      <app-timeline-entry>
+        <app-timeline-entry-header>
+          <div fxLayout="column"
+               fxLayoutAlign="center center">
+            <span class="mat-h2 app-border-line">{{experience.company}}</span>
+            <span>{{experience.title}}</span>
+          </div>
+        </app-timeline-entry-header>
+        <app-timeline-entry-content>
+          <app-experience-detail [experience]="experience"></app-experience-detail>
+        </app-timeline-entry-content>
+      </app-timeline-entry>
+      <app-timeline-divider *ngIf="timelineDividers.has(i)">
+        {{experience.year}}
+      </app-timeline-divider>
+    </ng-container>
+  </app-timeline>
   <app-visibility [name]="skillsPage">
     <app-skills></app-skills>
   </app-visibility>

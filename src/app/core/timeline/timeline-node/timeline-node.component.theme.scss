@@ -1,0 +1,42 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+@use '../../../../styles/mixins' as app;
+
+@mixin timeline-node-theme($theme) {
+  $primary: map.get($theme, primary);
+  $accent: map.get($theme, accent);
+
+  app-timeline-node {
+    transition-property: box-shadow, background, color;
+    transition-duration: 280ms;
+    transition-timing-function: ease-in;
+
+    @include app.elevation(2);
+
+    &.selected {
+      @include app.elevation(-2);
+    }
+
+    &.primary-color {
+      background: mat.get-color-from-palette($primary, darker);
+      color: mat.get-color-from-palette($primary, darker-contrast);
+
+      &.selected {
+        background: mat.get-color-from-palette($primary, 400);
+        color: mat.get-color-from-palette($primary, '400-contrast');
+      }
+    }
+
+    //box-shadow: 0 3px 1px -2px #0003, 0 2px 2px 0 #00000024, 0 1px 5px 0 #0000001f;
+
+    &.accent-color {
+      background: mat.get-color-from-palette($accent, darker);
+      color: mat.get-color-from-palette($accent, darker-contrast);
+
+      &.selected {
+        background: mat.get-color-from-palette($accent, 300);
+        color: mat.get-color-from-palette($accent, '300-contrast');
+      }
+    }
+  }
+}

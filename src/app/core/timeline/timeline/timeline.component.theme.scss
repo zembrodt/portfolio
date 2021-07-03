@@ -1,0 +1,10 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+
+@mixin timeline-theme($theme) {
+  $primary: map.get($theme, primary);
+
+  .timeline-line {
+    background-color: mat.get-color-from-palette($primary);
+  }
+}

@@ -31,10 +31,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatRippleModule} from '@angular/material/core';
-import {VisibilityComponent} from './components/visibility/visibility.component';
+import {VisibilityComponent} from './core/visibility/visibility.component';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import {VisibleService} from './services/visible/visible.service';
-
+import {TimelineComponent} from './core/timeline/timeline/timeline.component';
+import {TimelineEntryComponent} from './core/timeline/timeline-entry/timeline-entry.component';
+import {TimelineEntryContentComponent} from './core/timeline/timeline-entry-content/timeline-entry-content.component';
+import {TimelineEntryHeaderComponent} from './core/timeline/timeline-entry-header/timeline-entry-header.component';
+import {TimelineNodeComponent} from './core/timeline/timeline-node/timeline-node.component';
+import {TimelineDividerComponent} from './core/timeline/timeline-divider/timeline-divider.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,35 +53,41 @@ import {VisibleService} from './services/visible/visible.service';
     ProjectsComponent,
     ProjectDetailComponent,
     SkillsComponent,
+    TimelineComponent,
+    TimelineDividerComponent,
+    TimelineEntryComponent,
+    TimelineEntryContentComponent,
+    TimelineEntryHeaderComponent,
+    TimelineNodeComponent,
     VisibilityComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        FlexLayoutModule,
-        FontAwesomeModule,
-        FormsModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatCardModule,
-        MatDialogModule,
-        MatIconModule,
-        MatRippleModule,
-        MatSidenavModule,
-        MatTabsModule,
-        MatToolbarModule,
-        NgxsModule.forRoot(
-          [SettingsState],
-          {developmentMode: !environment.production}
-        ),
-        NgxsStoragePluginModule.forRoot({
-          key: ['ZEMBRODT_PORTFOLIO_SETTINGS']
-        }),
-        NgxsReduxDevtoolsPluginModule.forRoot({
-          disabled: environment.production
-        })
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    FontAwesomeModule,
+    FormsModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatDialogModule,
+    MatIconModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatToolbarModule,
+    NgxsModule.forRoot(
+      [SettingsState],
+      {developmentMode: !environment.production}
+    ),
+    NgxsStoragePluginModule.forRoot({
+      key: ['ZEMBRODT_PORTFOLIO_SETTINGS']
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled: environment.production
+    })
+  ],
   providers: [
     VisibleService,
     RedirectGuard

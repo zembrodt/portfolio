@@ -1,0 +1,15 @@
+@use '~@angular/material' as mat;
+@use 'sass:map';
+
+@mixin navbar-theme($theme) {
+  $accent: map.get($theme, accent);
+
+  #nav-underline {
+    position: absolute;
+    border-bottom: 1px solid mat.get-color-from-palette($accent, text);
+  }
+
+  .theme-button:hover {
+    color: mat.get-color-from-palette($accent, text);
+  }
+}

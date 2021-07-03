@@ -1,5 +1,6 @@
 import {AfterViewInit, Component} from '@angular/core';
 import {AboutComponent} from '../about/about.component';
+import {ExperienceComponent} from '../experience/experience.component';
 
 const INTRO_DURATION = 1500;
 const INTRO_EASTING = 'ease-out';
@@ -11,6 +12,7 @@ const INTRO_EASTING = 'ease-out';
 })
 export class DashboardComponent implements AfterViewInit {
   aboutPage = AboutComponent.PAGE;
+  experiencePage = ExperienceComponent.PAGE;
 
   constructor() { }
 
