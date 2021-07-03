@@ -1,6 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import experiencesData from '../../../assets/data/experiences.json';
 import {SkillsComponent} from '../skills/skills.component';
+import {VisibleService} from '../../services/visible/visible.service';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {TimelineComponent} from '../../core/timeline/timeline/timeline.component';
 
 export interface Experience {
   title: string;
@@ -8,6 +12,7 @@ export interface Experience {
   dates: string;
   year: number;
   details: string[];
+  technologies: string[];
 }
 
 @Component({
@@ -15,15 +20,30 @@ export interface Experience {
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.css']
 })
-export class ExperienceComponent implements OnInit {
-  skillsPage = SkillsComponent.PAGE;
+export class ExperienceComponent implements OnInit, OnDestroy {
+  static PAGE = 'experience';
 
+  private ngUnsubscribe = new Subject();
+
+  @ViewChild(TimelineComponent) timeline: TimelineComponent;
+
+  skillsPage = SkillsComponent.PAGE;
   experiences: Experience[] = [];
   timelineDividers = new Set<number>();
 
-  constructor() {}
+  constructor(private visibleService: VisibleService) {}
 
   ngOnInit(): void {
+    this.visibleService.isVisible(ExperienceComponent.PAGE)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((isVisible) => {
+        console.log('EXPERIENCE :: isVisible=' + isVisible);
+        if (isVisible && this.timeline) {
+          this.timeline.startAnimation();
+          this.unsubscribe();
+        }
+      });
+
     const years = new Set<number>();
     experiencesData.forEach(experience => {
       years.add(experience.year);
@@ -43,5 +63,16 @@ export class ExperienceComponent implements OnInit {
         prevYear = experience.year;
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe();
+  }
+
+  private unsubscribe(): void {
+    if (this.ngUnsubscribe) {
+      this.ngUnsubscribe.next();
+      this.ngUnsubscribe.complete();
+    }
   }
 }

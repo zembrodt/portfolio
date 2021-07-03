@@ -1,7 +1,6 @@
 @use '../../../../styles/mixins' as app;
 
 :host {
-  @include app.elevation(2);
   display: block;
   position: relative;
   margin-bottom: 50px;
@@ -21,6 +20,11 @@
 }
 
 .timeline-entry-header {
+  @include app.elevation(2);
   position: relative;
   cursor: pointer;
+  display: block;
+  overflow: hidden;
+  padding: 0 15px 0 15px;
+  text-align: center;
 }

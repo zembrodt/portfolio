@@ -10,6 +10,10 @@
       "Investigate and develop fixes for defects on both local and remote machines",
       "Ownership of changes within base product codebase used by all clients",
       "Training of several additional developers in working with the codebase and our product"
+    ],
+    "technologies": [
+      "Java",
+      "DB2"
     ]
   },
   {
@@ -19,6 +23,11 @@
     "dates": "January 2018 - May 2019",
     "year": 2018,
     "details": [
+    ],
+    "technologies": [
+      "C",
+      "C++",
+      "Python"
     ]
   },
   {
@@ -30,6 +39,11 @@
     "details": [
       "Worked within development team using the Agile methodology",
       "Assisted in developing fixes for several Valvoline web applications"
+    ],
+    "technologies": [
+      "Java",
+      "Spring",
+      "MS SQL Server"
     ]
   },
   {
@@ -42,7 +56,8 @@
       "Assisted in creating test scripts and writing technical documentation",
       "Wrote test cases for client applications",
       "Executed test cases for client applications and documented results"
-    ]
+    ],
+    "technologies": []
   },
   {
     "title": "Software Engineer Intern",
@@ -51,7 +66,8 @@
     "dates": "June 2014 - August 2014",
     "year": 2014,
     "details": [
-    ]
+    ],
+    "technologies": []
   },
   {
     "title": "Web Developer Co-op",
@@ -63,6 +79,11 @@
       "Assisted in developing several web applications using Java and the Spring framework",
       "Created new tables and modified existing ones within Microsoft SQL Server",
       "Wrote technical documentation for developed web applications"
+    ],
+    "technologies": [
+      "Java",
+      "Spring",
+      "MS SQL Server"
     ]
   },
   {
@@ -72,6 +93,9 @@
     "dates": "May 2013 - August 2013",
     "year": 2013,
     "details": [
+    ],
+    "technologies": [
+      "C#"
     ]
   }
 ]

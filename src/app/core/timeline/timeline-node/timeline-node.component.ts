@@ -75,7 +75,7 @@ export class TimelineNodeComponent implements OnChanges, AfterViewInit{
     }
   }
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2,
+  constructor(public elementRef: ElementRef, private renderer: Renderer2,
               @Inject(DOCUMENT) private document) {}
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -19,6 +19,10 @@ body {
   overflow-x: hidden;
 }
 
+.code-text {
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
+}
+
 .mat-tab-label-content {
   user-select: none;
   -webkit-user-select: none;

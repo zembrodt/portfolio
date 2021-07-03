@@ -12,6 +12,7 @@ import {Subscription} from 'rxjs';
 import {TimelineDividerComponent} from '../timeline-divider/timeline-divider.component';
 
 const NAVBAR_PADDING = 12;
+const ENTRY_DELAY = 350;
 
 @Component({
   selector: 'app-timeline',
@@ -23,37 +24,25 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
   private subscriptions: Subscription[] = [];
   private prevInTimeline = null;
   private selectedEntry: TimelineEntryComponent;
+  private animationExecuted = false;
 
   @ContentChildren(TimelineEntryComponent) entries: QueryList<TimelineEntryComponent>;
   @ContentChildren(TimelineDividerComponent) dividers: QueryList<TimelineDividerComponent>;
 
   @Input() nodeColor: string;
+  @Input() enableAnimations = false;
 
   constructor() {}
 
   ngAfterContentInit(): void {
     // Subscribe to all timeline entry methods
     this.entries.toArray().forEach((timelineEntry, i) => {
+      timelineEntry.enableAnimations = this.enableAnimations;
       // Subscribe timeline-entry to events
       this.subscriptions.push(timelineEntry.toggled.subscribe(event => {
         this.updateContent(timelineEntry);
       }));
-
-      // Set date values
-      /*if (timelineEntry.start !== null && timelineEntry.start !== undefined) {
-        startDates.push(timelineEntry.start);
-        dates.add(timelineEntry.start);
-      }
-      let endDate = timelineEntry.end;
-      if (endDate === null) {
-        endDate = currentDate;
-      }
-      endDates.push(endDate);
-      dates.add(endDate);*/
     });
-    /*this.startDate = Math.min(...startDates);
-    this.endDate = Math.max(...endDates);
-    this.displayDates = Array.from(dates).sort();*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -77,22 +66,21 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
     if (this.entries && this.entries.length > 0) {
       this.updateContent(this.entries.get(0));
     }
-
-    // Position the timeline date labels
-    /*const nodeComponentFactory = this.componentFactoryResolver.resolveComponentFactory(TimelineNodeComponent);
-    const viewContainerRef = this.timelineNodes.viewContainerRef;
-    this.displayDates.forEach((date, i) => {
-      // Create timeline nodes for each date
-      const nodeComponentRef = viewContainerRef.createComponent<TimelineNodeComponent>(nodeComponentFactory);
-      nodeComponentRef.instance.value = date;
-      nodeComponentRef.instance.offset = i * 40;
-      this.nodeRefs.push(nodeComponentRef);
-    });*/
-
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
+  startAnimation(): void {
+    if (this.enableAnimations && !this.animationExecuted && this.entries) {
+      this.entries.forEach((entry, i) => {
+        setTimeout(() => {
+          entry.animate(ENTRY_DELAY);
+        }, ENTRY_DELAY * i);
+      });
+      this.animationExecuted = true;
+    }
   }
 
   @HostListener('window:scroll', ['$event'])

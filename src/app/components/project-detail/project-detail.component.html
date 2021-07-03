@@ -13,7 +13,7 @@
          fxLayout="row"
          fxLayoutAlign="center center"
          fxLayoutGap="8px">
-      <span class="code" *ngFor="let technology of project.technologies; let i = index">
+      <span class="code-text" *ngFor="let technology of project.technologies; let i = index">
         {{technology}}
         <ng-container *ngIf="i + 1 < project.technologies.length"> &#xB7; </ng-container>
       </span>

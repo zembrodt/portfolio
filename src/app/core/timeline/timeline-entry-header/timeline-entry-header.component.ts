@@ -6,5 +6,5 @@ import {Component, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./timeline-entry-header.component.css'],
   encapsulation: ViewEncapsulation.None})
 export class TimelineEntryHeaderComponent {
-
+  constructor() {}
 }

@@ -1,4 +1,4 @@
-import {Component, ContentChild, ElementRef, Input, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
+import {Component, ContentChild, ElementRef, Input, OnInit, Output, EventEmitter, ViewChild, AfterViewInit, Renderer2} from '@angular/core';
 import {TimelineEntryHeaderComponent} from '../timeline-entry-header/timeline-entry-header.component';
 import {TimelineEntryContentComponent} from '../timeline-entry-content/timeline-entry-content.component';
 import {TimelineNodeComponent} from '../timeline-node/timeline-node.component';
@@ -16,7 +16,25 @@ export class TimelineEntryComponent {
 
   @Output() toggled = new EventEmitter<MouseEvent>();
 
-  constructor(public elementRef: ElementRef) {}
+  constructor(public elementRef: ElementRef, private renderer: Renderer2) {}
+
+  animate(delay: number): void {
+    (this.elementRef.nativeElement as HTMLElement).animate({
+      opacity: 1
+    }, {
+      fill: 'forwards',
+      duration: delay
+    });
+    const entryEl = (this.elementRef.nativeElement as HTMLElement).querySelector('.timeline-entry-header');
+    entryEl.animate([{
+      transform: this.elementRef.nativeElement.classList.contains('alternate') ? 'rotateY(-60deg)' : 'rotateY(60deg)'
+    }, {
+      transform: 'rotateY(0)'
+    }], {
+      fill: 'forwards',
+      duration: delay
+    });
+  }
 
   toggle(event: MouseEvent): void {
     this.node.selected = true;
@@ -27,6 +45,14 @@ export class TimelineEntryComponent {
     this.elementRef.nativeElement.classList.toggle('alternate', value);
     if (this.node) {
       this.node.alternate = value;
+    }
+  }
+
+  set enableAnimations(value: boolean) {
+    if (value) {
+      // Set Opacity to 0 if animating timeline
+      console.log('Setting opacity to 0');
+      this.renderer.setStyle(this.elementRef.nativeElement, 'opacity', 0);
     }
   }
 }

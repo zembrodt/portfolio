@@ -1,12 +1,24 @@
 <mat-card class="experience-card">
   <div class="experience-detail"
-       fxLayout="row"
-       fxLayoutGap="center">
-    <div class="mat-h1 title-line">{{experience.company}}</div>
-    <div class="mat-h3 title-line align-right">{{experience.dates}}</div>
+       fxLayout="column"
+       fxLayoutAlign="center">
+    <div class="mat-h1">
+      {{experience.title}}
+      <span class="app-accent-text"> @ </span>
+      {{experience.company}}
+    </div>
+    <div class="mat-h2">{{experience.dates}}</div>
+    <ul>
+      <li *ngFor="let detail of experience.details">{{detail}}</li>
+    </ul>
+    <div *ngIf="experience.technologies && experience.technologies.length > 0"
+         fxLayout="row"
+         fxLayoutAlign="center center"
+         fxLayoutGap="8px">
+      <span class="code-text" *ngFor="let technology of experience.technologies; let i = index">
+        {{technology}}
+        <ng-container *ngIf="i + 1 < experience.technologies.length"> &#xB7; </ng-container>
+      </span>
+    </div>
   </div>
-  <div class="mat-h3">{{experience.title}}</div>
-  <ul>
-    <li *ngFor="let detail of experience.details">{{detail}}</li>
-  </ul>
 </mat-card>
