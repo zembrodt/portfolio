@@ -4,6 +4,7 @@
     "company": "Flooid",
     "companyUrl": "https://www.flooid.com/",
     "dates": "June 2019 - Present",
+    "year": 2019,
     "details": [
       "Implemented and owned features required by client",
       "Investigate and develop fixes for defects on both local and remote machines",
@@ -16,6 +17,7 @@
     "company": "University of Kentucky",
     "companyUrl": "https://www.uky.edu/",
     "dates": "January 2018 - May 2019",
+    "year": 2018,
     "details": [
     ]
   },
@@ -24,6 +26,7 @@
     "company": "Valvoline",
     "companyUrl": "https://www.valvoline.com/",
     "dates": "October 2017 - December 2017",
+    "year": 2017,
     "details": [
       "Worked within development team using the Agile methodology",
       "Assisted in developing fixes for several Valvoline web applications"
@@ -34,6 +37,7 @@
     "company": "TCS",
     "companyUrl": "https://www.tcs.com/",
     "dates": "June 2016 - August 2017",
+    "year": 2016,
     "details": [
       "Assisted in creating test scripts and writing technical documentation",
       "Wrote test cases for client applications",
@@ -45,6 +49,7 @@
     "company": "TCS",
     "companyUrl": "https://www.tcs.com/",
     "dates": "June 2014 - August 2014",
+    "year": 2014,
     "details": [
     ]
   },
@@ -53,6 +58,7 @@
     "company": "Ashland",
     "companyUrl": "https://www.ashland.com/",
     "dates": "January 2014 - May 2015",
+    "year": 2014,
     "details": [
       "Assisted in developing several web applications using Java and the Spring framework",
       "Created new tables and modified existing ones within Microsoft SQL Server",
@@ -64,6 +70,7 @@
     "company": "UK HealthCare",
     "companyUrl": "https://ukhealthcare.uky.edu/",
     "dates": "May 2013 - August 2013",
+    "year": 2013,
     "details": [
     ]
   }

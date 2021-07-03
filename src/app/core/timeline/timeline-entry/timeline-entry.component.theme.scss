@@ -1,9 +1,11 @@
-@import "~@angular/material/theming";
+@use '~@angular/material' as mat;
+@use 'sass:map';
 
 @mixin timeline-entry-theme($theme) {
-  $primary: map-get($theme, primary);
+  $primary: map.get($theme, primary);
 
   .timeline-entry-header {
-    background-color: mat-color($primary, text);
+    background: mat.get-color-from-palette($primary);
+    color: mat.get-color-from-palette($primary, default-contrast);
   }
 }

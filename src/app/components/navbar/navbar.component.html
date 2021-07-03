@@ -1,4 +1,4 @@
-<mat-toolbar id="navbar">
+<mat-toolbar id="navbar" [color]="(theme$ | async) === 'light-theme' ? 'primary' : ''">
   <div fxLayout="row" style="width: 100%">
     <div fxFlex="20">
       <span class="mat-title">Ryan Zembrodt</span>
@@ -19,7 +19,7 @@
       <div id="nav-underline"></div>
     </div>
     <div fxFlex style="text-align: right">
-      <button mat-icon-button (click)="onThemeChange()">
+      <button mat-icon-button class="theme-button" (click)="onThemeChange()">
         <mat-icon>{{getThemeIcon()}}</mat-icon>
       </button>
     </div>

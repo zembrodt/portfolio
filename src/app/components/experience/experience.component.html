@@ -1,51 +1,17 @@
 <div id="experience">
   <div class="mat-display-1 app-border-line">Experience</div>
-  <app-timeline [nodeColor]="'accent'">
-    <app-timeline-entry>
-      <app-timeline-entry-header>
-        Experience 1
-      </app-timeline-entry-header>
-      <app-timeline-entry-content>
-        This is my biggest experience!
-      </app-timeline-entry-content>
-    </app-timeline-entry>
-    <app-timeline-divider>2018</app-timeline-divider>
-    <app-timeline-entry>
-      <app-timeline-entry-header>
-        Experience 2
-      </app-timeline-entry-header>
-      <app-timeline-entry-content>
-        This is my second biggest experience!
-      </app-timeline-entry-content>
-    </app-timeline-entry>
-    <app-timeline-entry>
-      <app-timeline-entry-header>
-        Experience 3
-      </app-timeline-entry-header>
-      <app-timeline-entry-content>
-        This is actually my biggest experience!
-      </app-timeline-entry-content>
-    </app-timeline-entry>
-    <app-timeline-entry>
-      <app-timeline-entry-header>
-        Experience 4
-      </app-timeline-entry-header>
-      <app-timeline-entry-content>
-        BLAH 4
-      </app-timeline-entry-content>
-    </app-timeline-entry>
-    <app-timeline-entry>
-      <app-timeline-entry-header>
-        Experience 5
-      </app-timeline-entry-header>
-      <app-timeline-entry-content>
-        <ul>
-          <li>Blah 1</li>
-          <li>Blah 2</li>
-          <li>Blah 3</li>
-        </ul>
-      </app-timeline-entry-content>
-    </app-timeline-entry>
+  <app-timeline id="experience-timeline" [nodeColor]="'primary'">
+    <ng-container *ngFor="let experience of experiences; let i = index">
+      <app-timeline-entry>
+        <app-timeline-entry-header>{{experience.title}} @ {{experience.company}}</app-timeline-entry-header>
+        <app-timeline-entry-content>
+          <app-experience-detail [experience]="experience"></app-experience-detail>
+        </app-timeline-entry-content>
+      </app-timeline-entry>
+      <app-timeline-divider *ngIf="timelineDividers.has(i)">
+        {{experience.year}}
+      </app-timeline-divider>
+    </ng-container>
   </app-timeline>
   <app-visibility [name]="skillsPage">
     <app-skills></app-skills>

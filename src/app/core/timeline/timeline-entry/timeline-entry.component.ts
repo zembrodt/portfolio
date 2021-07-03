@@ -6,7 +6,7 @@ import {TimelineNodeComponent} from '../timeline-node/timeline-node.component';
 @Component({
   selector: 'app-timeline-entry',
   templateUrl: './timeline-entry.component.html',
-  styleUrls: ['./timeline-entry.component.css']
+  styleUrls: ['./timeline-entry.component.scss']
 })
 export class TimelineEntryComponent {
 
@@ -19,6 +19,7 @@ export class TimelineEntryComponent {
   constructor(public elementRef: ElementRef) {}
 
   toggle(event: MouseEvent): void {
+    this.node.selected = true;
     this.toggled.emit(event);
   }
 

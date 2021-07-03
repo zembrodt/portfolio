@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
+import {Select} from '@ngxs/store';
+import {SettingsState} from '../../core/settings/settings.state';
+import {Observable} from 'rxjs';
 
 const RESUME_PATH = './assets/docs/ryan-zembrodt-resume.pdf';
 
@@ -11,6 +14,8 @@ const RESUME_PATH = './assets/docs/ryan-zembrodt-resume.pdf';
 export class FooterComponent implements OnInit {
   githubIcon = faGithub;
   linkedInIcon = faLinkedin;
+
+  @Select(SettingsState.theme) theme$: Observable<string>;
 
   constructor() { }
 

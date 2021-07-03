@@ -3,13 +3,14 @@
 :host {
   position: relative;
   display: block;
+  padding-top: 35px;
 
   & .timeline {
-    border: 2px solid red;
+    //border: 2px solid red;
   }
 
   & .timeline-content-placeholder {
-    border: 3px solid blue;
+    //border: 3px solid blue;
     width: 100%;
   }
 }
@@ -17,8 +18,6 @@
 .timeline-content {
   position: absolute;
   display: block;
-  border: 2px solid black;
-  //height: 250px;
 }
 
 .timeline-nodes {
@@ -30,6 +29,6 @@
   top: 0;
   height: 100%;
   width: 8px;
-  left: 30%;
+  left: 20%;
   transform: translateX(-50%);
 }

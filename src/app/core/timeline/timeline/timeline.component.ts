@@ -1,19 +1,15 @@
 import {
   AfterContentInit,
   AfterViewInit,
-  Component, ComponentFactoryResolver, ComponentRef,
+  Component,
   ContentChildren,
-  ElementRef,
   HostListener, Input, OnChanges,
   OnDestroy,
-  QueryList, SimpleChanges, ViewChild, ViewContainerRef
+  QueryList, SimpleChanges,
 } from '@angular/core';
 import {TimelineEntryComponent} from '../timeline-entry/timeline-entry.component';
 import {Subscription} from 'rxjs';
-import {TimelineNodeComponent} from '../timeline-node/timeline-node.component';
 import {TimelineDividerComponent} from '../timeline-divider/timeline-divider.component';
-
-const DEFAULT_NODE_PADDING = 40;
 
 const NAVBAR_PADDING = 12;
 
@@ -24,36 +20,23 @@ const NAVBAR_PADDING = 12;
 })
 export class TimelineComponent implements OnChanges, AfterContentInit, AfterViewInit, OnDestroy {
 
-  // @ViewChild(TimelineDirective, {static: true}) timelineNodes!: TimelineDirective;
-
   private subscriptions: Subscription[] = [];
   private prevInTimeline = null;
-  private startDate: number;
-  private endDate: number;
-  private displayDates: number[];
-  private nodeRefs: ComponentRef<TimelineNodeComponent>[] = [];
+  private selectedEntry: TimelineEntryComponent;
 
-  // @ViewChild('timelineNodes', {read: ViewContainerRef}) timelineNodesContainer: ViewContainerRef;
   @ContentChildren(TimelineEntryComponent) entries: QueryList<TimelineEntryComponent>;
   @ContentChildren(TimelineDividerComponent) dividers: QueryList<TimelineDividerComponent>;
 
   @Input() nodeColor: string;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor() {}
 
   ngAfterContentInit(): void {
     // Subscribe to all timeline entry methods
-    const contentEl = document.querySelector('.timeline-content') as HTMLElement;
-    const currentDate = new Date().getFullYear();
-    const startDates = [];
-    const endDates = [];
-    const dates = new Set<number>();
     this.entries.toArray().forEach((timelineEntry, i) => {
       // Subscribe timeline-entry to events
       this.subscriptions.push(timelineEntry.toggled.subscribe(event => {
-        if (contentEl) {
-          contentEl.innerHTML = timelineEntry.content.elementRef.nativeElement.innerHTML;
-        }
+        this.updateContent(timelineEntry);
       }));
 
       // Set date values
@@ -68,13 +51,9 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
       endDates.push(endDate);
       dates.add(endDate);*/
     });
-    this.startDate = Math.min(...startDates);
+    /*this.startDate = Math.min(...startDates);
     this.endDate = Math.max(...endDates);
-    this.displayDates = Array.from(dates).sort();
-
-    console.log('Start date:    ' + this.startDate);
-    console.log('End date:      ' + this.endDate);
-    console.log('Display dates: ' + this.displayDates);
+    this.displayDates = Array.from(dates).sort();*/
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -92,6 +71,11 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
           divider.node.color = this.nodeColor;
         }
       });
+    }
+
+    // Set default selected entry
+    if (this.entries && this.entries.length > 0) {
+      this.updateContent(this.entries.get(0));
     }
 
     // Position the timeline date labels
@@ -123,6 +107,49 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
     this.updateTimelineContent();
   }
 
+  private updateContent(entry: TimelineEntryComponent): void {
+    const contentEl = document.querySelector('.timeline-content') as HTMLElement;
+    if (contentEl) {
+      if (this.selectedEntry && this.selectedEntry !== entry) {
+        this.selectedEntry.node.selected = false;
+        // Animate the content change
+        contentEl.animate([{
+          opacity: 1,
+          transform: 'translateX(0) rotateY(0)'
+        }, {
+          opacity: 1,
+          transform: 'translateX(8%) rotateY(30deg)'
+        }, {
+          opacity: 0,
+          transform: 'translateX(16%) rotateY(60deg)'
+        }], {
+          duration: 500,
+          fill: 'forwards'
+        }).finished.then(() => {
+          contentEl.innerHTML = entry.content.elementRef.nativeElement.innerHTML;
+          contentEl.animate([{
+            opacity: 0,
+            transform: 'translateX(-16%) rotateY(-60deg)'
+          }, {
+            opacity: 1,
+            transform: 'translateX(-8%) rotateY(-30deg)'
+          }, {
+            opacity: 1,
+            transform: 'translateX(0) rotateY(0)'
+          }], {
+            duration: 500,
+            fill: 'forwards'
+          });
+        });
+      } else {
+        // Change content, no animation
+        contentEl.innerHTML = entry.content.elementRef.nativeElement.innerHTML;
+      }
+
+      this.selectedEntry = entry;
+    }
+  }
+
   private updateTimelineContent2(): void {
     if (this.entries) {
       this.entries.forEach((entry, index) => {
@@ -142,6 +169,7 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
         contentEl.style.position = 'fixed';
         contentEl.style.top = offsetTop + 'px';
         contentEl.style.left = placeholderEl.getBoundingClientRect().left + 'px';
+        contentEl.style.width = placeholderEl.clientWidth + 'px';
         this.prevInTimeline = true;
       }
     } else {

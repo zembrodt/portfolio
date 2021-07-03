@@ -4,9 +4,9 @@
 <!--</div>-->
 
 <div class="timeline-entry">
-  <div class="timeline-entry-header" (click)="toggle($event)">
+  <div matRipple [matRippleColor]="'primary'" class="timeline-entry-header" (click)="toggle($event)">
     <ng-content select="app-timeline-entry-header"></ng-content>
   </div>
-  <app-timeline-node></app-timeline-node>
+  <app-timeline-node [enabled]="true" (clicked)="toggle($event)"></app-timeline-node>
   <ng-content select="app-timeline-entry-content"></ng-content>
 </div>

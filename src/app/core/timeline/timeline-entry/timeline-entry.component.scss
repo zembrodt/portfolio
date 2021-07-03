@@ -1,0 +1,26 @@
+@use '../../../../styles/mixins' as app;
+
+:host {
+  @include app.elevation(2);
+  display: block;
+  position: relative;
+  margin-bottom: 50px;
+  width: calc(50% - 4px);
+
+  .timeline-entry-header {
+    border-radius: 4px 0 0 4px;
+  }
+}
+
+:host.alternate {
+  margin-left: calc(50% + 4px);
+
+  .timeline-entry-header {
+    border-radius: 0 4px 4px 0;
+  }
+}
+
+.timeline-entry-header {
+  position: relative;
+  cursor: pointer;
+}
