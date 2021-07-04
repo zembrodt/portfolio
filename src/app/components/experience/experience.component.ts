@@ -3,8 +3,11 @@ import experiencesData from '../../../assets/data/experiences.json';
 import {SkillsComponent} from '../skills/skills.component';
 import {VisibleService} from '../../services/visible/visible.service';
 import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {Observable, Subject, Subscription} from 'rxjs';
 import {TimelineComponent} from '../../core/timeline/timeline/timeline.component';
+import {Select} from '@ngxs/store';
+import {SettingsState} from '../../core/settings/settings.state';
+import {ScreenState} from '../../core/screen/screen.state';
 
 export interface Experience {
   title: string;
@@ -24,7 +27,9 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   static PAGE = 'experience';
 
   private ngUnsubscribe = new Subject();
+  private visibleSubscription = new Subscription();
 
+  @Select(ScreenState.isMobile) isMobile$: Observable<boolean>;
   @ViewChild(TimelineComponent) timeline: TimelineComponent;
 
   skillsPage = SkillsComponent.PAGE;
@@ -34,14 +39,19 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   constructor(private visibleService: VisibleService) {}
 
   ngOnInit(): void {
-    this.visibleService.isVisible(ExperienceComponent.PAGE)
-      .pipe(takeUntil(this.ngUnsubscribe))
+    this.visibleSubscription = this.visibleService.isVisible(ExperienceComponent.PAGE)
       .subscribe((isVisible) => {
         console.log('EXPERIENCE :: isVisible=' + isVisible);
         if (isVisible && this.timeline) {
           this.timeline.startAnimation();
-          this.unsubscribe();
+          this.visibleSubscription.unsubscribe();
         }
+      });
+
+    this.isMobile$
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((isMobile) => {
+        console.log('Change timeline to mobile mode? ' + isMobile);
       });
 
     const years = new Set<number>();
@@ -66,13 +76,8 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe();
-  }
-
-  private unsubscribe(): void {
-    if (this.ngUnsubscribe) {
-      this.ngUnsubscribe.next();
-      this.ngUnsubscribe.complete();
-    }
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+    this.visibleSubscription.unsubscribe();
   }
 }

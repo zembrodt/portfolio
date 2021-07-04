@@ -2,10 +2,10 @@ import {
   AfterContentInit,
   AfterViewInit,
   Component,
-  ContentChildren,
+  ContentChildren, ElementRef,
   HostListener, Input, OnChanges,
   OnDestroy,
-  QueryList, SimpleChanges,
+  QueryList, Renderer2, SimpleChanges,
 } from '@angular/core';
 import {TimelineEntryComponent} from '../timeline-entry/timeline-entry.component';
 import {Subscription} from 'rxjs';
@@ -29,10 +29,11 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
   @ContentChildren(TimelineEntryComponent) entries: QueryList<TimelineEntryComponent>;
   @ContentChildren(TimelineDividerComponent) dividers: QueryList<TimelineDividerComponent>;
 
+  @Input() isMobile = false;
   @Input() nodeColor: string;
   @Input() enableAnimations = false;
 
-  constructor() {}
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngAfterContentInit(): void {
     // Subscribe to all timeline entry methods
@@ -47,6 +48,15 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
 
   ngOnChanges(changes: SimpleChanges): void {
     this.updateTimelineContent2();
+    if (changes.isMobile) {
+      if (changes.isMobile.currentValue) {
+        // Move timeline line to middle of page
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.timeline-line'), 'left', '50%');
+      } else {
+        this.updateContent(this.selectedEntry);
+        this.renderer.setStyle(this.elementRef.nativeElement.querySelector('.timeline-line'), 'left', '20%');
+      }
+    }
   }
 
   ngAfterViewInit(): void {

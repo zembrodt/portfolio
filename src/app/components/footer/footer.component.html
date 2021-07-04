@@ -12,8 +12,14 @@
       <a href="https://linkedin.com/in/ryanzembrodt" target="_blank">
         <fa-icon matRipple [icon]="linkedInIcon"></fa-icon>
       </a>
+      <a href="mailto:ryan.zembrodt@gmail.com" *ngIf="isMobile$ | async">
+        <fa-icon matRipple [icon]="emailIcon"></fa-icon>
+      </a>
     </div>
-    <a fxFlex="60" class="mat-subheading-1 email" href="mailto:ryan.zembrodt@gmail.com">ryan.zembrodt@gmail.com</a>
+    <a *ngIf="!(isMobile$ | async)"
+       fxFlex="60"
+       class="mat-subheading-1 email"
+       href="mailto:ryan.zembrodt@gmail.com">ryan.zembrodt@gmail.com</a>
     <div fxFlex>
       <button mat-raised-button class="resume" (click)="onResumeClick()">
         <div fxLayout="row"

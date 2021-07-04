@@ -6,6 +6,7 @@ import {takeUntil} from 'rxjs/operators';
 import {DARK_THEME, LIGHT_THEME} from '../../core/settings/settings.model';
 import {ToggleTheme} from '../../core/settings/settings.actions';
 import {getTargetTsconfigPath} from '@angular/cdk/schematics/utils/project-tsconfig-paths';
+import {ScreenState} from '../../core/screen/screen.state';
 
 const NAVBAR_ANIMATE_DURATION = 1000;
 const NAVIGATION_PADDING = 12;
@@ -31,6 +32,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private previousWindowHeight: number;
   private currentPage = new Subject<string>();
 
+  @Select(ScreenState.isMobile) isMobile$: Observable<boolean>;
   @Select(SettingsState.theme) theme$: Observable<string>;
 
   constructor(private store: Store) { }
