@@ -2,11 +2,9 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import experiencesData from '../../../assets/data/experiences.json';
 import {SkillsComponent} from '../skills/skills.component';
 import {VisibleService} from '../../services/visible/visible.service';
-import {takeUntil} from 'rxjs/operators';
 import {Observable, Subject, Subscription} from 'rxjs';
 import {TimelineComponent} from '../../core/timeline/timeline/timeline.component';
 import {Select} from '@ngxs/store';
-import {SettingsState} from '../../core/settings/settings.state';
 import {ScreenState} from '../../core/screen/screen.state';
 
 export interface Experience {
@@ -29,7 +27,9 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject();
   private visibleSubscription = new Subscription();
 
-  @Select(ScreenState.isMobile) isMobile$: Observable<boolean>;
+  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
+  @Select(ScreenState.isSm) isSm$: Observable<boolean>;
+
   @ViewChild(TimelineComponent) timeline: TimelineComponent;
 
   skillsPage = SkillsComponent.PAGE;
@@ -46,12 +46,6 @@ export class ExperienceComponent implements OnInit, OnDestroy {
           this.timeline.startAnimation();
           this.visibleSubscription.unsubscribe();
         }
-      });
-
-    this.isMobile$
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((isMobile) => {
-        console.log('Change timeline to mobile mode? ' + isMobile);
       });
 
     const years = new Set<number>();

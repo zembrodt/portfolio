@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
   linkedInIcon = faLinkedin;
   emailIcon = faEnvelope;
 
-  @Select(ScreenState.isMobile) isMobile$: Observable<boolean>;
+  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
   @Select(SettingsState.theme) theme$: Observable<string>;
 
   constructor() { }

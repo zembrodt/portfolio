@@ -1,4 +1,4 @@
-import {Component, ContentChild, ElementRef, Input, OnInit, Output, EventEmitter, ViewChild, AfterViewInit, Renderer2} from '@angular/core';
+import {Component, ContentChild, ElementRef, Output, EventEmitter, ViewChild, Renderer2} from '@angular/core';
 import {TimelineEntryHeaderComponent} from '../timeline-entry-header/timeline-entry-header.component';
 import {TimelineEntryContentComponent} from '../timeline-entry-content/timeline-entry-content.component';
 import {TimelineNodeComponent} from '../timeline-node/timeline-node.component';
@@ -9,6 +9,8 @@ import {TimelineNodeComponent} from '../timeline-node/timeline-node.component';
   styleUrls: ['./timeline-entry.component.scss']
 })
 export class TimelineEntryComponent {
+
+  private _width = 50;
 
   @ContentChild(TimelineEntryHeaderComponent) header: TimelineEntryHeaderComponent;
   @ContentChild(TimelineEntryContentComponent) content: TimelineEntryContentComponent;
@@ -42,10 +44,18 @@ export class TimelineEntryComponent {
   }
 
   set alternate(value: boolean) {
+    // Toggle alternate class
     this.elementRef.nativeElement.classList.toggle('alternate', value);
     if (this.node) {
       this.node.alternate = value;
     }
+    // Check the width for the node
+    this.renderer.setStyle(this.elementRef.nativeElement, 'width', `calc(${this._width}% - 4px)`);
+  }
+
+  set enableAlternating(value: boolean) {
+    // Adjust width
+    this._width = value ? 50 : 100;
   }
 
   set enableAnimations(value: boolean) {

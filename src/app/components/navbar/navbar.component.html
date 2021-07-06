@@ -1,7 +1,7 @@
 <mat-toolbar id="navbar" [color]="(theme$ | async) === 'light-theme' ? 'primary' : ''">
   <div fxLayout="row" style="width: 100%">
     <div fxFlex="20">
-      <span *ngIf="!(isMobile$ | async); else mobileHamburger" class="name-title mat-title">Ryan Zembrodt</span>
+      <span *ngIf="!(isLtMd$ | async); else mobileHamburger" class="name-title mat-title">Ryan Zembrodt</span>
       <ng-template #mobileHamburger>
         <button mat-icon-button [matMenuTriggerFor]="mobileNavMenu">
           <mat-icon>menu</mat-icon>
@@ -17,7 +17,7 @@
     <div fxLayout="column"
          fxLayoutAlign="center stretch"
          fxFlex="60">
-      <ng-container *ngIf="!(isMobile$ | async); else mobileName">
+      <ng-container *ngIf="!(isLtMd$ | async); else mobileName">
         <div fxLayout="row"
              fxLayoutAlign="center center"
              fxFlex="60"

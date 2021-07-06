@@ -1,7 +1,15 @@
 export interface ScreenModel {
-  isMobile: boolean;
+  isXs: boolean;
+  isSm: boolean;
+  isMd: boolean;
+  isLg: boolean;
+  isXl: boolean;
 }
 
 export const DEFAULT_SCREEN: ScreenModel = {
-  isMobile: false
+  isXs: false,
+  isSm: false,
+  isMd: false,
+  isLg: false,
+  isXl: false
 };

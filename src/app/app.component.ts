@@ -3,8 +3,8 @@ import {SettingsState} from './core/settings/settings.state';
 import {Observable, Subject} from 'rxjs';
 import {Select, Store} from '@ngxs/store';
 import {filter, map, takeUntil} from 'rxjs/operators';
-import {MediaObserver, ScreenTypes} from '@angular/flex-layout';
-import {SetMobile} from './core/screen/screen.actions';
+import {MediaObserver} from '@angular/flex-layout';
+import {SetLg, SetMd, SetSm, SetXl, SetXs} from './core/screen/screen.actions';
 
 @Component({
   selector: 'app-root',
@@ -43,7 +43,11 @@ export class AppComponent implements OnInit, OnDestroy {
         map((changes) => changes[0]),
         takeUntil(this.ngUnsubscribe)
       ).subscribe((change) => {
-        this.store.dispatch(new SetMobile(change.mqAlias === 'xs'));
+        this.store.dispatch(new SetXs(change.mqAlias === 'xs'));
+        this.store.dispatch(new SetSm(change.mqAlias === 'sm'));
+        this.store.dispatch(new SetMd(change.mqAlias === 'md'));
+        this.store.dispatch(new SetLg(change.mqAlias === 'lg'));
+        this.store.dispatch(new SetXl(change.mqAlias === 'xl'));
     });
   }
 

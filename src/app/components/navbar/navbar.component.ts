@@ -5,7 +5,6 @@ import {Select, Store} from '@ngxs/store';
 import {takeUntil} from 'rxjs/operators';
 import {DARK_THEME, LIGHT_THEME} from '../../core/settings/settings.model';
 import {ToggleTheme} from '../../core/settings/settings.actions';
-import {getTargetTsconfigPath} from '@angular/cdk/schematics/utils/project-tsconfig-paths';
 import {ScreenState} from '../../core/screen/screen.state';
 
 const NAVBAR_ANIMATE_DURATION = 1000;
@@ -32,7 +31,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private previousWindowHeight: number;
   private currentPage = new Subject<string>();
 
-  @Select(ScreenState.isMobile) isMobile$: Observable<boolean>;
+  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
   @Select(SettingsState.theme) theme$: Observable<string>;
 
   constructor(private store: Store) { }
@@ -138,50 +137,52 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private updateNavUnderline(pageId: string): void {
     const navUnderlineEl = document.querySelector('#nav-underline') as HTMLElement;
-    // Check if window was resized or page changed
-    if (window.innerWidth !== this.previousWindowWidth || window.innerHeight !== this.previousWindowHeight ||
-      (pageId && pageId.length > 0 && pageId !== this.previousPage)
-    ) {
-      // Blur out if going to intro state
-      if (pageId === '#intro') {
-        // Get previous element
-        navUnderlineEl.animate({
-          opacity: 0
-        }, {
-          duration: 1000,
-          fill: 'forwards',
-          easing: 'ease-out'
-        });
-      }
-      // Blur in if previous was intro
-      else if (!this.previousPage || this.previousPage.length === 0 || this.previousPage === '#intro') {
-        const navLinkEl = document.querySelector(navMap.get(pageId)) as HTMLElement;
-        navUnderlineEl.style.left = String(navLinkEl.offsetLeft) + 'px';
-        navUnderlineEl.style.top = String(navLinkEl.offsetTop + navLinkEl.clientHeight) + 'px';
-        navUnderlineEl.style.width = String(navLinkEl.clientWidth) + 'px';
+    if (navUnderlineEl) {
+      // Check if window was resized or page changed
+      if (window.innerWidth !== this.previousWindowWidth || window.innerHeight !== this.previousWindowHeight ||
+        (pageId && pageId.length > 0 && pageId !== this.previousPage)
+      ) {
+        // Blur out if going to intro state
+        if (pageId === '#intro') {
+          // Get previous element
+          navUnderlineEl.animate({
+            opacity: 0
+          }, {
+            duration: 1000,
+            fill: 'forwards',
+            easing: 'ease-out'
+          });
+        }
+        // Blur in if previous was intro
+        else if (!this.previousPage || this.previousPage.length === 0 || this.previousPage === '#intro') {
+          const navLinkEl = document.querySelector(navMap.get(pageId)) as HTMLElement;
+          navUnderlineEl.style.left = String(navLinkEl.offsetLeft) + 'px';
+          navUnderlineEl.style.top = String(navLinkEl.offsetTop + navLinkEl.clientHeight) + 'px';
+          navUnderlineEl.style.width = String(navLinkEl.clientWidth) + 'px';
 
-        navUnderlineEl.animate({
-          opacity: 1
-        }, {
-          duration: NAVBAR_ANIMATE_DURATION,
-          fill: 'forwards',
-          easing: 'ease-in'
-        });
-      } else {
-        const navLinkEl = document.querySelector(navMap.get(pageId)) as HTMLElement;
-        navUnderlineEl.animate({
-          opacity: 1,
-          left: String(navLinkEl.offsetLeft) + 'px',
-          top: String(navLinkEl.offsetTop + navLinkEl.clientHeight) + 'px',
-          width: String(navLinkEl.clientWidth) + 'px'
-        }, {
-          duration: NAVBAR_ANIMATE_DURATION,
-          fill: 'forwards',
-        });
+          navUnderlineEl.animate({
+            opacity: 1
+          }, {
+            duration: NAVBAR_ANIMATE_DURATION,
+            fill: 'forwards',
+            easing: 'ease-in'
+          });
+        } else {
+          const navLinkEl = document.querySelector(navMap.get(pageId)) as HTMLElement;
+          navUnderlineEl.animate({
+            opacity: 1,
+            left: String(navLinkEl.offsetLeft) + 'px',
+            top: String(navLinkEl.offsetTop + navLinkEl.clientHeight) + 'px',
+            width: String(navLinkEl.clientWidth) + 'px'
+          }, {
+            duration: NAVBAR_ANIMATE_DURATION,
+            fill: 'forwards',
+          });
+        }
+        this.previousPage = pageId;
+        this.previousWindowWidth = window.innerWidth;
+        this.previousWindowHeight = window.innerHeight;
       }
-      this.previousPage = pageId;
-      this.previousWindowWidth = window.innerWidth;
-      this.previousWindowHeight = window.innerHeight;
     }
   }
 }

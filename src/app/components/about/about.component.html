@@ -18,7 +18,8 @@
         When I'm not coding you can find me at the golf course, backpacking on the trail, or visiting a local brewery!
       </p>
     </div>
-    <div class="pics"
+    <div *ngIf="!(isXs$ | async); else imageCarousel"
+         class="pics"
          fxLayout="row"
          fxLayoutAlign="center"
          fxLayoutGap="24px"
@@ -30,5 +31,20 @@
         <img id="camping" class="about-img img-stagger" src="assets/images/camp.png"/>
       </div>
     </div>
+    <ng-template #imageCarousel>
+      <carousel [cellWidth]="'100%'"
+                [dots]="true"
+                [arrows]="false">
+        <div class="carousel-cell">
+          <img src="assets/images/backpacking.png"/>
+        </div>
+        <div class="carousel-cell">
+          <img src="assets/images/golf.png"/>
+        </div>
+        <div class="carousel-cell">
+          <img src="assets/images/camp.png"/>
+        </div>
+      </carousel>
+    </ng-template>
   </div>
 </div>

@@ -42,6 +42,8 @@ import {TimelineNodeComponent} from './core/timeline/timeline-node/timeline-node
 import {TimelineDividerComponent} from './core/timeline/timeline-divider/timeline-divider.component';
 import {ScreenState} from './core/screen/screen.state';
 import {MatMenuModule} from '@angular/material/menu';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {TimelineDialogComponent} from './core/timeline/timeline/timeline-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +58,7 @@ import {MatMenuModule} from '@angular/material/menu';
     ProjectDetailComponent,
     SkillsComponent,
     TimelineComponent,
+    TimelineDialogComponent,
     TimelineDividerComponent,
     TimelineEntryComponent,
     TimelineEntryContentComponent,
@@ -70,6 +73,7 @@ import {MatMenuModule} from '@angular/material/menu';
     FlexLayoutModule,
     FontAwesomeModule,
     FormsModule,
+    IvyCarouselModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,

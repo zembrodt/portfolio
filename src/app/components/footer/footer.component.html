@@ -12,11 +12,11 @@
       <a href="https://linkedin.com/in/ryanzembrodt" target="_blank">
         <fa-icon matRipple [icon]="linkedInIcon"></fa-icon>
       </a>
-      <a href="mailto:ryan.zembrodt@gmail.com" *ngIf="isMobile$ | async">
+      <a href="mailto:ryan.zembrodt@gmail.com" *ngIf="isXs$ | async">
         <fa-icon matRipple [icon]="emailIcon"></fa-icon>
       </a>
     </div>
-    <a *ngIf="!(isMobile$ | async)"
+    <a *ngIf="!(isXs$ | async)"
        fxFlex="60"
        class="mat-subheading-1 email"
        href="mailto:ryan.zembrodt@gmail.com">ryan.zembrodt@gmail.com</a>

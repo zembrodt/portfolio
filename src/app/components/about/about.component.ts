@@ -1,8 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {VisibleService} from '../../services/visible/visible.service';
-import {SkillsComponent} from '../skills/skills.component';
+import {Select} from '@ngxs/store';
+import {ScreenState} from '../../core/screen/screen.state';
 
 const ABOUT_IMG_DURATION = 1000;
 const ABOUT_IMG_EASING = 'ease-out';
@@ -16,6 +17,8 @@ export class AboutComponent implements OnInit, OnDestroy {
   static PAGE = 'about';
 
   private ngUnsubscribe = new Subject();
+
+  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
 
   constructor(private visibleService: VisibleService) {}
 

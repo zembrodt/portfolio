@@ -1,7 +1,8 @@
 <div id="experience">
   <div class="mat-display-1 app-border-line">Experience</div>
   <app-timeline id="experience-timeline"
-                [isMobile]="isMobile$ | async"
+                [isMobile]="isXs$ | async"
+                [alternateEntries]="isSm$ | async"
                 [nodeColor]="'primary'"
                 [enableAnimations]="true">
     <ng-container *ngFor="let experience of experiences; let i = index">
