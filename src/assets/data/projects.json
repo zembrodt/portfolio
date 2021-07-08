@@ -18,6 +18,15 @@
     "technologies": ["Angular", "TypeScript", "Go", "Heroku", "Netlify"]
   },
   {
+    "title": "Portfolio",
+    "description": "My portfolio built as an Angular app (what you're currently viewing)",
+    "projectUrl": "https://zembrodt.com",
+    "githubUrl": "https://github.com/zembrodt/portfolio",
+    "docsUrl": null,
+    "screenshotUrl": "",
+    "technologies": ["Angular", "TypeScript", "Netlify"]
+  },
+  {
     "title": "Neat App",
     "description": "A web app for users to search and rate different whiskeys (under construction)",
     "projectUrl": "https://drinkneat.app",
@@ -27,13 +36,31 @@
     "technologies": ["Go", "PostgreSQL", "Angular", "TypeScript", "Google Cloud", "Docker"]
   },
   {
-    "title": "Portfolio",
-    "description": "My portfolio built as an Angular app (what you're currently viewing)",
-    "projectUrl": "https://zembrodt.com",
-    "githubUrl": "https://github.com/zembrodt/portfolio",
-    "docsUrl": null,
-    "screenshotUrl": "",
-    "technologies": ["Angular", "TypeScript", "Netlify"]
+    "title": "Open-World Story Generation",
+    "description": "Masters capstone project with Dr. Brent Harrison at UK during Spring 2019 semester, based on my independent study. Goal was to continue the project using a hierarchical recurrent encoder-decoder",
+    "projectUrl": null,
+    "githubUrl": "https://github.com/zembrodt/hred-story-generation",
+    "docsUrl": "assets/docs/cs610-final-report.pdf",
+    "screenshotUrl": null,
+    "technologies": ["Python"]
+  },
+  {
+    "title": "Story Generation Independent Study",
+    "description": "Independent study project with Dr. Brent Harrison at UK during Fall 2018 semester. Goal was to generate sentences using a sequence-to-sequence network",
+    "projectUrl": null,
+    "githubUrl": "https://github.com/zembrodt/story-generation",
+    "docsUrl": "assets/docs/cs612-final-report.pdf",
+    "screenshotUrl": null,
+    "technologies": ["Python"]
+  },
+  {
+    "title": "Lexmark Cafe Data Project",
+    "description": "Senior design project at UK to find trends with machine learning using data collected from Lexmark's cafeteria. Created a dashboard to present the graphs and trends found wihtin the data",
+    "projectUrl": "https://cafe-predicting.shinyapps.io/Dashboard/",
+    "githubUrl": "https://github.com/cafe-predicting",
+    "docsUrl": "https://cafe-predicting.github.io/",
+    "screenshotUrl": "assets/images/cafe_predicting.png",
+    "technologies": ["R", "Java", "jQuery"]
   },
   {
     "title": "Legacy Portfolio",

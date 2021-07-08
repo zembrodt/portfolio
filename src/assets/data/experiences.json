@@ -17,17 +17,37 @@
     ]
   },
   {
-    "title": "CS Grader and Tutor",
+    "title": "CS Tutor",
     "company": "University of Kentucky",
     "companyUrl": "https://www.uky.edu/",
-    "dates": "January 2018 - May 2019",
+    "dates": "August 2018 - May 2019",
     "year": 2018,
     "details": [
+      "Tutor for Tau Beta Pi Computer Science topics",
+      "Assisted students with their Python and C/C++ assignments",
+      "Ensured students understood their programming topics from assignments",
+      "Helped students study for exams on Computer Science topics"
     ],
     "technologies": [
       "C",
       "C++",
       "Python"
+    ]
+  },
+  {
+    "title": "CS Grader",
+    "company": "University of Kentucky",
+    "companyUrl": "https://www.uky.edu/",
+    "dates": "January 2018 - May 2018",
+    "year": 2018,
+    "details": [
+      "Grader for Introduction to Operating Systems course",
+      "Graded students' written assignments",
+      "Graded and analyzed students' C/C++ programs"
+    ],
+    "technologies": [
+      "C",
+      "C++"
     ]
   },
   {
@@ -66,8 +86,11 @@
     "dates": "June 2014 - August 2014",
     "year": 2014,
     "details": [
+      "Member of business solutions unit",
+      "Developed dashboard using MicroStrategy to preview for healthcare companies",
+      "Volunteered for an IT high school camp and worked as a team lead for six students"
     ],
-    "technologies": []
+    "technologies": ["Java"]
   },
   {
     "title": "Web Developer Co-op",
@@ -77,13 +100,16 @@
     "year": 2014,
     "details": [
       "Assisted in developing several web applications using Java and the Spring framework",
+      "Recreated existing Valvoline web application using new tools such as PrimeFaces",
       "Created new tables and modified existing ones within Microsoft SQL Server",
       "Wrote technical documentation for developed web applications"
     ],
     "technologies": [
       "Java",
       "Spring",
-      "MS SQL Server"
+      "MS SQL Server",
+      "JavaScript",
+      "jQuery"
     ]
   },
   {
@@ -93,9 +119,14 @@
     "dates": "May 2013 - August 2013",
     "year": 2013,
     "details": [
+      "Member of UK HealthCare web development team",
+      "Developed online form to be used in a clinical setting",
+      "Developed web applications in .NET",
+      "Wrote technical documentation and workflow diagrams for applications"
     ],
     "technologies": [
-      "C#"
+      "C#",
+      ".NET"
     ]
   }
 ]
