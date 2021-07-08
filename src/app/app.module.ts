@@ -40,6 +40,10 @@ import {TimelineEntryContentComponent} from './core/timeline/timeline-entry-cont
 import {TimelineEntryHeaderComponent} from './core/timeline/timeline-entry-header/timeline-entry-header.component';
 import {TimelineNodeComponent} from './core/timeline/timeline-node/timeline-node.component';
 import {TimelineDividerComponent} from './core/timeline/timeline-divider/timeline-divider.component';
+import {ScreenState} from './core/screen/screen.state';
+import {MatMenuModule} from '@angular/material/menu';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import {TimelineDialogComponent} from './core/timeline/timeline/timeline-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +58,7 @@ import {TimelineDividerComponent} from './core/timeline/timeline-divider/timelin
     ProjectDetailComponent,
     SkillsComponent,
     TimelineComponent,
+    TimelineDialogComponent,
     TimelineDividerComponent,
     TimelineEntryComponent,
     TimelineEntryContentComponent,
@@ -68,17 +73,19 @@ import {TimelineDividerComponent} from './core/timeline/timeline-divider/timelin
     FlexLayoutModule,
     FontAwesomeModule,
     FormsModule,
+    IvyCarouselModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
     MatDialogModule,
     MatIconModule,
+    MatMenuModule,
     MatRippleModule,
     MatSidenavModule,
     MatTabsModule,
     MatToolbarModule,
     NgxsModule.forRoot(
-      [SettingsState],
+      [SettingsState, ScreenState],
       {developmentMode: !environment.production}
     ),
     NgxsStoragePluginModule.forRoot({

@@ -22,12 +22,13 @@
          fxLayout="row"
          fxLayoutAlign="center"
          fxLayoutGap="24px"
-         fxFlex="50">
-      <img id="backpacking" class="about-img" src="assets/images/backpacking.png"/>
-      <div fxLayout="column"
+         fxFlex.gt-xs="50">
+      <img id="backpacking" class="about-img fixed" src="assets/images/backpacking.png"/>
+      <div *ngIf="!(isXs$ | async)"
+           fxLayout="column"
            fxLayoutGap="24px">
-        <img id="golfing" class="about-img hanging-right img-stagger" src="assets/images/golf.png"/>
-        <img id="camping" class="about-img img-stagger" src="assets/images/camp.png"/>
+        <img id="golfing" class="about-img fixed" src="assets/images/golf.png"/>
+        <img id="camping" class="about-img fixed" src="assets/images/camp.png"/>
       </div>
     </div>
   </div>

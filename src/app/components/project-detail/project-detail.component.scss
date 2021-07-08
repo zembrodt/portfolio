@@ -1,0 +1,17 @@
+@use '../../../styles/mixins' as app;
+
+.project-info {
+  width: 100%;
+  overflow: visible;
+
+  mat-card {
+    box-sizing: border-box;
+  }
+}
+
+.screenshot {
+  img {
+    @include app.elevation(4);
+    border-radius: 4px;
+  }
+}

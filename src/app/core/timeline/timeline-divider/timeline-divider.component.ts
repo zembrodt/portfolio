@@ -1,6 +1,4 @@
-import {Component, ContentChild, ElementRef, Input, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
-import {TimelineEntryHeaderComponent} from '../timeline-entry-header/timeline-entry-header.component';
-import {TimelineEntryContentComponent} from '../timeline-entry-content/timeline-entry-content.component';
+import {Component, ElementRef, Renderer2, ViewChild} from '@angular/core';
 import {TimelineNodeComponent} from '../timeline-node/timeline-node.component';
 
 @Component({
@@ -12,5 +10,9 @@ export class TimelineDividerComponent {
 
   @ViewChild(TimelineNodeComponent) node: TimelineNodeComponent;
 
-  constructor(public elementRef: ElementRef) {}
+  constructor(public elementRef: ElementRef, private renderer: Renderer2) {}
+
+  set enableAlternating(value: boolean) {
+    this.renderer.setStyle(this.elementRef.nativeElement, 'width', `calc(${value ? 50 : 100}% - 4px)`);
+  }
 }

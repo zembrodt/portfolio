@@ -138,3 +138,20 @@ body.scrollbar-dark::-webkit-scrollbar-track {
 app-timeline-entry {
   position: relative;
 }
+
+/* Technology list styling */
+.technologies {
+  overflow: hidden;
+}
+
+.technologies > span {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.technologies > span::before {
+  display: inline-block;
+  content: '\B7';
+  margin-left: -0.5em;
+  width: 1em;
+}

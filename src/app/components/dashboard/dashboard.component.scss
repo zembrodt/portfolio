@@ -1,3 +1,5 @@
+@use '../../../styles/mixins' as app;
+
 .content {
   width: 75%;
   max-width: 1000px;
@@ -6,6 +8,10 @@
 
 #intro {
   margin-top: 200px;
+
+  &.mobile {
+    margin-top: 100px;
+  }
 }
 
 .pic-of-me {
@@ -13,12 +19,12 @@
   position: relative;
   display: inline-block;
   opacity: 0;
-}
 
-.pic-of-me img {
-  border-radius: 4px;
-  max-width: 80%;
-  box-shadow: 3px 3px 10px black;
+  img {
+    @include app.elevation(4);
+    border-radius: 4px;
+    max-width: 80%;
+  }
 }
 
 #hello-there {
