@@ -14,7 +14,7 @@ const routes: Routes = [
     canActivate: [RedirectGuard],
     component: RedirectGuard,
     data: {
-      externalUrl: 'http://zembrodt.github.io'
+      externalUrl: 'http://legacy.zembrodt.com'
     }
   }
 ];
