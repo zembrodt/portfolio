@@ -1,6 +1,9 @@
 import {AfterViewInit, Component} from '@angular/core';
 import {AboutComponent} from '../about/about.component';
 import {ExperienceComponent} from '../experience/experience.component';
+import {ScreenState} from '../../core/screen/screen.state';
+import {Select} from '@ngxs/store';
+import {Observable} from 'rxjs';
 
 const INTRO_DURATION = 1500;
 const INTRO_EASTING = 'ease-out';
@@ -8,11 +11,13 @@ const INTRO_EASTING = 'ease-out';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements AfterViewInit {
   aboutPage = AboutComponent.PAGE;
   experiencePage = ExperienceComponent.PAGE;
+
+  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
 
   constructor() { }
 

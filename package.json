@@ -29,7 +29,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@ngxs/storage-plugin": "^3.7.1",
     "@ngxs/store": "^3.7.1",
-    "angular-responsive-carousel": "^2.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

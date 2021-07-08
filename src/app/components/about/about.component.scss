@@ -1,0 +1,12 @@
+@use '../../../styles/mixins' as app;
+
+.about-img {
+  @include app.elevation(4);
+  border-radius: 4px;
+
+  &.fixed {
+    max-width: 256px;
+    object-fit: cover;
+    opacity: 0;
+  }
+}

@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {Observable, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {VisibleService} from '../../services/visible/visible.service';
 import {Select} from '@ngxs/store';
@@ -11,16 +11,19 @@ const ABOUT_IMG_EASING = 'ease-out';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit, OnDestroy {
   static PAGE = 'about';
 
   private ngUnsubscribe = new Subject();
+  private hasAnimated = false;
+  private isXs = false;
+  private isXsSub: Subscription;
 
   @Select(ScreenState.isXs) isXs$: Observable<boolean>;
 
-  constructor(private visibleService: VisibleService) {}
+  constructor(private visibleService: VisibleService, private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit(): void {
     this.visibleService.isVisible(AboutComponent.PAGE)
@@ -29,13 +32,19 @@ export class AboutComponent implements OnInit, OnDestroy {
         console.log('ABOUT :: isVisible: ' + isVisible);
         if (isVisible) {
           this.animateImages();
+          this.hasAnimated = true;
           this.unsubscribe();
         }
+    });
+
+    this.isXsSub = this.isXs$.subscribe((isXs) => {
+      this.isXs = isXs;
     });
   }
 
   ngOnDestroy(): void {
     this.unsubscribe();
+    this.isXsSub.unsubscribe();
   }
 
   private animateImages(): void {
@@ -70,6 +79,19 @@ export class AboutComponent implements OnInit, OnDestroy {
       easing: ABOUT_IMG_EASING,
       delay: 1000
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(): void {
+    // If we've already animated set image opacity to 1
+    if (this.hasAnimated && !this.isXs) {
+      const images = this.elementRef.nativeElement.querySelectorAll('.about-img');
+      if (images && images.length > 0) {
+        images.forEach(image => {
+          this.renderer.setStyle(image, 'opacity', 1);
+        });
+      }
+    }
   }
 
   private unsubscribe(): void {

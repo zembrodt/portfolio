@@ -29,6 +29,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
   @Select(ScreenState.isXs) isXs$: Observable<boolean>;
   @Select(ScreenState.isSm) isSm$: Observable<boolean>;
+  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
 
   @ViewChild(TimelineComponent) timeline: TimelineComponent;
 

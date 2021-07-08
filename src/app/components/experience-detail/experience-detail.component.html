@@ -1,4 +1,4 @@
-<mat-card class="experience-card">
+<mat-card>
   <div class="experience-detail"
        fxLayout="column"
        fxLayoutAlign="center">
@@ -12,13 +12,10 @@
       <li *ngFor="let detail of experience.details">{{detail}}</li>
     </ul>
     <div *ngIf="experience.technologies && experience.technologies.length > 0"
-         fxLayout="row"
-         fxLayoutAlign="center center"
-         fxLayoutGap="8px">
-      <span class="code-text" *ngFor="let technology of experience.technologies; let i = index">
-        {{technology}}
-        <ng-container *ngIf="i + 1 < experience.technologies.length"> &#xB7; </ng-container>
-      </span>
+         fxFlex="row wrap"
+         fxFlexAlign="center center"
+         class="technologies code-text">
+      <span *ngFor="let technology of experience.technologies; let i = index">{{technology}}</span>
     </div>
   </div>
 </mat-card>

@@ -18,33 +18,18 @@
         When I'm not coding you can find me at the golf course, backpacking on the trail, or visiting a local brewery!
       </p>
     </div>
-    <div *ngIf="!(isXs$ | async); else imageCarousel"
-         class="pics"
+    <div class="pics"
          fxLayout="row"
          fxLayoutAlign="center"
          fxLayoutGap="24px"
-         fxFlex="50">
-      <img id="backpacking" class="about-img" src="assets/images/backpacking.png"/>
-      <div fxLayout="column"
+         fxFlex.gt-xs="50">
+      <img id="backpacking" class="about-img fixed" src="assets/images/backpacking.png"/>
+      <div *ngIf="!(isXs$ | async)"
+           fxLayout="column"
            fxLayoutGap="24px">
-        <img id="golfing" class="about-img hanging-right img-stagger" src="assets/images/golf.png"/>
-        <img id="camping" class="about-img img-stagger" src="assets/images/camp.png"/>
+        <img id="golfing" class="about-img fixed" src="assets/images/golf.png"/>
+        <img id="camping" class="about-img fixed" src="assets/images/camp.png"/>
       </div>
     </div>
-    <ng-template #imageCarousel>
-      <carousel [cellWidth]="'100%'"
-                [dots]="true"
-                [arrows]="false">
-        <div class="carousel-cell">
-          <img src="assets/images/backpacking.png"/>
-        </div>
-        <div class="carousel-cell">
-          <img src="assets/images/golf.png"/>
-        </div>
-        <div class="carousel-cell">
-          <img src="assets/images/camp.png"/>
-        </div>
-      </carousel>
-    </ng-template>
   </div>
 </div>

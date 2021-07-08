@@ -1,17 +1,11 @@
 <div id="skills">
   <div class="mat-subheading-2">Some technologies I've worked with include...</div>
   <div fxLayout="row wrap"
-       fxLayout.xs="column"
-       fxLayoutAlign="center"
+       fxLayoutAlign="center center"
        fxLayoutGap="16px grid">
     <div *ngFor="let skill of skills; let i = index;"
          id="skill-{{i}}"
-         class="skill"
-         fxFlex="0 1 calc(12.5% - 16px)"
-         fxFlex.lg="0 1 calc(17.5% - 16px)"
-         fxFlex.md="0 1 calc(25% - 16px)"
-         fxFlex.lt-md="0 1 calc(33.3% - 16px)"
-         fxLayoutAlign="center">
+         class="skill">
       <mat-card class="skill-card">
         <mat-card-content fxLayout="row"
                           fxLayoutAlign="center center"

@@ -123,11 +123,14 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
 
   // Updates positioning for the timeline entries
   private updateTimelineEntries(): void {
-    // Set timeline line to far right or middle
+    // Set timeline line in middle of mobile or fixed screen
+    let leftValue = this.isMobile ? 50 : 20;
+    // If not alternating, move timeline to far right
     if (!this.alternateEntries) {
-      this.renderer.setStyle(this.elementRef.nativeElement
-        .querySelector('.timeline-line'), 'left', this.isMobile ? '100%' : '40%');
+      leftValue *= 2;
     }
+    this.renderer.setStyle(this.elementRef.nativeElement
+      .querySelector('.timeline-line'), 'left', `${leftValue}%`);
 
     if (this.entries) {
       this.entries.forEach((entry, index) => {
@@ -140,11 +143,6 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
         divider.enableAlternating = this.alternateEntries;
       });
     }
-
-    // Update margin
-    const marginValue = this.alternateEntries ? 24 : (this.isMobile ? 0 : 48);
-    this.renderer.setStyle(this.elementRef.nativeElement
-      .querySelector('.timeline'), 'margin-right', `${marginValue}px`);
   }
 
   // Updates the content info

@@ -1,8 +1,9 @@
 <div class="timeline-container"
      fxLayout="row"
      fxLayoutAlign="center stretch"
-     fxLayoutGap="24px">
-  <div class="timeline" [fxFlex]="isMobile ? 100 : 40">
+     [fxLayoutGap]="alternateEntries ? '24px' : '48px'">
+  <div class="timeline"
+       [fxFlex]="isMobile ? 100 : 40">
     <div class="timeline-line"></div>
     <ng-content></ng-content>
   </div>
