@@ -21,6 +21,10 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
     if (this.name === null || this.name === undefined || this.name.length === 0) {
       throw new Error('Attribute \'name\' is required');
     }
+
+    if (this.offset === null || this.offset === undefined) {
+      this.offset = VISIBILITY_OFFSET;
+    }
   }
 
   ngAfterViewInit(): void {

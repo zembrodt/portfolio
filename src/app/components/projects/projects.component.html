@@ -4,7 +4,8 @@
        fxLayoutAlign="flex-start"
        fxLayoutGap="32px">
     <div *ngFor="let project of projects">
-      <app-visibility [name]="titleToId(project.title)">
+      <app-visibility [name]="titleToId(project.title)"
+                      [offset]="(isLtMd$ | async) ? 200 : null">
         <app-project-detail [project]="project"></app-project-detail>
       </app-visibility>
     </div>

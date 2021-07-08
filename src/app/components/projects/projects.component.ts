@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import projectsData from '../../../assets/data/projects.json';
+import {Select} from '@ngxs/store';
+import {ScreenState} from '../../core/screen/screen.state';
+import {Observable} from 'rxjs';
 
 export interface Project {
   title: string;
@@ -17,6 +20,8 @@ export interface Project {
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
+
+  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
 
   projects: Project[];
 

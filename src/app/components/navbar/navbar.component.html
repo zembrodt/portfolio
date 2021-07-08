@@ -1,22 +1,38 @@
 <mat-toolbar id="navbar" [color]="(theme$ | async) === 'light-theme' ? 'primary' : ''">
   <div fxLayout="row" style="width: 100%">
     <div fxFlex="20">
-      <span class="mat-title">Ryan Zembrodt</span>
+      <span *ngIf="!(isLtMd$ | async); else mobileHamburger" class="name-title mat-title">Ryan Zembrodt</span>
+      <ng-template #mobileHamburger>
+        <button mat-icon-button [matMenuTriggerFor]="mobileNavMenu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #mobileNavMenu>
+          <button mat-menu-item (click)="navigate('#experience')">Experience</button>
+          <button mat-menu-item (click)="navigate('#skills')">Skills</button>
+          <button mat-menu-item (click)="navigate('#projects')">Projects</button>
+          <button mat-menu-item (click)="navigate('#about')">About</button>
+        </mat-menu>
+      </ng-template>
     </div>
     <div fxLayout="column"
          fxLayoutAlign="center stretch"
          fxFlex="60">
-      <div fxLayout="row"
-           fxLayoutAlign="center center"
-           fxFlex="60"
-           fxLayoutGap="24px"
-           class="links mat-subheading-2">
-        <a id="nav-experience" class="navbar-link" (click)="navigate('#experience')">Experience</a>
-        <a id="nav-skills" class="navbar-link" (click)="navigate('#skills')">Skills</a>
-        <a id="nav-projects" class="navbar-link" (click)="navigate('#projects')">Projects</a>
-        <a id="nav-about" class="navbar-link" (click)="navigate('#about')">About</a>
-      </div>
-      <div id="nav-underline"></div>
+      <ng-container *ngIf="!(isLtMd$ | async); else mobileName">
+        <div fxLayout="row"
+             fxLayoutAlign="center center"
+             fxFlex="60"
+             fxLayoutGap="24px"
+             class="links mat-subheading-2">
+          <a id="nav-experience" class="navbar-link" (click)="navigate('#experience')">Experience</a>
+          <a id="nav-skills" class="navbar-link" (click)="navigate('#skills')">Skills</a>
+          <a id="nav-projects" class="navbar-link" (click)="navigate('#projects')">Projects</a>
+          <a id="nav-about" class="navbar-link" (click)="navigate('#about')">About</a>
+        </div>
+        <div id="nav-underline"></div>
+      </ng-container>
+      <ng-template #mobileName>
+        <span fxFlex="row" class="name-title mobile-title mat-title">Ryan Zembrodt</span>
+      </ng-template>
     </div>
     <div fxFlex style="text-align: right">
       <button mat-icon-button class="theme-button" (click)="onThemeChange()">

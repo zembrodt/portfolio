@@ -1,41 +1,45 @@
 <div class="project-detail"
      fxLayout="row"
-     fxLayoutAlign="center stretch"
+     fxLayout.lt-md="column"
+     fxLayoutAlign="start stretch"
      fxLayoutGap="24px">
   <div class="project-info"
        fxLayout="column"
-       fxLayoutAlign="center start"
-       fxLayoutGap="8px">
-    <div class="mat-h1">{{project.title}}</div>
-    <p>{{project.description}}</p>
-    <p>Technologies used:</p>
-    <div *ngIf="project.technologies && project.technologies.length > 0"
-         fxLayout="row"
-         fxLayoutAlign="center center"
-         fxLayoutGap="8px">
-      <span class="code-text" *ngFor="let technology of project.technologies; let i = index">
-        {{technology}}
-        <ng-container *ngIf="i + 1 < project.technologies.length"> &#xB7; </ng-container>
-      </span>
-    </div>
-    <div fxLayout="row"
-         fxLayoutAlign="right center"
-         fxLayoutGap="8px">
-      <a *ngIf="project.projectUrl"
-         href="{{project.projectUrl}}" target="_blank" title="Project home">
-        <mat-icon>launch</mat-icon>
-      </a>
-      <a *ngIf="project.githubUrl"
-         href="{{project.githubUrl}}" target="_blank" title="Github">
-        <fa-icon [icon]="githubIcon" style="font-size: 20px"></fa-icon>
-      </a>
-      <a *ngIf="project.docsUrl"
-         href="{{project.docsUrl}}" target="_blank" title="Documentation">
-        <mat-icon>article</mat-icon>
-      </a>
-    </div>
+       fxLayoutAlign="start start"
+       fxLayoutGap="8px"
+       [fxFlex.gt-sm]="project.screenshotUrl ? 35 : null"
+       [ngStyle.gt-sm]="!project.screenshotUrl ? 'max-width: 65%' : null">
+    <mat-card [ngStyle.lt-md]="'width: 100%'"
+              [ngStyle.gt-sm]="!project.screenshotUrl ? 'width: 100%' : null">
+      <div class="mat-h1">{{project.title}}</div>
+      <p>{{project.description}}</p>
+      <p>Technologies used:</p>
+      <div *ngIf="project.technologies && project.technologies.length > 0"
+           fxLayout="row wrap"
+           class="code-text technologies">
+        <span *ngFor="let technology of project.technologies">{{technology}}</span>
+      </div>
+      <div fxLayout="row"
+           fxLayoutAlign="right center"
+           fxLayoutGap="8px">
+        <a *ngIf="project.projectUrl"
+           href="{{project.projectUrl}}" target="_blank" title="Project home">
+          <mat-icon>launch</mat-icon>
+        </a>
+        <a *ngIf="project.githubUrl"
+           href="{{project.githubUrl}}" target="_blank" title="Github">
+          <fa-icon [icon]="githubIcon" style="font-size: 20px"></fa-icon>
+        </a>
+        <a *ngIf="project.docsUrl"
+           href="{{project.docsUrl}}" target="_blank" title="Documentation">
+          <mat-icon>article</mat-icon>
+        </a>
+      </div>
+    </mat-card>
   </div>
-  <ng-container *ngIf="project.screenshotUrl">
-    <img class="screenshot" src="{{project.screenshotUrl}}" width="65%" />
-  </ng-container>
+  <div *ngIf="project.screenshotUrl"
+       class="screenshot"
+       fxFlex.gt-sm>
+    <img src="{{project.screenshotUrl}}" width="100%" />
+  </div>
 </div>

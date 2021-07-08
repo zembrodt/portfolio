@@ -1,8 +1,10 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {SettingsState} from './core/settings/settings.state';
 import {Observable, Subject} from 'rxjs';
-import {Select} from '@ngxs/store';
-import {takeUntil} from 'rxjs/operators';
+import {Select, Store} from '@ngxs/store';
+import {filter, map, takeUntil} from 'rxjs/operators';
+import {MediaObserver} from '@angular/flex-layout';
+import {SetLg, SetMd, SetSm, SetXl, SetXs} from './core/screen/screen.actions';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   @Select(SettingsState.theme) theme$: Observable<string>;
 
-  constructor() {}
+  constructor(private store: Store, private mediaObserver: MediaObserver) {}
 
   ngOnInit(): void {
     this.theme$
@@ -32,6 +34,21 @@ export class AppComponent implements OnInit, OnDestroy {
         htmlEl.classList.toggle('scrollbar-light', isLightTheme);
       });
     this.updateScrollbarStyle();
+
+    // Angular flex-layout documentation is not up-to-date to reflect mediaObserver.media$ being deprecated
+    // see https://github.com/angular/flex-layout/issues/1040#issuecomment-475069681 for updated solution
+    this.mediaObserver.asObservable()
+      .pipe(
+        filter((changes) => changes.length > 0),
+        map((changes) => changes[0]),
+        takeUntil(this.ngUnsubscribe)
+      ).subscribe((change) => {
+        this.store.dispatch(new SetXs(change.mqAlias === 'xs'));
+        this.store.dispatch(new SetSm(change.mqAlias === 'sm'));
+        this.store.dispatch(new SetMd(change.mqAlias === 'md'));
+        this.store.dispatch(new SetLg(change.mqAlias === 'lg'));
+        this.store.dispatch(new SetXl(change.mqAlias === 'xl'));
+    });
   }
 
   ngOnDestroy(): void {

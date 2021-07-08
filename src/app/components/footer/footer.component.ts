@@ -3,6 +3,8 @@ import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import {Select} from '@ngxs/store';
 import {SettingsState} from '../../core/settings/settings.state';
 import {Observable} from 'rxjs';
+import {ScreenState} from '../../core/screen/screen.state';
+import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 
 const RESUME_PATH = './assets/docs/ryan-zembrodt-resume.pdf';
 
@@ -14,7 +16,9 @@ const RESUME_PATH = './assets/docs/ryan-zembrodt-resume.pdf';
 export class FooterComponent implements OnInit {
   githubIcon = faGithub;
   linkedInIcon = faLinkedin;
+  emailIcon = faEnvelope;
 
+  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
   @Select(SettingsState.theme) theme$: Observable<string>;
 
   constructor() { }
