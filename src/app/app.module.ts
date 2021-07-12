@@ -42,7 +42,8 @@ import {TimelineNodeComponent} from './core/timeline/timeline-node/timeline-node
 import {TimelineDividerComponent} from './core/timeline/timeline-divider/timeline-divider.component';
 import {ScreenState} from './core/screen/screen.state';
 import {MatMenuModule} from '@angular/material/menu';
-import {TimelineDialogComponent} from './core/timeline/timeline/timeline-dialog.component';
+import {TimelineDialog} from './core/timeline/timeline/timeline.dialog';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,11 +54,12 @@ import {TimelineDialogComponent} from './core/timeline/timeline/timeline-dialog.
     ExperienceDetailComponent,
     FooterComponent,
     NavbarComponent,
+    PageNotFoundComponent,
     ProjectsComponent,
     ProjectDetailComponent,
     SkillsComponent,
     TimelineComponent,
-    TimelineDialogComponent,
+    TimelineDialog,
     TimelineDividerComponent,
     TimelineEntryComponent,
     TimelineEntryContentComponent,

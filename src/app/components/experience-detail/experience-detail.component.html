@@ -1,4 +1,9 @@
-<mat-card>
+<!-- Wrap content in mat-card if not mobile -->
+<mat-card *ngIf="!(isXs$ | async); else detailContent">
+  <ng-container *ngTemplateOutlet="detailContent"></ng-container>
+</mat-card>
+
+<ng-template #detailContent>
   <div class="experience-detail"
        fxLayout="column"
        fxLayoutAlign="center">
@@ -18,4 +23,4 @@
       <span *ngFor="let technology of experience.technologies; let i = index">{{technology}}</span>
     </div>
   </div>
-</mat-card>
+</ng-template>
