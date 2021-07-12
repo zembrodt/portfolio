@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {RedirectGuard} from './core/redirect/redirect.guard';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
     data: {
       externalUrl: 'http://legacy.zembrodt.com'
     }
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

@@ -6,6 +6,7 @@ import {takeUntil} from 'rxjs/operators';
 import {DARK_THEME, LIGHT_THEME} from '../../core/settings/settings.model';
 import {ToggleTheme} from '../../core/settings/settings.actions';
 import {ScreenState} from '../../core/screen/screen.state';
+import {Router} from '@angular/router';
 
 const NAVBAR_ANIMATE_DURATION = 1000;
 const NAVIGATION_PADDING = 12;
@@ -34,7 +35,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
   @Select(SettingsState.theme) theme$: Observable<string>;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.theme$
@@ -60,12 +61,23 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   navigate(pageId: string): void {
-    const targetEl = document.querySelector(pageId) as HTMLElement;
-    const navbarHeight = (document.querySelector('#navbar') as HTMLElement).clientHeight;
-    // Scroll directly to element if going down, scroll up with offset for navbar if scrolling up
-    window.scrollTo(0, targetEl.offsetTop > window.pageYOffset ?
-      targetEl.offsetTop - NAVIGATION_PADDING :
-      targetEl.offsetTop - navbarHeight - NAVIGATION_PADDING);
+    const routeSplit = this.router.url.split('#');
+    let route: string = null;
+    if (routeSplit.length > 0) {
+      route = routeSplit[0];
+    }
+
+    // Check if we are on the dashboard or not
+    if (route && route.length > 0 && route !== '/') {
+      this.router.navigateByUrl('/' + pageId);
+    } else {
+      const targetEl = document.querySelector(pageId) as HTMLElement;
+      const navbarHeight = (document.querySelector('#navbar') as HTMLElement).clientHeight;
+      // Scroll directly to element if going down, scroll up with offset for navbar if scrolling up
+      window.scrollTo(0, targetEl.offsetTop > window.pageYOffset ?
+        targetEl.offsetTop - NAVIGATION_PADDING :
+        targetEl.offsetTop - navbarHeight - NAVIGATION_PADDING);
+    }
   }
 
   onThemeChange(): void {

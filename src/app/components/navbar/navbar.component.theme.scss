@@ -2,7 +2,8 @@
 @use 'sass:map';
 
 @mixin navbar-theme($theme) {
-  $accent: map.get($theme, accent);
+  $accent:     map.get($theme, accent);
+  $foreground: map.get($theme, foreground);
 
   #nav-underline {
     position: absolute;
@@ -11,5 +12,9 @@
 
   .theme-button:hover {
     color: mat.get-color-from-palette($accent, text);
+  }
+
+  a.name-title:hover {
+    color: mat.get-color-from-palette($foreground, text);
   }
 }

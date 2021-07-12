@@ -36,6 +36,13 @@ body {
   border-bottom: 0px solid !important;
 }
 
+/* Content layout styling */
+.content {
+  width: 75%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 /* General scrollbar styling */
 body::-webkit-scrollbar {
   width: 12px;
@@ -131,6 +138,20 @@ body.scrollbar-dark::-webkit-scrollbar-track {
   $accent: map.get($light-theme, accent);
   .app-skill-icon {
     color: mat.get-color-from-palette($accent, text);
+  }
+}
+
+/* Style background color if mat-sidenav-container is not full height */
+#portfolio-app {
+  $background-light: map.get($light-theme, background);
+  $background-dark:  map.get($dark-theme, background);
+
+  &.light-theme {
+    background-color: mat.get-color-from-palette($background-light, background);
+  }
+
+  &.dark-theme {
+    background-color: mat.get-color-from-palette($background-dark, background);
   }
 }
 

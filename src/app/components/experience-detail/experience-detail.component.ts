@@ -1,5 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {Experience} from '../experience/experience.component';
+import {ScreenState} from '../../core/screen/screen.state';
+import {Observable} from 'rxjs';
+import {Select} from '@ngxs/store';
 
 @Component({
   selector: 'app-experience-detail',
@@ -8,6 +11,7 @@ import {Experience} from '../experience/experience.component';
 })
 export class ExperienceDetailComponent {
 
+  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
   @Input() experience: Experience;
 
   constructor() {}

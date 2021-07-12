@@ -10,9 +10,10 @@ import {
 import {TimelineEntryComponent} from '../timeline-entry/timeline-entry.component';
 import {Subscription} from 'rxjs';
 import {TimelineDividerComponent} from '../timeline-divider/timeline-divider.component';
-import {TimelineDialogComponent} from './timeline-dialog.component';
+import {TimelineDialog} from './timeline.dialog';
 import {MatDialog} from '@angular/material/dialog';
 
+const DIALOG_ID = 'portfolio-zembrodt-dialog-id';
 const NAVBAR_PADDING = 12;
 const ENTRY_DELAY = 350;
 
@@ -78,7 +79,7 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
     }
 
     // Set default selected entry
-    if (this.entries && this.entries.length > 0) {
+    if (this.entries && this.entries.length > 0 && !this.isMobile) {
       this.updateContentInfo(this.entries.get(0));
     }
   }
@@ -96,6 +97,10 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+    const dialogRef = this.dialog.getDialogById(DIALOG_ID);
+    if (dialogRef) {
+      dialogRef.close();
+    }
   }
 
   startAnimation(): void {
@@ -150,7 +155,7 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
     // Check previous entry was not selected or allow it if mobile
     if ((this.selectedEntry && this.selectedEntry !== entry) || this.isMobile) {
       // Set the previous entry as not selected (if it's a different entry on mobile)
-      if (this.selectedEntry !== entry) {
+      if (this.selectedEntry && this.selectedEntry !== entry) {
         this.selectedEntry.node.selected = false;
       }
 
@@ -191,7 +196,7 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
         }
       } else {
         // Display dialog of content if mobile mode
-        const dialogRef = this.dialog.open(TimelineDialogComponent);
+        const dialogRef = this.dialog.open(TimelineDialog, {id: DIALOG_ID});
         dialogRef.componentInstance.elementRef.nativeElement
           .querySelector('#timeline-dialog-content').innerHTML = entry.content.elementRef.nativeElement.innerHTML;
       }
