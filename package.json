@@ -29,6 +29,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@ngxs/storage-plugin": "^3.7.1",
     "@ngxs/store": "^3.7.1",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

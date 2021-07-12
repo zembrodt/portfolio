@@ -12,7 +12,7 @@ export interface Experience {
   company: string;
   dates: string;
   year: number;
-  details: string[];
+  content: string[];
   technologies: string[];
 }
 

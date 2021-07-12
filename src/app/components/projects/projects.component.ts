@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 
 export interface Project {
   title: string;
-  description: string;
+  content: string[];
   projectUrl: string;
   githubUrl: string;
   docsUrl: string;
