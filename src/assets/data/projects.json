@@ -1,7 +1,7 @@
 [
   {
     "title": "PyMDb",
-    "content": ["A python package that is able to parse IMDb dataset files and scrape info from IMDb"],
+    "id": "pymdb",
     "projectUrl": null,
     "githubUrl": "https://github.com/zembrodt/pymdb",
     "docsUrl": "https://pymdb.readthedocs.io/en/latest/",
@@ -10,7 +10,7 @@
   },
   {
     "title": "Music Display App",
-    "content": ["A web app to display a user's currently playing track on Spotify"],
+    "id": "music-display",
     "projectUrl": "https://music.zembrodt.com",
     "githubUrl": "https://github.com/zembrodt/music-display",
     "docsUrl": null,
@@ -19,7 +19,7 @@
   },
   {
     "title": "Portfolio",
-    "content": ["My portfolio built as an Angular app (what you're currently viewing)"],
+    "id": "portfolio",
     "projectUrl": "https://zembrodt.com",
     "githubUrl": "https://github.com/zembrodt/portfolio",
     "docsUrl": null,
@@ -28,21 +28,7 @@
   },
   {
     "title": "Neat App",
-    "content": [
-      "**Currently a work in progress**",
-      "",
-      "A web app for users to search and rate different whiskeys.",
-      "",
-      "Current work done as a Golang backend REST API for manipulating the data needed in the app",
-      "on the whiskeys. User authentication is done through this server as well.",
-      "",
-      "An Angular app is currently in development to work with this API to build **Neat App**.",
-      "",
-      "Final product will allow users to search for different whiskeys on various properties such as",
-      "the origin, mash bill, tasting notes, etc. Users can also view the reviews and ratings of other users as well.",
-      "Lastly, a key component to this app is for the ability of bars and retail stores to add what whiskeys they have in stock.",
-      "This can help users find what nearby bars have a whiskey they are interested in trying."
-    ],
+    "id": "neat-app",
     "projectUrl": "https://drinkneat.app",
     "githubUrl": null,
     "docsUrl": null,
@@ -51,10 +37,7 @@
   },
   {
     "title": "Open-World Story Generation",
-    "content": [
-      "Masters capstone project with Dr. Brent Harrison at UK during Spring 2019 semester, based on my",
-      "independent study. Goal was to continue the project using a hierarchical recurrent encoder-decoder"
-    ],
+    "id": "capstone-project",
     "projectUrl": null,
     "githubUrl": "https://github.com/zembrodt/hred-story-generation",
     "docsUrl": "assets/docs/cs610-final-report.pdf",
@@ -63,10 +46,7 @@
   },
   {
     "title": "Story Generation Independent Study",
-    "content": [
-      "Independent study project with Dr. Brent Harrison at UK during Fall 2018 semester. Goal was to",
-      "generate sentences using a sequence-to-sequence network"
-    ],
+    "id": "independent-study",
     "projectUrl": null,
     "githubUrl": "https://github.com/zembrodt/story-generation",
     "docsUrl": "assets/docs/cs612-final-report.pdf",
@@ -75,10 +55,7 @@
   },
   {
     "title": "Lexmark Cafe Data Project",
-    "content": [
-      "Senior design project at UK to find trends with machine learning using data collected from",
-      "Lexmark's cafeteria. Created a dashboard to present the graphs and trends found within the data"
-    ],
+    "id": "senior-design-project",
     "projectUrl": "https://cafe-predicting.shinyapps.io/Dashboard/",
     "githubUrl": "https://github.com/cafe-predicting",
     "docsUrl": "https://cafe-predicting.github.io/",
@@ -87,7 +64,7 @@
   },
   {
     "title": "Legacy Portfolio",
-    "content": ["My legacy portfolio built while in undergrad"],
+    "id": "legacy-portfolio",
     "projectUrl": "/legacy",
     "githubUrl": "https://github.com/zembrodt/zembrodt.github.io",
     "docsUrl": null,

@@ -1,33 +1,38 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input} from '@angular/core';
 import {Experience} from '../experience/experience.component';
 import {ScreenState} from '../../core/screen/screen.state';
 import {Observable} from 'rxjs';
 import {Select} from '@ngxs/store';
 import remark from 'remark';
 import html from 'remark-html';
+import {HttpErrorResponse} from '@angular/common/http';
+import {MarkdownService} from '../../services/markdown.service';
 
 @Component({
   selector: 'app-experience-detail',
   templateUrl: './experience-detail.component.html',
   styleUrls: ['./experience-detail.component.css']
 })
-export class ExperienceDetailComponent implements OnInit {
+export class ExperienceDetailComponent implements AfterViewInit {
 
   @Select(ScreenState.isXs) isXs$: Observable<boolean>;
   @Input() experience: Experience;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, private markdownService: MarkdownService) {}
 
-  ngOnInit(): void {
-    if (this.experience && this.experience.content && this.experience.content.length > 0) {
-      // Parse the project content as markdown and convert to HTML
-      remark().use(html).process(this.experience.content.join('\n'))
-        .then(content => {
-          const contentEl = this.elementRef.nativeElement.querySelector('.experience-content') as HTMLElement;
-          if (contentEl) {
+  ngAfterViewInit(): void {
+    const contentEl = this.elementRef.nativeElement.querySelector('.experience-content') as HTMLElement;
+    if (contentEl && this.experience) {
+      this.markdownService.fetchExperience(this.experience.id)
+        .subscribe(data => {
+          remark().use(html).process(data).then(content => {
             contentEl.innerHTML = content.toString();
-          }
+          });
+        }, (err: HttpErrorResponse) => {
+          contentEl.innerHTML = `<p>Error loading content for ${this.experience.id}</p><p>${err.message}</p>`;
         });
+    } else {
+      console.error('Could not load experience detail content: ' + this.experience.id);
     }
   }
 }

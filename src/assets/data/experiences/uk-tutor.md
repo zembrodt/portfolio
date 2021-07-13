@@ -1,0 +1,4 @@
+- Tutor for Tau Beta Pi Computer Science topics
+- Assisted students with their Python and C/C++ assignments
+- Ensured students understood their programming topics from assignments
+- Helped students study for exams on Computer Science topics

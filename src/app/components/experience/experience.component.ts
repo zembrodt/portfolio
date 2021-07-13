@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import experiencesData from '../../../assets/data/experiences.json';
 import {SkillsComponent} from '../skills/skills.component';
-import {VisibleService} from '../../services/visible/visible.service';
+import {VisibleService} from '../../services/visible.service';
 import {Observable, Subject, Subscription} from 'rxjs';
 import {TimelineComponent} from '../../core/timeline/timeline/timeline.component';
 import {Select} from '@ngxs/store';
@@ -9,10 +9,10 @@ import {ScreenState} from '../../core/screen/screen.state';
 
 export interface Experience {
   title: string;
+  id: string;
   company: string;
   dates: string;
   year: number;
-  content: string[];
   technologies: string[];
 }
 

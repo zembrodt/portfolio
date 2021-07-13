@@ -1,0 +1,3 @@
+- Assisted in creating test scripts and writing technical documentation
+- Wrote test cases for client applications
+- Executed test cases for client applications and documented results

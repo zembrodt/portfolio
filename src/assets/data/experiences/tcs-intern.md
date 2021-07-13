@@ -1,0 +1,3 @@
+- Member of business solutions unit
+- Developed dashboard using MicroStrategy to preview for healthcare companies
+- Volunteered for an IT high school camp and worked as a team lead for six students
