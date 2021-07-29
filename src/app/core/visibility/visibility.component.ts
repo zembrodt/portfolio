@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, HostListener, Input, OnInit} from '@angular/core';
-import {VisibleService} from '../../services/visible/visible.service';
+import {VisibleService} from '../../services/visible.service';
 
 const VISIBILITY_OFFSET = 300;
 const FADE_IN_DURATION = 1000;

@@ -1,7 +1,7 @@
 import {Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {Observable, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {VisibleService} from '../../services/visible/visible.service';
+import {VisibleService} from '../../services/visible.service';
 import {Select} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 

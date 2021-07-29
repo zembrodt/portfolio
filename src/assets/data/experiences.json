@@ -1,16 +1,11 @@
 [
   {
     "title": "Software Engineer",
+    "id": "flooid",
     "company": "Flooid",
     "companyUrl": "https://www.flooid.com/",
     "dates": "June 2019 - Present",
     "year": 2019,
-    "details": [
-      "Implemented and owned features required by client",
-      "Investigate and develop fixes for defects on both local and remote machines",
-      "Ownership of changes within base product codebase used by all clients",
-      "Training of several additional developers in working with the codebase and our product"
-    ],
     "technologies": [
       "Java",
       "DB2"
@@ -18,16 +13,11 @@
   },
   {
     "title": "CS Tutor",
+    "id": "uk-tutor",
     "company": "University of Kentucky",
     "companyUrl": "https://www.uky.edu/",
     "dates": "August 2018 - May 2019",
     "year": 2018,
-    "details": [
-      "Tutor for Tau Beta Pi Computer Science topics",
-      "Assisted students with their Python and C/C++ assignments",
-      "Ensured students understood their programming topics from assignments",
-      "Helped students study for exams on Computer Science topics"
-    ],
     "technologies": [
       "C",
       "C++",
@@ -36,15 +26,11 @@
   },
   {
     "title": "CS Grader",
+    "id": "uk-grader",
     "company": "University of Kentucky",
     "companyUrl": "https://www.uky.edu/",
     "dates": "January 2018 - May 2018",
     "year": 2018,
-    "details": [
-      "Grader for Introduction to Operating Systems course",
-      "Graded students' written assignments",
-      "Graded and analyzed students' C/C++ programs"
-    ],
     "technologies": [
       "C",
       "C++"
@@ -52,14 +38,11 @@
   },
   {
     "title": "Web Developer",
+    "id": "valvoline",
     "company": "Valvoline",
     "companyUrl": "https://www.valvoline.com/",
     "dates": "October 2017 - December 2017",
     "year": 2017,
-    "details": [
-      "Worked within development team using the Agile methodology",
-      "Assisted in developing fixes for several Valvoline web applications"
-    ],
     "technologies": [
       "Java",
       "Spring",
@@ -68,42 +51,29 @@
   },
   {
     "title": "QA / Performance Engineer",
+    "id": "tcs",
     "company": "TCS",
     "companyUrl": "https://www.tcs.com/",
     "dates": "June 2016 - August 2017",
     "year": 2016,
-    "details": [
-      "Assisted in creating test scripts and writing technical documentation",
-      "Wrote test cases for client applications",
-      "Executed test cases for client applications and documented results"
-    ],
     "technologies": []
   },
   {
     "title": "Software Engineer Intern",
+    "id": "tcs-intern",
     "company": "TCS",
     "companyUrl": "https://www.tcs.com/",
     "dates": "June 2014 - August 2014",
     "year": 2014,
-    "details": [
-      "Member of business solutions unit",
-      "Developed dashboard using MicroStrategy to preview for healthcare companies",
-      "Volunteered for an IT high school camp and worked as a team lead for six students"
-    ],
     "technologies": ["Java"]
   },
   {
     "title": "Web Developer Co-op",
+    "id": "ashland",
     "company": "Ashland",
     "companyUrl": "https://www.ashland.com/",
     "dates": "January 2014 - May 2015",
     "year": 2014,
-    "details": [
-      "Assisted in developing several web applications using Java and the Spring framework",
-      "Recreated existing Valvoline web application using new tools such as PrimeFaces",
-      "Created new tables and modified existing ones within Microsoft SQL Server",
-      "Wrote technical documentation for developed web applications"
-    ],
     "technologies": [
       "Java",
       "Spring",
@@ -114,16 +84,11 @@
   },
   {
     "title": "IT Intern",
+    "id": "uk-intern",
     "company": "UK HealthCare",
     "companyUrl": "https://ukhealthcare.uky.edu/",
     "dates": "May 2013 - August 2013",
     "year": 2013,
-    "details": [
-      "Member of UK HealthCare web development team",
-      "Developed online form to be used in a clinical setting",
-      "Developed web applications in .NET",
-      "Wrote technical documentation and workflow diagrams for applications"
-    ],
     "technologies": [
       "C#",
       ".NET"

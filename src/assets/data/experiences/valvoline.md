@@ -1,0 +1,2 @@
+- Worked within development team using the Agile methodology
+- Assisted in developing fixes for several Valvoline web applications

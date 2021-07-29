@@ -88,6 +88,10 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
     // Update the sticky content div if we just changed from mobile
     if (this.changedFromMobile) {
       this.changedFromMobile = false;
+      // Check if an entry was ever selected
+      if (!this.selectedEntry) {
+        this.selectedEntry = this.entries.get(0);
+      }
       // Set the selected entry back to null to "re-select" it
       const entry = this.selectedEntry;
       this.selectedEntry = null;
@@ -112,6 +116,21 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
       });
       this.animationExecuted = true;
     }
+  }
+
+  forceUpdateContent(): void {
+    if (!this.isMobile) {
+      const entry = this.selectedEntry;
+      this.selectedEntry = null;
+      this.updateContentInfo(entry);
+    }
+  }
+
+  getSelectedEntryIndex(): number {
+    if (this.selectedEntry) {
+      return this.selectedEntry.indexId;
+    }
+    return null;
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -208,6 +227,8 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
       if (contentEl) {
         contentEl.innerHTML = entry.content.elementRef.nativeElement.innerHTML;
       }
+      // Set the node as selected since we aren't toggling
+      entry.node.selected = true;
     }
     this.selectedEntry = entry;
   }

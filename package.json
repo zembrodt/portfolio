@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -29,6 +29,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@ngxs/storage-plugin": "^3.7.1",
     "@ngxs/store": "^3.7.1",
+    "ngx-markdown": "^12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

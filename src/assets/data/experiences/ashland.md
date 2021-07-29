@@ -1,0 +1,4 @@
+- Assisted in developing several web applications using Java and the Spring framework
+- Recreated existing Valvoline web application using new tools such as PrimeFaces
+- Created new tables and modified existing ones within Microsoft SQL Server
+- Wrote technical documentation for developed web applications

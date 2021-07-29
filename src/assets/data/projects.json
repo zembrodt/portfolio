@@ -1,7 +1,7 @@
 [
   {
     "title": "PyMDb",
-    "description": "A python package that is able to parse IMDb dataset files and scrape info from IMDb",
+    "id": "pymdb",
     "projectUrl": null,
     "githubUrl": "https://github.com/zembrodt/pymdb",
     "docsUrl": "https://pymdb.readthedocs.io/en/latest/",
@@ -10,7 +10,7 @@
   },
   {
     "title": "Music Display App",
-    "description": "A web app to display a user's currently playing track on Spotify",
+    "id": "music-display",
     "projectUrl": "https://music.zembrodt.com",
     "githubUrl": "https://github.com/zembrodt/music-display",
     "docsUrl": null,
@@ -19,7 +19,7 @@
   },
   {
     "title": "Portfolio",
-    "description": "My portfolio built as an Angular app (what you're currently viewing)",
+    "id": "portfolio",
     "projectUrl": "https://zembrodt.com",
     "githubUrl": "https://github.com/zembrodt/portfolio",
     "docsUrl": null,
@@ -28,7 +28,7 @@
   },
   {
     "title": "Neat App",
-    "description": "A web app for users to search and rate different whiskeys (under construction)",
+    "id": "neat-app",
     "projectUrl": "https://drinkneat.app",
     "githubUrl": null,
     "docsUrl": null,
@@ -37,7 +37,7 @@
   },
   {
     "title": "Open-World Story Generation",
-    "description": "Masters capstone project with Dr. Brent Harrison at UK during Spring 2019 semester, based on my independent study. Goal was to continue the project using a hierarchical recurrent encoder-decoder",
+    "id": "capstone-project",
     "projectUrl": null,
     "githubUrl": "https://github.com/zembrodt/hred-story-generation",
     "docsUrl": "assets/docs/cs610-final-report.pdf",
@@ -46,7 +46,7 @@
   },
   {
     "title": "Story Generation Independent Study",
-    "description": "Independent study project with Dr. Brent Harrison at UK during Fall 2018 semester. Goal was to generate sentences using a sequence-to-sequence network",
+    "id": "independent-study",
     "projectUrl": null,
     "githubUrl": "https://github.com/zembrodt/story-generation",
     "docsUrl": "assets/docs/cs612-final-report.pdf",
@@ -55,7 +55,7 @@
   },
   {
     "title": "Lexmark Cafe Data Project",
-    "description": "Senior design project at UK to find trends with machine learning using data collected from Lexmark's cafeteria. Created a dashboard to present the graphs and trends found wihtin the data",
+    "id": "senior-design-project",
     "projectUrl": "https://cafe-predicting.shinyapps.io/Dashboard/",
     "githubUrl": "https://github.com/cafe-predicting",
     "docsUrl": "https://cafe-predicting.github.io/",
@@ -64,7 +64,7 @@
   },
   {
     "title": "Legacy Portfolio",
-    "description": "My legacy portfolio built while in undergrad",
+    "id": "legacy-portfolio",
     "projectUrl": "/legacy",
     "githubUrl": "https://github.com/zembrodt/zembrodt.github.io",
     "docsUrl": null,
