@@ -13,7 +13,9 @@
       {{experience.company}}
     </div>
     <div class="mat-h2">{{experience.dates}}</div>
-    <div class="experience-content">Loading...</div>
+    <div markdown
+         [src]="'assets/data/experiences/' + experience.id + '.md'"
+         class="experience-content"></div>
     <div *ngIf="experience.technologies && experience.technologies.length > 0"
          fxFlex="row wrap"
          fxFlexAlign="center center"

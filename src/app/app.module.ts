@@ -43,8 +43,8 @@ import {ScreenState} from './core/screen/screen.state';
 import {MatMenuModule} from '@angular/material/menu';
 import {TimelineDialog} from './core/timeline/timeline/timeline.dialog';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
-import {MarkdownService} from './services/markdown.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {MarkdownModule} from 'ngx-markdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +76,7 @@ import {HttpClientModule} from '@angular/common/http';
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
@@ -98,7 +99,6 @@ import {HttpClientModule} from '@angular/common/http';
     })
   ],
   providers: [
-    MarkdownService,
     VisibleService,
     RedirectGuard
   ],

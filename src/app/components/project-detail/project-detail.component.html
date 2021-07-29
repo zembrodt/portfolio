@@ -12,7 +12,9 @@
     <mat-card [ngStyle.lt-md]="'width: 100%'"
               [ngStyle.gt-sm]="!project.screenshotUrl ? 'width: 100%' : null">
       <div class="mat-h1">{{project.title}}</div>
-      <div class="project-content">Loading...</div>
+      <div markdown
+           [src]="'assets/data/projects/' + project.id + '.md'"
+           class="project-content"></div>
       <p>Technologies used:</p>
       <div *ngIf="project.technologies && project.technologies.length > 0"
            fxLayout="row wrap"
