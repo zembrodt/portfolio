@@ -1,4 +1,4 @@
-import {Component, ContentChild, ElementRef, Output, EventEmitter, ViewChild, Renderer2} from '@angular/core';
+import {Component, ContentChild, ElementRef, Output, EventEmitter, ViewChild, Renderer2, Input} from '@angular/core';
 import {TimelineEntryHeaderComponent} from '../timeline-entry-header/timeline-entry-header.component';
 import {TimelineEntryContentComponent} from '../timeline-entry-content/timeline-entry-content.component';
 import {TimelineNodeComponent} from '../timeline-node/timeline-node.component';
@@ -16,6 +16,7 @@ export class TimelineEntryComponent {
   @ContentChild(TimelineEntryContentComponent) content: TimelineEntryContentComponent;
   @ViewChild(TimelineNodeComponent) node: TimelineNodeComponent;
 
+  @Input() indexId = -1;
   @Output() toggled = new EventEmitter<MouseEvent>();
 
   constructor(public elementRef: ElementRef, private renderer: Renderer2) {}

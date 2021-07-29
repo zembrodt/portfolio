@@ -75,4 +75,11 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
     this.visibleSubscription.unsubscribe();
   }
+
+  onMarkdownLoaded(markdown: string, index: number): void {
+    // Force update the selected timeline entry content
+    if (index === this.timeline.getSelectedEntryIndex()) {
+      this.timeline.forceUpdateContent();
+    }
+  }
 }
