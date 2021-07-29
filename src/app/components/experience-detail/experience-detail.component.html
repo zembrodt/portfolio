@@ -13,9 +13,10 @@
       {{experience.company}}
     </div>
     <div class="mat-h2">{{experience.dates}}</div>
-    <ul>
-      <li *ngFor="let detail of experience.details">{{detail}}</li>
-    </ul>
+    <div markdown
+         [src]="'assets/data/experiences/' + experience.id + '.md'"
+         (load)="onMarkdownLoad($event)"
+         class="experience-content"></div>
     <div *ngIf="experience.technologies && experience.technologies.length > 0"
          fxFlex="row wrap"
          fxFlexAlign="center center"

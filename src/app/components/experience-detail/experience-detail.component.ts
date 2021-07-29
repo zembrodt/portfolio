@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Experience} from '../experience/experience.component';
 import {ScreenState} from '../../core/screen/screen.state';
 import {Observable} from 'rxjs';
@@ -13,6 +13,11 @@ export class ExperienceDetailComponent {
 
   @Select(ScreenState.isXs) isXs$: Observable<boolean>;
   @Input() experience: Experience;
+  @Output() markdownLoaded = new EventEmitter<string>();
 
   constructor() {}
+
+  onMarkdownLoad(markdown: string): void {
+    this.markdownLoaded.emit(markdown);
+  }
 }

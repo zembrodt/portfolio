@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import skillsData from '../../../assets/data/skills.json';
-import {VisibleService} from '../../services/visible/visible.service';
+import {VisibleService} from '../../services/visible.service';
 import {Subject} from 'rxjs';
 import {shuffle} from '../../core/utils';
 import {takeUntil} from 'rxjs/operators';
