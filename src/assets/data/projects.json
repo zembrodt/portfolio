@@ -1,5 +1,14 @@
 [
   {
+    "title": "ShowTunes",
+    "id": "showtunes",
+    "projectUrl": "https://showtunes.app",
+    "githubUrl": "https://github.com/zembrodt/showtunes",
+    "docsUrl": null,
+    "screenshotUrl": "assets/images/showtunes_screenshot.png",
+    "technologies": ["Angular", "TypeScript", "Go", "Heroku", "Netlify"]
+  },
+  {
     "title": "PyMDb",
     "id": "pymdb",
     "projectUrl": null,
@@ -9,15 +18,6 @@
     "technologies": ["Python"]
   },
   {
-    "title": "Music Display App",
-    "id": "music-display",
-    "projectUrl": "https://music.zembrodt.com",
-    "githubUrl": "https://github.com/zembrodt/music-display",
-    "docsUrl": null,
-    "screenshotUrl": "assets/images/music_display_screenshot.png",
-    "technologies": ["Angular", "TypeScript", "Go", "Heroku", "Netlify"]
-  },
-  {
     "title": "Portfolio",
     "id": "portfolio",
     "projectUrl": "https://zembrodt.com",
@@ -25,6 +25,15 @@
     "docsUrl": null,
     "screenshotUrl": "",
     "technologies": ["Angular", "TypeScript", "Netlify"]
+  },
+  {
+    "title": "ShowTunes API",
+    "id": "showtunes-api",
+    "projectUrl": null,
+    "githubUrl": "https://github.com/zembrodt/showtunes-api",
+    "docsUrl": null,
+    "screenshotUrl": null,
+    "technologies": ["Go", "Heroku"]
   },
   {
     "title": "Neat App",
