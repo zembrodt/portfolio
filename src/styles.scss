@@ -3,7 +3,8 @@
 
 @import "styles/themes";
 @import "app/app.component.theme";
-@import "app/components/dashboard/dashboard.component.scss-theme";
+@import "app/components/contact/contact.component.theme";
+@import "app/components/dashboard/dashboard.component.theme";
 @import "app/components/navbar/navbar.component.theme";
 @import "app/core/timeline/timeline/timeline.component.theme";
 @import "app/core/timeline/timeline-entry/timeline-entry.component.theme";
@@ -103,6 +104,7 @@ body.scrollbar-dark::-webkit-scrollbar-track {
 /* Application theming */
 @mixin custom-components-theme($theme) {
   @include app-component-theme($theme);
+  @include contact-theme($theme);
   @include dashboard-theme($theme);
   @include navbar-theme($theme);
   @include timeline-theme($theme);
