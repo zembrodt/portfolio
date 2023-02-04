@@ -8,7 +8,10 @@
     "year": 2019,
     "technologies": [
       "Java",
-      "DB2"
+      "DB2",
+      "Docker",
+      "Concordion",
+      "Selenium"
     ]
   },
   {

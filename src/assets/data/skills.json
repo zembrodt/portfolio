@@ -100,5 +100,23 @@
     "content": "",
     "icon": "spring-plain",
     "featured": false
+  },
+  {
+    "title": "Selenium",
+    "content": "",
+    "icon": "selenium-original",
+    "featured": false
+  },
+  {
+    "title": "Codecov",
+    "content": "",
+    "icon": "codecov-plain",
+    "featured": false
+  },
+  {
+    "title": "CircleCI",
+    "content": "",
+    "icon": "circleci-plain",
+    "featured": false
   }
 ]

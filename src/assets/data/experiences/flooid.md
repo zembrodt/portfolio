@@ -1,4 +1,4 @@
-- Implemented and owned features required by client
+- Ownership of feature implementations within base product codebase
 - Investigate and develop fixes for defects on both local and remote machines
-- Ownership of changes within base product codebase used by all clients
+- Development of unit tests and integration tests for new features
 - Training of several additional developers in working with the codebase and our product

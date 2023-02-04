@@ -6,7 +6,7 @@
     "githubUrl": "https://github.com/zembrodt/showtunes",
     "docsUrl": null,
     "screenshotUrl": "assets/images/showtunes_screenshot.png",
-    "technologies": ["Angular", "TypeScript", "Go", "Heroku", "Netlify"]
+    "technologies": ["Angular", "TypeScript", "Go", "Heroku", "Netlify", "CircleCI", "Codecov"]
   },
   {
     "title": "PyMDb",
