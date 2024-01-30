@@ -1,10 +1,25 @@
 [
   {
+    "title": "Senior Software Engineer",
+    "id": "flooid-senior",
+    "company": "Flooid",
+    "companyUrl": "https://www.flooid.com/",
+    "dates": "April 2023 - Present",
+    "year": 2023,
+    "technologies": [
+      "Java",
+      "DB2",
+      "Docker",
+      "Concordion",
+      "Selenium"
+    ]
+  },
+  {
     "title": "Software Engineer",
     "id": "flooid",
     "company": "Flooid",
     "companyUrl": "https://www.flooid.com/",
-    "dates": "June 2019 - Present",
+    "dates": "June 2019 - April 2023",
     "year": 2019,
     "technologies": [
       "Java",

@@ -74,7 +74,7 @@
   {
     "title": "Legacy Portfolio",
     "id": "legacy-portfolio",
-    "projectUrl": "/legacy",
+    "projectUrl": "https://legacy.zembrodt.com/",
     "githubUrl": "https://github.com/zembrodt/zembrodt.github.io",
     "docsUrl": null,
     "screenshotUrl": "assets/images/legacy_portfolio_screenshot.png",

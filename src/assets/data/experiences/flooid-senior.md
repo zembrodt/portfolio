@@ -1,0 +1,4 @@
+- Ownership of customer feature requests throughout their lifecycle
+- Collaborating with customers and team members on estimating future features
+- Implementation of localization support for languages requiring non-Latin fonts in Flooid's core application
+- Assist solution engineers with customer releases
