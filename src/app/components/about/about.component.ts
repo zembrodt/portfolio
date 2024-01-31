@@ -49,7 +49,7 @@ export class AboutComponent implements OnInit, OnDestroy {
 
   private animateImages(): void {
     const backpackingEl = document.querySelector('#backpacking') as HTMLElement;
-    const golfingEl = document.querySelector('#golfing') as HTMLElement;
+    const bikingEl = document.querySelector('#biking') as HTMLElement;
     const campingEl = document.querySelector('#camping') as HTMLElement;
 
     const keyframes = [{
@@ -66,7 +66,7 @@ export class AboutComponent implements OnInit, OnDestroy {
       easing: ABOUT_IMG_EASING
     });
 
-    golfingEl.animate(keyframes, {
+    bikingEl.animate(keyframes, {
       duration: ABOUT_IMG_DURATION,
       fill: 'forwards',
       easing: ABOUT_IMG_EASING,
