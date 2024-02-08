@@ -114,6 +114,7 @@ body.scrollbar-dark::-webkit-scrollbar-track {
 
 .light-theme {
   @include mat.all-component-themes($light-theme);
+  @include mat.all-component-typographies($light-theme);
   @include custom-components-theme($light-theme);
   @include mat.toolbar-theme($light-theme);
 
@@ -130,6 +131,7 @@ body.scrollbar-dark::-webkit-scrollbar-track {
 
 .dark-theme {
   @include mat.all-component-themes($dark-theme);
+  @include mat.all-component-typographies($dark-theme);
   @include custom-components-theme($dark-theme);
 
   $primary: map.get($dark-theme, primary);

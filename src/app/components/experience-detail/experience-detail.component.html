@@ -1,6 +1,8 @@
 <!-- Wrap content in mat-card if not mobile -->
 <mat-card *ngIf="!(isXs$ | async); else detailContent">
-  <ng-container *ngTemplateOutlet="detailContent"></ng-container>
+  <mat-card-content>
+    <ng-container *ngTemplateOutlet="detailContent"></ng-container>
+  </mat-card-content>
 </mat-card>
 
 <ng-template #detailContent>

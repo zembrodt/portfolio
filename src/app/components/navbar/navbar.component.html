@@ -3,7 +3,7 @@
     <div class="left-navbar">
       <a *ngIf="!(isLtMd$ | async); else mobileHamburger"
          href="/"
-         class="name-title mat-title">Ryan Zembrodt</a>
+         class="name-title mat-headline-6">Ryan Zembrodt</a>
       <ng-template #mobileHamburger>
         <button mat-icon-button [matMenuTriggerFor]="mobileNavMenu">
           <mat-icon>menu</mat-icon>
@@ -18,7 +18,7 @@
     </div>
     <div class="navbar-container">
       <ng-container *ngIf="!(isLtMd$ | async); else mobileName">
-        <div class="links-container mat-subheading-2">
+        <div class="links-container mat-subtitle-1">
           <a id="nav-experience" class="navbar-link" (click)="navigate('#experience')">Experience</a>
           <a id="nav-skills" class="navbar-link" (click)="navigate('#skills')">Skills</a>
           <a id="nav-projects" class="navbar-link" (click)="navigate('#projects')">Projects</a>
@@ -27,7 +27,7 @@
         <div id="nav-underline"></div>
       </ng-container>
       <ng-template #mobileName>
-        <a class="name-title mobile-title mat-title"
+        <a class="name-title mobile-title mat-headline-6"
            href="/">Ryan Zembrodt</a>
       </ng-template>
     </div>

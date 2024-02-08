@@ -45,3 +45,7 @@
   left: 20%;
   transform: translateX(-50%);
 }
+
+.mat-mdc-dialog-container .mdc-dialog__content {
+  color: inherit !important;
+}

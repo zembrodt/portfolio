@@ -1,14 +1,14 @@
 <div id="skills">
-  <div class="mat-subheading-2">Some technologies I've worked with include...</div>
+  <div class="mat-subtitle-1">Some technologies I've worked with include...</div>
   <div class="skills-container">
     <div *ngFor="let skill of skills; let i = index;"
          id="skill-{{i}}"
          class="skill">
       <mat-card class="skill-card">
-        <mat-card-content class="skill-card-content">
+        <div class="skill-card-content">
           <i class="mat-h2 skill-icon app-skill-icon devicon-{{skill.icon}}"></i>
-          <div class="mat-body-1">{{skill.title}}</div>
-        </mat-card-content>
+          <div class="mat-subtitle-2 skill-title">{{skill.title}}</div>
+        </div>
       </mat-card>
     </div>
   </div>
