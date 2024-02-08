@@ -2,8 +2,8 @@
 @use 'sass:math';
 @use 'sass:meta';
 
-// Private methods from Angular Material's _elevation.scss
-// Needed to modify the elevation mixin to add box-shadow inset option
+/* Private methods from Angular Material's _elevation.scss
+   Needed to modify the elevation mixin to add box-shadow inset option */
 
 @function _get-umbra-map($color, $opacity) {
   $shadow-color: if(meta.type-of($color) == color, rgba($color, $opacity * 0.2), $color);
@@ -101,11 +101,11 @@
   );
 }
 
-// Default values taken from _elevation.scss
-// The default color for elevation shadows.
+/* Default values taken from _elevation.scss
+   The default color for elevation shadows. */
 $color: black !default;
 
-// The default opacity scaling value for elevation shadows.
+/* The default opacity scaling value for elevation shadows. */
 $opacity: 1 !default;
 
 /*

@@ -64,7 +64,6 @@ body.bottom-scroll::-webkit-scrollbar-thumb {
 /* Themed scrollbar styling */
 @mixin scrollbar-thumb-theme($thumb-color, $track-color) {
   background-color: $thumb-color;
-  //border: 3px solid $track-color;
 }
 
 @mixin scrollbar-track-theme($track-color) {
@@ -116,7 +115,7 @@ body.scrollbar-dark::-webkit-scrollbar-track {
   @include mat.all-component-themes($light-theme);
   @include mat.all-component-typographies($light-theme);
   @include custom-components-theme($light-theme);
-  @include mat.toolbar-theme($light-theme);
+  @include mat.toolbar-color($light-theme);
 
   $foreground: map.get($light-theme, foreground);
   .app-icon {
@@ -130,7 +129,7 @@ body.scrollbar-dark::-webkit-scrollbar-track {
 }
 
 .dark-theme {
-  @include mat.all-component-themes($dark-theme);
+  @include mat.all-component-colors($dark-theme);
   @include mat.all-component-typographies($dark-theme);
   @include custom-components-theme($dark-theme);
 
