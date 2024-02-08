@@ -9,7 +9,6 @@ import {AboutComponent} from './components/about/about.component';
 import {ExperienceComponent} from './components/experience/experience.component';
 import {ExperienceDetailComponent} from './components/experience-detail/experience-detail.component';
 import {ContactComponent} from './components/contact/contact.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {FormsModule} from '@angular/forms';
@@ -45,6 +44,7 @@ import {TimelineDialog} from './core/timeline/timeline/timeline.dialog';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {MarkdownModule} from 'ngx-markdown';
+import {CommonModule} from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,13 +66,13 @@ import {MarkdownModule} from 'ngx-markdown';
     TimelineEntryContentComponent,
     TimelineEntryHeaderComponent,
     TimelineNodeComponent,
-    VisibilityComponent
+    VisibilityComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CommonModule,
     AppRoutingModule,
-    FlexLayoutModule,
     FontAwesomeModule,
     FormsModule,
     HttpClientModule,
