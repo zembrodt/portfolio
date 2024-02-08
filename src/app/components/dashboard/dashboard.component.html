@@ -1,17 +1,6 @@
-<div fxLayout="column"
-     fxLayoutAlign="center"
-     [fxLayoutGap]="((isLtMd$ | async) ? 128 : 256) + 'px'"
-     class="content">
-  <div id="intro"
-       fxLayout="row"
-       fxLayout.lt-lg="column"
-       fxLayoutAlign="center center"
-       fxLayoutGap.lt-lg="32px"
-       [ngClass.lt-md]="'mobile'">
-    <div fxLayout="column"
-         fxLayoutAlign="center start"
-         fxLayoutGap="16px"
-         class="intro-blurb">
+<div class="content">
+  <div id="intro">
+    <div class="intro-blurb">
       <span id="hello-there">Hello, my name is</span>
       <span class="mat-display-3 name-display">Ryan Zembrodt.</span>
       <span class="mat-display-1 job-title-display">I'm a Software Engineer.</span>
@@ -20,9 +9,7 @@
         I have a strong passion for full-stack development and anything programming.
       </div>
     </div>
-    <div class="pic-of-me"
-         fxLayout.lt-md="row"
-         fxLayoutAlign.lt-md="center">
+    <div class="pic-of-me">
         <img src="assets/images/main_pic.png">
     </div>
   </div>

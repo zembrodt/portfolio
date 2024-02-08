@@ -1,12 +1,7 @@
-<div id="about"
-     fxLayout="column"
-     fxLayoutAlign="center">
+<div id="about">
   <div class="mat-display-1 app-border-line">About Me</div>
-  <div fxLayout="row"
-       fxLayout.lt-lg="column"
-       fxLayoutAlign="center"
-       fxLayoutGap="24px">
-    <div fxFlex="50">
+  <div class="about-content">
+    <div>
       <p>
         Hi, I'm Ryan! I have enjoyed coding as one of my main hobbies since I was 15, and have been fortunate enough to explore
         this passion as a Computer Science major at the University of Kentucky, and now as a professional software developer.
@@ -18,15 +13,9 @@
         When I'm not coding you can find me at the golf course, backpacking on the trail, visiting a local brewery, or going for a run with my dog!
       </p>
     </div>
-    <div class="pics"
-         fxLayout="row"
-         fxLayoutAlign="center"
-         fxLayoutGap="24px"
-         fxFlex.gt-xs="50">
+    <div class="pics">
       <img id="backpacking" class="about-img fixed" src="assets/images/backpacking.png"/>
-      <div *ngIf="!(isXs$ | async)"
-           fxLayout="column"
-           fxLayoutGap="24px">
+      <div *ngIf="!(isXs$ | async)" class="secondary-imgs">
         <img id="biking" class="about-img fixed" src="assets/images/beans-biking.png"/>
         <img id="camping" class="about-img fixed" src="assets/images/camp.png"/>
       </div>

@@ -6,15 +6,42 @@
   z-index: 999;
 }
 
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.icon-links {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 0;
+  justify-content: start;
+  gap: 16px;
+}
+
 .email {
   text-align: center;
   margin: 0;
+  flex: 2 1 0;
 }
 
-.resume {
+.resume-container {
+  flex: 1 1 0;
+}
+
+.resume-button {
   text-align: center;
   vertical-align: middle;
   float: right;
+}
+
+.resume-button-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
 }
 
 .mat-raised-button {

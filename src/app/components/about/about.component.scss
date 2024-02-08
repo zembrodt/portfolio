@@ -1,4 +1,25 @@
 @use '../../../styles/mixins' as app;
+@use '../../../styles/screen-sizes' as screen;
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
+
+@media only screen and (max-width: screen.$md) {
+  .about-content {
+    flex-direction: column;
+  }
+}
+
+.pics {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+}
 
 .about-img {
   @include app.elevation(4);
@@ -9,4 +30,10 @@
     object-fit: cover;
     opacity: 0;
   }
+}
+
+.secondary-imgs {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }

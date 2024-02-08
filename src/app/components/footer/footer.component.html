@@ -1,11 +1,6 @@
 <mat-toolbar id="footer" [color]="(theme$ | async) === 'light-theme' ? 'primary' : ''">
-  <div fxLayout="row"
-       fxLayoutAlign="center center"
-       style="width: 100%">
-    <div fxFlex="20"
-         fxLayout="row"
-         fxLayoutAlign="start center"
-         fxLayoutGap="16px">
+  <div class="footer-container">
+    <div class="icon-links">
       <a href="https://github.com/zembrodt" target="_blank">
         <fa-icon matRipple [icon]="githubIcon"></fa-icon>
       </a>
@@ -17,14 +12,11 @@
       </a>
     </div>
     <a *ngIf="!(isXs$ | async)"
-       fxFlex="60"
        class="mat-subheading-1 email"
        href="mailto:ryan.zembrodt@gmail.com">ryan.zembrodt@gmail.com</a>
-    <div fxFlex>
-      <button mat-raised-button class="resume" (click)="onResumeClick()">
-        <div fxLayout="row"
-             fxLayoutAlign="space-around center"
-             fxLayoutGap="4px">
+    <div class="resume-container">
+      <button mat-raised-button class="resume-button" (click)="onResumeClick()">
+        <div class="resume-button-content">
           <mat-icon>description_outline</mat-icon>
           <span>Resume</span>
         </div>

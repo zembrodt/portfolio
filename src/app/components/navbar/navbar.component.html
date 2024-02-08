@@ -1,6 +1,6 @@
 <mat-toolbar id="navbar" [color]="(theme$ | async) === 'light-theme' ? 'primary' : ''">
-  <div fxLayout="row" style="width: 100%">
-    <div fxFlex="20">
+  <div class="navbar-container">
+    <div class="left-navbar">
       <a *ngIf="!(isLtMd$ | async); else mobileHamburger"
          href="/"
          class="name-title mat-title">Ryan Zembrodt</a>
@@ -16,15 +16,9 @@
         </mat-menu>
       </ng-template>
     </div>
-    <div fxLayout="column"
-         fxLayoutAlign="center stretch"
-         fxFlex="60">
+    <div class="navbar-container">
       <ng-container *ngIf="!(isLtMd$ | async); else mobileName">
-        <div fxLayout="row"
-             fxLayoutAlign="center center"
-             fxFlex="60"
-             fxLayoutGap="24px"
-             class="links mat-subheading-2">
+        <div class="links-container mat-subheading-2">
           <a id="nav-experience" class="navbar-link" (click)="navigate('#experience')">Experience</a>
           <a id="nav-skills" class="navbar-link" (click)="navigate('#skills')">Skills</a>
           <a id="nav-projects" class="navbar-link" (click)="navigate('#projects')">Projects</a>
@@ -33,12 +27,11 @@
         <div id="nav-underline"></div>
       </ng-container>
       <ng-template #mobileName>
-        <a fxFlex="row"
-           class="name-title mobile-title mat-title"
+        <a class="name-title mobile-title mat-title"
            href="/">Ryan Zembrodt</a>
       </ng-template>
     </div>
-    <div fxFlex style="text-align: right">
+    <div class="theme-icon-container">
       <button mat-icon-button class="theme-button" (click)="onThemeChange()">
         <mat-icon>{{getThemeIcon()}}</mat-icon>
       </button>

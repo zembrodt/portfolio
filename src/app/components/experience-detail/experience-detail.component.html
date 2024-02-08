@@ -4,9 +4,7 @@
 </mat-card>
 
 <ng-template #detailContent>
-  <div class="experience-detail"
-       fxLayout="column"
-       fxLayoutAlign="center">
+  <div class="experience-detail">
     <div class="mat-h1">
       {{experience.title}}
       <span class="app-accent-text"> @ </span>
@@ -18,8 +16,6 @@
          (load)="onMarkdownLoad($event)"
          class="experience-content"></div>
     <div *ngIf="experience.technologies && experience.technologies.length > 0"
-         fxFlex="row wrap"
-         fxFlexAlign="center center"
          class="technologies code-text">
       <span *ngFor="let technology of experience.technologies; let i = index">{{technology}}</span>
     </div>

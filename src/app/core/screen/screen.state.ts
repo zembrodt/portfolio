@@ -1,7 +1,7 @@
 import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {Injectable} from '@angular/core';
-import {DEFAULT_SCREEN, ScreenModel} from './screen.model';
-import {SetLg, SetMd, SetSm, SetXl, SetXs} from './screen.actions';
+import {ALIAS_LG, ALIAS_MD, ALIAS_SM, ALIAS_XL, ALIAS_XS, DEFAULT_SCREEN, ScreenModel} from './screen.model';
+import {SetAlias} from './screen.actions';
 
 @State<ScreenModel>({
   name: 'ZEMBRODT_PORTFOLIO_SCREEN',
@@ -50,28 +50,14 @@ export class ScreenState {
     return state.isXl;
   }
 
-  @Action(SetXs)
-  setXs(ctx: StateContext<ScreenModel>, action: SetXs): void {
-    ctx.patchState({isXs: action.isXs});
-  }
-
-  @Action(SetSm)
-  setSm(ctx: StateContext<ScreenModel>, action: SetSm): void {
-    ctx.patchState({isSm: action.isSm});
-  }
-
-  @Action(SetMd)
-  setMd(ctx: StateContext<ScreenModel>, action: SetMd): void {
-    ctx.patchState({isMd: action.isMd});
-  }
-
-  @Action(SetLg)
-  setLg(ctx: StateContext<ScreenModel>, action: SetLg): void {
-    ctx.patchState({isLg: action.isLg});
-  }
-
-  @Action(SetXl)
-  setXl(ctx: StateContext<ScreenModel>, action: SetXl): void {
-    ctx.patchState({isXl: action.isXl});
+  @Action(SetAlias)
+  setAlias(ctx: StateContext<ScreenModel>, action: SetAlias): void {
+    ctx.patchState({
+      isXs: action.alias === ALIAS_XS,
+      isSm: action.alias === ALIAS_SM,
+      isMd: action.alias === ALIAS_MD,
+      isLg: action.alias === ALIAS_LG,
+      isXl: action.alias === ALIAS_XL
+    });
   }
 }

@@ -10,6 +10,26 @@
   }
 }
 
+.timeline-container {
+  display: flex;
+  flex-direction: row;
+  place-content: stretch center;
+  gap: 48px;
+
+  &.alternate-entries-gap {
+    gap: 24px;
+  }
+}
+
+.timeline {
+  flex: 1 1 100%;
+  max-width: 40%;
+
+  &.mobile-width {
+    max-width: 100%;
+  }
+}
+
 .timeline-content {
   position: absolute;
   display: block;

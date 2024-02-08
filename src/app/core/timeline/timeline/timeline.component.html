@@ -1,13 +1,11 @@
 <div class="timeline-container"
-     fxLayout="row"
-     fxLayoutAlign="center stretch"
-     [fxLayoutGap]="alternateEntries ? '24px' : '48px'">
+     [ngClass]="alternateEntries ? 'alternate-entries-gap' : null">
   <div class="timeline"
-       [fxFlex]="isMobile ? 100 : 40">
+       [ngClass]="isMobile ? 'mobile-width' : null">
     <div class="timeline-line"></div>
     <ng-content></ng-content>
   </div>
-  <div *ngIf="!isMobile" class="timeline-content-placeholder" fxFlex>
+  <div *ngIf="!isMobile" class="timeline-content-placeholder">
     <div class="timeline-content">Content Placeholder</div>
   </div>
 </div>

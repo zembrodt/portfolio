@@ -2,9 +2,19 @@ import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {SettingsState} from './core/settings/settings.state';
 import {Observable, Subject} from 'rxjs';
 import {Select, Store} from '@ngxs/store';
-import {filter, map, takeUntil} from 'rxjs/operators';
-import {MediaObserver} from '@angular/flex-layout';
-import {SetLg, SetMd, SetSm, SetXl, SetXs} from './core/screen/screen.actions';
+import {takeUntil} from 'rxjs/operators';
+import {SetAlias} from './core/screen/screen.actions';
+import {
+  ALIAS_LG,
+  ALIAS_MD,
+  ALIAS_SM,
+  ALIAS_XL,
+  ALIAS_XS,
+  SCREEN_SIZE_LG,
+  SCREEN_SIZE_MD,
+  SCREEN_SIZE_SM,
+  SCREEN_SIZE_XS
+} from './core/screen/screen.model';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +24,13 @@ import {SetLg, SetMd, SetSm, SetXl, SetXs} from './core/screen/screen.actions';
 export class AppComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject();
   private prevMiddle: boolean = null;
+  private currentScreenSize: string = null;
 
   title = 'Portfolio';
 
   @Select(SettingsState.theme) theme$: Observable<string>;
 
-  constructor(private store: Store, private mediaObserver: MediaObserver) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.theme$
@@ -34,21 +45,6 @@ export class AppComponent implements OnInit, OnDestroy {
         htmlEl.classList.toggle('scrollbar-light', isLightTheme);
       });
     this.updateScrollbarStyle();
-
-    // Angular flex-layout documentation is not up-to-date to reflect mediaObserver.media$ being deprecated
-    // see https://github.com/angular/flex-layout/issues/1040#issuecomment-475069681 for updated solution
-    this.mediaObserver.asObservable()
-      .pipe(
-        filter((changes) => changes.length > 0),
-        map((changes) => changes[0]),
-        takeUntil(this.ngUnsubscribe)
-      ).subscribe((change) => {
-        this.store.dispatch(new SetXs(change.mqAlias === 'xs'));
-        this.store.dispatch(new SetSm(change.mqAlias === 'sm'));
-        this.store.dispatch(new SetMd(change.mqAlias === 'md'));
-        this.store.dispatch(new SetLg(change.mqAlias === 'lg'));
-        this.store.dispatch(new SetXl(change.mqAlias === 'xl'));
-    });
   }
 
   ngOnDestroy(): void {
@@ -59,6 +55,11 @@ export class AppComponent implements OnInit, OnDestroy {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(): void {
     this.updateScrollbarStyle();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.updateScreenSize(window.innerWidth);
   }
 
   private updateScrollbarStyle(): void {
@@ -82,5 +83,27 @@ export class AppComponent implements OnInit, OnDestroy {
     const bodyEl = document.querySelector('body') as HTMLElement;
     bodyEl.classList.toggle('top-scroll', isTop);
     bodyEl.classList.toggle('bottom-scroll', isBottom);
+  }
+
+  private updateScreenSize(width: number): void {
+    const alias = this.calculateScreenSizeAlias(width);
+    if (this.currentScreenSize !== alias) {
+      this.currentScreenSize = alias;
+      this.store.dispatch(new SetAlias(alias));
+    }
+  }
+
+  private calculateScreenSizeAlias(width: number): string {
+    if (width < SCREEN_SIZE_XS) {
+      return ALIAS_XS;
+    } else if (width < SCREEN_SIZE_SM) {
+      return ALIAS_SM;
+    } else if (width < SCREEN_SIZE_MD) {
+      return ALIAS_MD;
+    } else if (width < SCREEN_SIZE_LG) {
+      return ALIAS_LG;
+    } else {
+      return ALIAS_XL;
+    }
   }
 }

@@ -1,29 +1,18 @@
-<div class="project-detail"
-     fxLayout="row"
-     fxLayout.lt-md="column"
-     fxLayoutAlign="start stretch"
-     fxLayoutGap="24px">
+<div class="project-detail">
   <div class="project-info"
-       fxLayout="column"
-       fxLayoutAlign="start start"
-       fxLayoutGap="8px"
-       [fxFlex.gt-sm]="project.screenshotUrl ? 35 : null"
-       [ngStyle.gt-sm]="!project.screenshotUrl ? 'max-width: 65%' : null">
-    <mat-card [ngStyle.lt-md]="'width: 100%'"
-              [ngStyle.gt-sm]="!project.screenshotUrl ? 'width: 100%' : null">
+       [ngClass]="project.screenshotUrl ? 'has-screenshot' : 'no-screenshot'">
+    <mat-card class="project-card"
+              [ngClass]="!project.screenshotUrl ? 'no-screenshot' : null">
       <div class="mat-h1">{{project.title}}</div>
       <div markdown
            [src]="'assets/data/projects/' + project.id + '.md'"
            class="project-content"></div>
       <p>Technologies used:</p>
       <div *ngIf="project.technologies && project.technologies.length > 0"
-           fxLayout="row wrap"
            class="code-text technologies">
         <span *ngFor="let technology of project.technologies">{{technology}}</span>
       </div>
-      <div fxLayout="row"
-           fxLayoutAlign="right center"
-           fxLayoutGap="8px">
+      <div class="project-links">
         <a *ngIf="project.projectUrl"
            href="{{project.projectUrl}}" target="_blank" title="Project home">
           <mat-icon>launch</mat-icon>
@@ -40,8 +29,7 @@
     </mat-card>
   </div>
   <div *ngIf="project.screenshotUrl"
-       class="screenshot"
-       fxFlex.gt-sm>
+       class="screenshot">
     <img src="{{project.screenshotUrl}}" width="100%" />
   </div>
 </div>
