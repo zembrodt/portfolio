@@ -11,7 +11,7 @@ import {TimelineEntryComponent} from '../timeline-entry/timeline-entry.component
 import {Subscription} from 'rxjs';
 import {TimelineDividerComponent} from '../timeline-divider/timeline-divider.component';
 import {TimelineDialog} from './timeline.dialog';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 
 const DIALOG_ID = 'portfolio-zembrodt-dialog-id';
 const NAVBAR_PADDING = 12;
