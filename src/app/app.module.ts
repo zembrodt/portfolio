@@ -12,7 +12,6 @@ import {ContactComponent} from './components/contact/contact.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {FormsModule} from '@angular/forms';
-import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
 import {NgxsModule} from '@ngxs/store';
 import {environment} from '../environments/environment';
 import {NgxsStoragePluginModule} from '@ngxs/storage-plugin';
@@ -21,13 +20,10 @@ import {RedirectGuard} from './core/redirect/redirect.guard';
 import {AppRoutingModule} from './app-routing.module';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {MatIconModule} from '@angular/material/icon';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {FooterComponent} from './components/footer/footer.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {SkillsComponent} from './components/skills/skills.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatLegacyTabsModule as MatTabsModule} from '@angular/material/legacy-tabs';
-import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
 import {MatRippleModule} from '@angular/material/core';
 import {VisibilityComponent} from './core/visibility/visibility.component';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
@@ -39,12 +35,17 @@ import {TimelineEntryHeaderComponent} from './core/timeline/timeline-entry-heade
 import {TimelineNodeComponent} from './core/timeline/timeline-node/timeline-node.component';
 import {TimelineDividerComponent} from './core/timeline/timeline-divider/timeline-divider.component';
 import {ScreenState} from './core/screen/screen.state';
-import {MatLegacyMenuModule as MatMenuModule} from '@angular/material/legacy-menu';
 import {TimelineDialog} from './core/timeline/timeline/timeline.dialog';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {MarkdownModule} from 'ngx-markdown';
 import {CommonModule} from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTabsModule} from '@angular/material/tabs';
+
 @NgModule({
   declarations: [
     AppComponent,

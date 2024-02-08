@@ -11,7 +11,7 @@ import {TimelineEntryComponent} from '../timeline-entry/timeline-entry.component
 import {Subscription} from 'rxjs';
 import {TimelineDividerComponent} from '../timeline-divider/timeline-divider.component';
 import {TimelineDialog} from './timeline.dialog';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 
 const DIALOG_ID = 'portfolio-zembrodt-dialog-id';
 const NAVBAR_PADDING = 12;
@@ -38,8 +38,7 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
   @Input() nodeColor: string;
   @Input() enableAnimations = false;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2,
-              private dialog: MatDialog) {}
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private dialog: MatDialog) {}
 
   ngAfterContentInit(): void {
     // Subscribe to all timeline entry methods
