@@ -38,8 +38,7 @@ export class TimelineComponent implements OnChanges, AfterContentInit, AfterView
   @Input() nodeColor: string;
   @Input() enableAnimations = false;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2,
-              private dialog: MatDialog) {}
+  constructor(private elementRef: ElementRef, private renderer: Renderer2, private dialog: MatDialog) {}
 
   ngAfterContentInit(): void {
     // Subscribe to all timeline entry methods

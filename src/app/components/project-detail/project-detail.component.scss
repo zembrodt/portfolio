@@ -1,15 +1,62 @@
 @use '../../../styles/mixins' as app;
+@use '../../../styles/screen-sizes' as screen;
+
+.project-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  flex: 0 0 100%;
+}
+
+@media only screen and (max-width: screen.$sm) {
+  .project-detail {
+    flex-direction: column;
+  }
+}
 
 .project-info {
   width: 100%;
   overflow: visible;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+
+  @media only screen and (min-width: screen.$sm) {
+    &.has-screenshot {
+      flex: 0.65 1 0;
+    }
+  }
 
   mat-card {
     box-sizing: border-box;
+
+    @media only screen and (max-width: screen.$sm) {
+      &.project-card {
+        width: 100%;
+      }
+    }
   }
 }
 
+.technologies {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.project-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
 .screenshot {
+  flex: 1 1 0;
+
   img {
     @include app.elevation(4);
     border-radius: 4px;

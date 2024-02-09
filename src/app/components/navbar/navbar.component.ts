@@ -24,7 +24,7 @@ navMap.set('#about', '#nav-about');
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
-  private ngUnsubscribe = new Subject();
+  private ngUnsubscribe = new Subject<void>();
   private currentTheme: string;
   private previousOffsetY = 0;
   private previousPage: string;
@@ -32,8 +32,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private previousWindowHeight: number;
   private currentPage = new Subject<string>();
 
-  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
-  @Select(SettingsState.theme) theme$: Observable<string>;
+  @Select(ScreenState.isLtMd) isLtMd$!: Observable<boolean>;
+  @Select(SettingsState.theme) theme$!: Observable<string>;
 
   constructor(private store: Store, private router: Router) { }
 

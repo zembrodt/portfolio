@@ -4,6 +4,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 @Component({
   selector: 'app-timeline-dialog',
   templateUrl: 'timeline.dialog.html',
+  styleUrls: ['./timeline.dialog.css']
 })
 export class TimelineDialog {
 

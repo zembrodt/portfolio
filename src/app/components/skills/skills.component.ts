@@ -24,7 +24,7 @@ const shuffleBonusSkills = true;
 export class SkillsComponent implements OnInit, OnDestroy {
   static PAGE = 'skills';
 
-  private ngUnsubscribe = new Subject();
+  private ngUnsubscribe = new Subject<void>();
 
   skills: Skill[] = [];
 

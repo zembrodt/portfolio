@@ -1,8 +1,6 @@
 <div id="projects">
-  <div class="mat-display-1 app-border-line">Personal Projects</div>
-  <div fxLayout="column"
-       fxLayoutAlign="flex-start"
-       fxLayoutGap="32px">
+  <div class="mat-headline-4 app-border-line">Personal Projects</div>
+  <div class="projects-container">
     <div *ngFor="let project of projects">
       <app-visibility [name]="project.id"
                       [offset]="(isLtMd$ | async) ? 200 : null">

@@ -1,19 +1,35 @@
 @use '@angular/material' as mat;
 
-// For explanation, see: https://material.angular.io/guide/theming
+/* For explanation, see: https://material.angular.io/guide/theming */
 
 @include mat.core();
 
-// Light theme
+/* Light theme */
 $light-primary: mat.define-palette(mat.$blue-gray-palette);
 $light-accent:  mat.define-palette(mat.$cyan-palette);
 $light-warn:    mat.define-palette(mat.$deep-orange-palette);
 
-$light-theme: mat.define-light-theme($light-primary, $light-accent, $light-warn);
+$light-theme: mat.define-light-theme((
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+      warn: $light-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+));
 
-// Alternate dark theme
+/* Alternate dark theme */
 $dark-primary: mat.define-palette(mat.$blue-gray-palette);
-$dark-accent:  mat.define-palette(mat.$cyan-palette);//, A400, A200, A700);
+$dark-accent:  mat.define-palette(mat.$cyan-palette);
 $dark-warn:    mat.define-palette(mat.$deep-orange-palette);
 
-$dark-theme: mat.define-dark-theme($dark-primary, $dark-accent, $dark-warn)
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $dark-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));

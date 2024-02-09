@@ -1,11 +1,48 @@
 @use '../../../styles/mixins' as app;
+@use '../../../styles/screen-sizes' as screen;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  gap: 256px;
+}
 
 #intro {
   margin-top: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
 
   &.mobile {
     margin-top: 100px;
   }
+}
+
+@media only screen and (max-width: screen.$lg) {
+  #intro {
+    gap: 32px;
+  }
+}
+
+@media only screen and (max-width: screen.$md) {
+  .content {
+    gap: 128px;
+  }
+
+  #intro {
+    margin-top: 100px;
+    flex-direction: column;
+  }
+}
+
+.intro-blurb {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  align-content: center;
+  gap: 16px;
 }
 
 .pic-of-me {

@@ -1,15 +1,15 @@
 <!-- Wrap content in mat-card if not mobile -->
 <mat-card *ngIf="!(isXs$ | async); else detailContent">
-  <ng-container *ngTemplateOutlet="detailContent"></ng-container>
+  <mat-card-content>
+    <ng-container *ngTemplateOutlet="detailContent"></ng-container>
+  </mat-card-content>
 </mat-card>
 
 <ng-template #detailContent>
-  <div class="experience-detail"
-       fxLayout="column"
-       fxLayoutAlign="center">
+  <div class="experience-detail">
     <div class="mat-h1">
       {{experience.title}}
-      <span class="app-accent-text"> @ </span>
+      <span class="app-accent-text"> &#64; </span>
       {{experience.company}}
     </div>
     <div class="mat-h2">{{experience.dates}}</div>
@@ -18,8 +18,6 @@
          (load)="onMarkdownLoad($event)"
          class="experience-content"></div>
     <div *ngIf="experience.technologies && experience.technologies.length > 0"
-         fxFlex="row wrap"
-         fxFlexAlign="center center"
          class="technologies code-text">
       <span *ngFor="let technology of experience.technologies; let i = index">{{technology}}</span>
     </div>

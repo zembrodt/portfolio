@@ -1,5 +1,5 @@
 <div id="experience">
-  <div class="mat-display-1 app-border-line">Experience</div>
+  <div class="mat-headline-4 app-border-line">Experience</div>
   <app-timeline id="experience-timeline"
                 [isMobile]="isXs$ | async"
                 [alternateEntries]="!(isSm$ | async)"
@@ -8,8 +8,7 @@
     <ng-container *ngFor="let experience of experiences; let i = index">
       <app-timeline-entry [indexId]="i">
         <app-timeline-entry-header>
-          <div fxLayout="column"
-               fxLayoutAlign="center center">
+          <div class="timeline-entry-header">
             <span class="mat-h2 app-border-line">{{experience.company}}</span>
             <span>{{experience.title}}</span>
           </div>

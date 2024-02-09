@@ -12,7 +12,7 @@ import {Observable} from 'rxjs';
 })
 export class ProjectDetailComponent {
 
-  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
+  @Select(ScreenState.isLtMd) isLtMd$!: Observable<boolean>;
   @Input() project: Project;
 
   githubIcon = faGithub;

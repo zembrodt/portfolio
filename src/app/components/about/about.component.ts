@@ -16,12 +16,12 @@ const ABOUT_IMG_EASING = 'ease-out';
 export class AboutComponent implements OnInit, OnDestroy {
   static PAGE = 'about';
 
-  private ngUnsubscribe = new Subject();
+  private ngUnsubscribe = new Subject<void>();
   private hasAnimated = false;
   private isXs = false;
   private isXsSub: Subscription;
 
-  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
+  @Select(ScreenState.isXs) isXs$!: Observable<boolean>;
 
   constructor(private visibleService: VisibleService, private elementRef: ElementRef, private renderer: Renderer2) {}
 

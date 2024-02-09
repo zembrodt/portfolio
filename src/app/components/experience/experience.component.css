@@ -1,3 +1,10 @@
 app-timeline {
   margin-bottom: 24px;
 }
+
+.timeline-entry-header {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
