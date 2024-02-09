@@ -17,7 +17,7 @@ export class DashboardComponent implements AfterViewInit {
   aboutPage = AboutComponent.PAGE;
   experiencePage = ExperienceComponent.PAGE;
 
-  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
+  @Select(ScreenState.isLtMd) isLtMd$!: Observable<boolean>;
 
   constructor() { }
 

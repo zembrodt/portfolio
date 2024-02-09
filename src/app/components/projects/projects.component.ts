@@ -21,7 +21,7 @@ export interface Project {
 })
 export class ProjectsComponent implements OnInit {
 
-  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
+  @Select(ScreenState.isLtMd) isLtMd$!: Observable<boolean>;
 
   projects: Project[];
 

@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   title = 'Portfolio';
 
-  @Select(SettingsState.theme) theme$: Observable<string>;
+  @Select(SettingsState.theme) theme$!: Observable<string>;
 
   constructor(private store: Store) {}
 

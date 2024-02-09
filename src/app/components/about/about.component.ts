@@ -21,7 +21,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   private isXs = false;
   private isXsSub: Subscription;
 
-  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
+  @Select(ScreenState.isXs) isXs$!: Observable<boolean>;
 
   constructor(private visibleService: VisibleService, private elementRef: ElementRef, private renderer: Renderer2) {}
 

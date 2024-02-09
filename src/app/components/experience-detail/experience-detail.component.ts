@@ -11,7 +11,7 @@ import {Select} from '@ngxs/store';
 })
 export class ExperienceDetailComponent {
 
-  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
+  @Select(ScreenState.isXs) isXs$!: Observable<boolean>;
   @Input() experience: Experience;
   @Output() markdownLoaded = new EventEmitter<string>();
 

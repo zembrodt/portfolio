@@ -32,8 +32,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private previousWindowHeight: number;
   private currentPage = new Subject<string>();
 
-  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
-  @Select(SettingsState.theme) theme$: Observable<string>;
+  @Select(ScreenState.isLtMd) isLtMd$!: Observable<boolean>;
+  @Select(SettingsState.theme) theme$!: Observable<string>;
 
   constructor(private store: Store, private router: Router) { }
 
