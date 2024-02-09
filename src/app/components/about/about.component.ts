@@ -16,7 +16,7 @@ const ABOUT_IMG_EASING = 'ease-out';
 export class AboutComponent implements OnInit, OnDestroy {
   static PAGE = 'about';
 
-  private ngUnsubscribe = new Subject();
+  private ngUnsubscribe = new Subject<void>();
   private hasAnimated = false;
   private isXs = false;
   private isXsSub: Subscription;

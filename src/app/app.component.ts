@@ -22,7 +22,7 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe = new Subject();
+  private ngUnsubscribe = new Subject<void>();
   private prevMiddle: boolean = null;
   private currentScreenSize: string = null;
 

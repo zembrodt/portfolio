@@ -24,7 +24,7 @@ export interface Experience {
 export class ExperienceComponent implements OnInit, OnDestroy {
   static PAGE = 'experience';
 
-  private ngUnsubscribe = new Subject();
+  private ngUnsubscribe = new Subject<void>();
   private visibleSubscription = new Subscription();
 
   @Select(ScreenState.isXs) isXs$: Observable<boolean>;
