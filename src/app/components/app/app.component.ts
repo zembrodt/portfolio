@@ -42,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
         bodyEl.classList.toggle('scrollbar-light', isLightTheme);
         htmlEl.classList.toggle('scrollbar-light', isLightTheme);
       });
+    this.updateScreenSize(window.innerWidth);
     this.updateScrollbarStyle();
   }
 
