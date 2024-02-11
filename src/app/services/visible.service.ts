@@ -21,10 +21,8 @@ export class VisibleService {
 
   toggleVisible(name: string): void {
     if (!this.pages.has(name)) {
-      console.log('Adding ' + name + ' as visible');
       this.createPage(name);
     }
-    console.log('Updating ' + name + ' to visible=' + !this.pages.get(name).isVisible);
     const isVisible = !this.pages.get(name).isVisible;
     this.pages.get(name).isVisible = isVisible;
     this.pages.get(name).subject.next(isVisible);

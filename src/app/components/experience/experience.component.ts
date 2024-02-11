@@ -3,7 +3,7 @@ import experiencesData from '../../../assets/data/experiences.json';
 import {SkillsComponent} from '../skills/skills.component';
 import {VisibleService} from '../../services/visible.service';
 import {Observable, Subject, Subscription} from 'rxjs';
-import {TimelineComponent} from '../../core/timeline/timeline/timeline.component';
+import {TimelineComponent} from '../timeline/timeline.component';
 import {Select} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 
@@ -42,7 +42,6 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.visibleSubscription = this.visibleService.isVisible(ExperienceComponent.PAGE)
       .subscribe((isVisible) => {
-        console.log('EXPERIENCE :: isVisible=' + isVisible);
         if (isVisible && this.timeline) {
           this.timeline.startAnimation();
           this.visibleSubscription.unsubscribe();

@@ -20,39 +20,6 @@ export type Shape = 'circle' | 'square';
   selector: 'app-timeline-node',
   templateUrl: './timeline-node.component.html',
   styleUrls: ['./timeline-node.component.scss'],
-  /*animations: [
-    trigger('select', [
-      state('unselected', style({
-        top: '50%',
-        left: 'calc(100% + 4px)',
-        width: '50px',
-        height: '50px',
-        opacity: 1,
-        transform: 'translateX(-50%) translateY(-50%)',
-        borderRadius: '100px'
-      })),
-      state('unselected-alt', style({
-        top: '50%',
-        left: '-4px',
-        width: '50px',
-        height: '50px',
-        opacity: 1,
-        transform: 'translateX(-50%) translateY(-50%)',
-        borderRadius: '100px'
-      })),
-      state('selected', style({
-        left: 0,
-        width: '100%',
-        height: '100%',
-        opacity: .5,
-        transform: 'translateX(0) translateY(-100%)',
-        borderRadius: 0
-      })),
-      transition('* => *', [
-        animate('500ms')
-      ])
-    ])
-  ]*/
 })
 export class TimelineNodeComponent implements OnChanges, AfterViewInit{
 
@@ -64,10 +31,6 @@ export class TimelineNodeComponent implements OnChanges, AfterViewInit{
   @Input() enabled = false;
   @Input() shape: Shape = 'circle';
   @Output() clicked = new EventEmitter<MouseEvent>();
-
-  /*@HostBinding('@select') get getSelected(): string {
-    return this.selected ? 'selected' : (this.alternate ? 'unselected-alt' : 'unselected');
-  }*/
 
   @HostListener('click') onClick(event: MouseEvent): void {
     if (this.enabled) {
@@ -96,7 +59,6 @@ export class TimelineNodeComponent implements OnChanges, AfterViewInit{
 
   set selected(selected: boolean) {
     this._selected = selected;
-    console.log('Updated selected to ' + selected);
     this.elementRef.nativeElement.classList.toggle('selected', this.selected);
   }
 
@@ -129,13 +91,6 @@ export class TimelineNodeComponent implements OnChanges, AfterViewInit{
       cursor: this.enabled ? 'pointer' : 'default'
     };
   }
-
-  /*private getSelectedStyle(): any {
-    return {
-      left: 0,
-      transform: 'translateX(0) translateY'
-    }
-  }*/
 
   private updateColor(oldColor, newColor: string): void {
     this.elementRef.nativeElement.classList.toggle(`${oldColor}-color`, false);

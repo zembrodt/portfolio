@@ -1,10 +1,10 @@
 import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {Injectable} from '@angular/core';
-import {ALIAS_LG, ALIAS_MD, ALIAS_SM, ALIAS_XL, ALIAS_XS, DEFAULT_SCREEN, ScreenModel} from './screen.model';
+import {ALIAS_LG, ALIAS_MD, ALIAS_SM, ALIAS_XL, ALIAS_XS, DEFAULT_SCREEN, SCREEN_STATE_NAME, ScreenModel} from './screen.model';
 import {SetAlias} from './screen.actions';
 
 @State<ScreenModel>({
-  name: 'ZEMBRODT_PORTFOLIO_SCREEN',
+  name: SCREEN_STATE_NAME,
   defaults: DEFAULT_SCREEN
 })
 @Injectable()

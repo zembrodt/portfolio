@@ -48,7 +48,6 @@ export class SkillsComponent implements OnInit, OnDestroy {
     this.visibleService.isVisible(SkillsComponent.PAGE)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((isVisible) => {
-        console.log('SKILLS :: isVisible=' + isVisible);
         if (isVisible) {
           this.animateSkills();
           this.unsubscribe();

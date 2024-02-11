@@ -1,3 +1,5 @@
+export const SCREEN_STATE_NAME = 'ZEMBRODT_PORTFOLIO_SCREEN';
+
 // Screen sizes in pixels
 export const SCREEN_SIZE_XS = 600;
 export const SCREEN_SIZE_SM = 960;
