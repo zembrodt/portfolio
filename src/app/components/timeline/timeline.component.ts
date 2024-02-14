@@ -7,9 +7,9 @@ import {
   OnDestroy,
   QueryList, Renderer2, SimpleChanges,
 } from '@angular/core';
-import {TimelineEntryComponent} from '../timeline-entry/timeline-entry.component';
+import {TimelineEntryComponent} from './timeline-entry/timeline-entry.component';
 import {Subscription} from 'rxjs';
-import {TimelineDividerComponent} from '../timeline-divider/timeline-divider.component';
+import {TimelineDividerComponent} from './timeline-divider/timeline-divider.component';
 import {TimelineDialog} from './timeline.dialog';
 import {MatDialog} from '@angular/material/dialog';
 

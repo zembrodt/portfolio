@@ -3,8 +3,8 @@ import experiencesData from '../../../assets/data/experiences.json';
 import {SkillsComponent} from '../skills/skills.component';
 import {VisibleService} from '../../services/visible.service';
 import {Observable, Subject, Subscription} from 'rxjs';
-import {TimelineComponent} from '../../core/timeline/timeline/timeline.component';
-import {Select} from '@ngxs/store';
+import {TimelineComponent} from '../timeline/timeline.component';
+import {Store} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 
 export interface Experience {
@@ -27,9 +27,9 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   private visibleSubscription = new Subscription();
 
-  @Select(ScreenState.isXs) isXs$: Observable<boolean>;
-  @Select(ScreenState.isSm) isSm$: Observable<boolean>;
-  @Select(ScreenState.isLtMd) isLtMd$: Observable<boolean>;
+  isXs$: Observable<boolean>;
+  isSm$: Observable<boolean>;
+  isLtMd$: Observable<boolean>;
 
   @ViewChild(TimelineComponent) timeline: TimelineComponent;
 
@@ -37,12 +37,15 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   experiences: Experience[] = [];
   timelineDividers = new Set<number>();
 
-  constructor(private visibleService: VisibleService) {}
+  constructor(private visibleService: VisibleService, private store: Store) {
+    this.isXs$ = this.store.select(ScreenState.isXs);
+    this.isSm$ = this.store.select(ScreenState.isSm);
+    this.isLtMd$ = this.store.select(ScreenState.isLtMd);
+  }
 
   ngOnInit(): void {
     this.visibleSubscription = this.visibleService.isVisible(ExperienceComponent.PAGE)
       .subscribe((isVisible) => {
-        console.log('EXPERIENCE :: isVisible=' + isVisible);
         if (isVisible && this.timeline) {
           this.timeline.startAnimation();
           this.visibleSubscription.unsubscribe();

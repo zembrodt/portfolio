@@ -9,7 +9,6 @@ export class TimelineEntryContentComponent implements OnInit {
 
   constructor(public elementRef: ElementRef) {}
 
-
   ngOnInit(): void {
   }
 }

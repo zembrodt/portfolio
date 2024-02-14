@@ -1,9 +1,9 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
-import {SettingsState} from './core/settings/settings.state';
+import {SettingsState} from '../../core/settings/settings.state';
 import {Observable, Subject} from 'rxjs';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {takeUntil} from 'rxjs/operators';
-import {SetAlias} from './core/screen/screen.actions';
+import {SetAlias} from '../../core/screen/screen.actions';
 import {
   ALIAS_LG,
   ALIAS_MD,
@@ -14,7 +14,7 @@ import {
   SCREEN_SIZE_MD,
   SCREEN_SIZE_SM,
   SCREEN_SIZE_XS
-} from './core/screen/screen.model';
+} from '../../core/screen/screen.model';
 
 @Component({
   selector: 'app-root',
@@ -26,11 +26,11 @@ export class AppComponent implements OnInit, OnDestroy {
   private prevMiddle: boolean = null;
   private currentScreenSize: string = null;
 
-  title = 'Portfolio';
+  theme$: Observable<string>;
 
-  @Select(SettingsState.theme) theme$!: Observable<string>;
-
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+    this.theme$ = this.store.select(SettingsState.theme);
+  }
 
   ngOnInit(): void {
     this.theme$
@@ -44,6 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
         bodyEl.classList.toggle('scrollbar-light', isLightTheme);
         htmlEl.classList.toggle('scrollbar-light', isLightTheme);
       });
+    this.updateScreenSize(window.innerWidth);
     this.updateScrollbarStyle();
   }
 

@@ -2,13 +2,13 @@
 @use 'sass:map';
 
 @import "styles/themes";
-@import "app/app.component.theme";
+@import "app/components/app/app.component.theme";
 @import "app/components/contact/contact.component.theme";
 @import "app/components/dashboard/dashboard.component.theme";
 @import "app/components/navbar/navbar.component.theme";
-@import "app/core/timeline/timeline/timeline.component.theme";
-@import "app/core/timeline/timeline-entry/timeline-entry.component.theme";
-@import "app/core/timeline/timeline-node/timeline-node.component.theme";
+@import "app/components/timeline/timeline.component.theme";
+@import "app/components/timeline/timeline-entry/timeline-entry.component.theme";
+@import "app/components/timeline/timeline-node/timeline-node.component.theme";
 
 @include mat.core();
 

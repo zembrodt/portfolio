@@ -2,7 +2,7 @@ import {AfterViewInit, Component} from '@angular/core';
 import {AboutComponent} from '../about/about.component';
 import {ExperienceComponent} from '../experience/experience.component';
 import {ScreenState} from '../../core/screen/screen.state';
-import {Select} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {Observable} from 'rxjs';
 
 const INTRO_DURATION = 1500;
@@ -17,9 +17,11 @@ export class DashboardComponent implements AfterViewInit {
   aboutPage = AboutComponent.PAGE;
   experiencePage = ExperienceComponent.PAGE;
 
-  @Select(ScreenState.isLtMd) isLtMd$!: Observable<boolean>;
+  isLtMd$: Observable<boolean>;
 
-  constructor() { }
+  constructor(private store: Store) {
+    this.isLtMd$ = this.store.select(ScreenState.isLtMd);
+  }
 
   ngAfterViewInit(): void {
     const helloEl = document.querySelector('#hello-there') as HTMLElement;

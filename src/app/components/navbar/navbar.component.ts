@@ -1,12 +1,12 @@
 import {AfterViewInit, Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {SettingsState} from '../../core/settings/settings.state';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {takeUntil} from 'rxjs/operators';
-import {DARK_THEME, LIGHT_THEME} from '../../core/settings/settings.model';
 import {ToggleTheme} from '../../core/settings/settings.actions';
 import {ScreenState} from '../../core/screen/screen.state';
 import {Router} from '@angular/router';
+import {Theme} from '../../core/settings/settings.model';
 
 const NAVBAR_ANIMATE_DURATION = 1000;
 const NAVIGATION_PADDING = 12;
@@ -32,10 +32,13 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   private previousWindowHeight: number;
   private currentPage = new Subject<string>();
 
-  @Select(ScreenState.isLtMd) isLtMd$!: Observable<boolean>;
-  @Select(SettingsState.theme) theme$!: Observable<string>;
+  isLtMd$: Observable<boolean>;
+  theme$: Observable<string>;
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router) {
+    this.isLtMd$ = this.store.select(ScreenState.isLtMd);
+    this.theme$ = this.store.select(SettingsState.theme);
+  }
 
   ngOnInit(): void {
     this.theme$
@@ -86,9 +89,9 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getThemeIcon(): string {
     switch (this.currentTheme) {
-      case DARK_THEME:
+      case Theme.Dark:
         return 'dark_mode';
-      case LIGHT_THEME:
+      case Theme.Light:
         return 'light_mode';
       default:
         console.error('Invalid theme value: ' + this.currentTheme);

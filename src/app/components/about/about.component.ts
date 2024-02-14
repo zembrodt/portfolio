@@ -2,7 +2,7 @@ import {Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2} from 
 import {Observable, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {VisibleService} from '../../services/visible.service';
-import {Select} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 
 const ABOUT_IMG_DURATION = 1000;
@@ -19,32 +19,33 @@ export class AboutComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   private hasAnimated = false;
   private isXs = false;
-  private isXsSub: Subscription;
+  private visibilitySub: Subscription;
 
-  @Select(ScreenState.isXs) isXs$!: Observable<boolean>;
+  isXs$: Observable<boolean>;
 
-  constructor(private visibleService: VisibleService, private elementRef: ElementRef, private renderer: Renderer2) {}
+  constructor(private visibleService: VisibleService, private elementRef: ElementRef, private renderer: Renderer2, private store: Store) {
+    this.isXs$ = this.store.select(ScreenState.isXs);
+  }
 
   ngOnInit(): void {
-    this.visibleService.isVisible(AboutComponent.PAGE)
+    this.visibilitySub = this.visibleService.isVisible(AboutComponent.PAGE)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((isVisible) => {
-        console.log('ABOUT :: isVisible: ' + isVisible);
         if (isVisible) {
           this.animateImages();
           this.hasAnimated = true;
-          this.unsubscribe();
+          this.visibilitySub.unsubscribe();
         }
     });
 
-    this.isXsSub = this.isXs$.subscribe((isXs) => {
-      this.isXs = isXs;
-    });
+    this.isXs$
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((isXs) => this.isXs = isXs);
   }
 
   ngOnDestroy(): void {
-    this.unsubscribe();
-    this.isXsSub.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   private animateImages(): void {
@@ -91,13 +92,6 @@ export class AboutComponent implements OnInit, OnDestroy {
           this.renderer.setStyle(image, 'opacity', 1);
         });
       }
-    }
-  }
-
-  private unsubscribe(): void {
-    if (this.ngUnsubscribe) {
-      this.ngUnsubscribe.next();
-      this.ngUnsubscribe.complete();
     }
   }
 }

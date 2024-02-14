@@ -62,7 +62,6 @@ export class TimelineEntryComponent {
   set enableAnimations(value: boolean) {
     if (value) {
       // Set Opacity to 0 if animating timeline
-      console.log('Setting opacity to 0');
       this.renderer.setStyle(this.elementRef.nativeElement, 'opacity', 0);
     }
   }

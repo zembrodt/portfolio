@@ -1,13 +1,14 @@
-export function shuffle(array: any[]): any[] {
+export function shuffle<Type>(array: Type[]): Type[] {
   let i: number = array.length;
+  const shuffledArray = [...array];
 
   while (i !== 0) {
     const rand = Math.floor(Math.random() * i);
     i--;
 
-    const swap = Object.assign({}, array[i]);
-    array[i] = Object.assign({}, array[rand]);
-    array[rand] = swap;
+    const swap = shuffledArray[i];
+    shuffledArray[i] = shuffledArray[rand];
+    shuffledArray[rand] = swap;
   }
-  return array;
+  return shuffledArray;
 }

@@ -1,10 +1,14 @@
-export const DARK_THEME = 'dark-theme';
-export const LIGHT_THEME = 'light-theme';
+export const SETTINGS_STATE_NAME = 'ZEMBRODT_PORTFOLIO_SETTINGS';
+
+export enum Theme {
+  Light = 'light-theme',
+  Dark = 'dark-theme'
+}
 
 export interface SettingsModel {
-  theme: string;
+  theme: Theme;
 }
 
 export const DEFAULT_SETTINGS: SettingsModel = {
-  theme: DARK_THEME
+  theme: Theme.Dark
 };
