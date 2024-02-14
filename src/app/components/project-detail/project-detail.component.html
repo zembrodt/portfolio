@@ -32,6 +32,11 @@
   </div>
   <div *ngIf="project.screenshotUrl"
        class="screenshot">
-    <img src="{{project.screenshotUrl}}" width="100%" />
+    <img src="{{project.screenshotUrl}}" width="100%" (click)="openScreenshotDialog(screenshotPopup)" />
+    <ng-template #screenshotPopup>
+      <div class="screenshot-dialog">
+        <img src="{{project.screenshotUrl}}" (click)="screenshotDialogRef?.close()" />
+      </div>
+    </ng-template>
   </div>
 </div>
