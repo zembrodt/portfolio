@@ -5,6 +5,7 @@ import {TimelineNodeComponent} from '../timeline-node/timeline-node.component';
 import {TimelineEntryComponent} from './timeline-entry.component';
 import {TimelineEntryHeaderComponent} from '../timeline-entry-header/timeline-entry-header.component';
 import {TimelineEntryContentComponent} from '../timeline-entry-content/timeline-entry-content.component';
+import {MatRippleModule} from '@angular/material/core';
 
 describe('TimelineEntryComponent', () => {
   let component: TimelineEntryComponent;
@@ -18,6 +19,7 @@ describe('TimelineEntryComponent', () => {
         MockComponent(TimelineEntryHeaderComponent),
         MockComponent(TimelineNodeComponent)
       ],
+      imports: [ MatRippleModule ],
       providers: [
         MockProvider(ElementRef),
         MockProvider(Renderer2)
