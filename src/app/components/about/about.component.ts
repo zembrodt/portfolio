@@ -2,7 +2,7 @@ import {Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2} from 
 import {Observable, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {VisibleService} from '../../services/visible.service';
-import {Select} from '@ngxs/store';
+import {Select, Store} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 
 const ABOUT_IMG_DURATION = 1000;
@@ -21,9 +21,11 @@ export class AboutComponent implements OnInit, OnDestroy {
   private isXs = false;
   private visibilitySub: Subscription;
 
-  @Select(ScreenState.isXs) isXs$!: Observable<boolean>;
+  isXs$: Observable<boolean>;
 
-  constructor(private visibleService: VisibleService, private elementRef: ElementRef, private renderer: Renderer2) {}
+  constructor(private visibleService: VisibleService, private elementRef: ElementRef, private renderer: Renderer2, private store: Store) {
+    this.isXs$ = this.store.select(ScreenState.isXs);
+  }
 
   ngOnInit(): void {
     this.visibilitySub = this.visibleService.isVisible(AboutComponent.PAGE)

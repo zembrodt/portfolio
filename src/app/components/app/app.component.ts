@@ -1,7 +1,7 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {SettingsState} from '../../core/settings/settings.state';
 import {Observable, Subject} from 'rxjs';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {takeUntil} from 'rxjs/operators';
 import {SetAlias} from '../../core/screen/screen.actions';
 import {
@@ -26,9 +26,11 @@ export class AppComponent implements OnInit, OnDestroy {
   private prevMiddle: boolean = null;
   private currentScreenSize: string = null;
 
-  @Select(SettingsState.theme) theme$!: Observable<string>;
+  theme$: Observable<string>;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+    this.theme$ = this.store.select(SettingsState.theme);
+  }
 
   ngOnInit(): void {
     this.theme$

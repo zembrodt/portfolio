@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
-import {Select} from '@ngxs/store';
+import {Select, Store} from '@ngxs/store';
 import {SettingsState} from '../../core/settings/settings.state';
 import {Observable} from 'rxjs';
 import {ScreenState} from '../../core/screen/screen.state';
@@ -18,10 +18,13 @@ export class FooterComponent implements OnInit {
   linkedInIcon = faLinkedin;
   emailIcon = faEnvelope;
 
-  @Select(ScreenState.isXs) isXs$!: Observable<boolean>;
-  @Select(SettingsState.theme) theme$!: Observable<string>;
+  isXs$: Observable<boolean>;
+  theme$: Observable<string>;
 
-  constructor() { }
+  constructor(private store: Store) {
+    this.isXs$ = this.store.select(ScreenState.isXs);
+    this.theme$ = this.store.select(SettingsState.theme);
+  }
 
   ngOnInit(): void {
   }

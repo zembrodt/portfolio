@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import projectsData from '../../../assets/data/projects.json';
-import {Select} from '@ngxs/store';
+import {Select, Store} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 import {Observable} from 'rxjs';
 
@@ -21,11 +21,13 @@ export interface Project {
 })
 export class ProjectsComponent implements OnInit {
 
-  @Select(ScreenState.isLtMd) isLtMd$!: Observable<boolean>;
+  isLtMd$: Observable<boolean>;
 
   projects: Project[];
 
-  constructor() {}
+  constructor(private store: Store) {
+    this.isLtMd$ = this.store.select(ScreenState.isLtMd);
+  }
 
   ngOnInit(): void {
     this.projects = projectsData;
