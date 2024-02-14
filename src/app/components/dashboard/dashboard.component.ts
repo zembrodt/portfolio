@@ -2,7 +2,7 @@ import {AfterViewInit, Component} from '@angular/core';
 import {AboutComponent} from '../about/about.component';
 import {ExperienceComponent} from '../experience/experience.component';
 import {ScreenState} from '../../core/screen/screen.state';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {Observable} from 'rxjs';
 
 const INTRO_DURATION = 1500;

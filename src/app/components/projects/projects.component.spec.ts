@@ -2,15 +2,17 @@ import { ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import { ProjectsComponent } from './projects.component';
 import {VisibilityComponent} from '../visibility/visibility.component';
-import {MockComponent} from 'ng-mocks';
+import {MockComponent, MockProvider} from 'ng-mocks';
 import {ProjectDetailComponent} from '../project-detail/project-detail.component';
-import {NgxsSelectorMock} from '../../core/testing/ngxs-selector-mock';
+import {defineNgxsSelector} from '../../core/testing/ngxs-selector-mock';
 import {BehaviorSubject} from 'rxjs';
+import {Store} from '@ngxs/store';
 
 describe('ProjectsComponent', () => {
-  const mockSelectors = new NgxsSelectorMock<ProjectsComponent>();
   let component: ProjectsComponent;
   let fixture: ComponentFixture<ProjectsComponent>;
+  let store: Store;
+
   let isLtMdProducer: BehaviorSubject<boolean>;
 
   beforeEach(waitForAsync(() => {
@@ -20,13 +22,14 @@ describe('ProjectsComponent', () => {
         MockComponent(ProjectDetailComponent),
         MockComponent(VisibilityComponent)
       ],
-      imports: [
-      ]
+      providers: [ MockProvider(Store) ]
     }).compileComponents();
+    store = TestBed.inject(Store);
+
     fixture = TestBed.createComponent(ProjectsComponent);
     component = fixture.componentInstance;
 
-    isLtMdProducer = mockSelectors.defineNgxsSelector<boolean>(component, 'isLtMd$')
+    isLtMdProducer = defineNgxsSelector<ProjectsComponent, boolean>(component, 'isLtMd$')
 
     fixture.detectChanges();
   }));

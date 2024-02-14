@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import {NgxsSelectorMock} from '../../core/testing/ngxs-selector-mock';
+import {defineNgxsSelector} from '../../core/testing/ngxs-selector-mock';
 import {BehaviorSubject} from 'rxjs';
 import {MockComponent, MockProvider} from 'ng-mocks';
 import {Store} from '@ngxs/store';
@@ -10,7 +10,6 @@ import {FooterComponent} from '../footer/footer.component';
 import {NavbarComponent} from '../navbar/navbar.component';
 
 describe('AppComponent', () => {
-  const mockSelectors = new NgxsSelectorMock<AppComponent>();
   let app: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let store: Store;
@@ -35,7 +34,7 @@ describe('AppComponent', () => {
     fixture = TestBed.createComponent(AppComponent);
     app = fixture.componentInstance;
 
-    themeProducer = mockSelectors.defineNgxsSelector<string>(app, 'theme$');
+    themeProducer = defineNgxsSelector<AppComponent, string>(app, 'theme$');
 
     fixture.detectChanges();
   }));

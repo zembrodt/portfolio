@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import projectsData from '../../../assets/data/projects.json';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 import {Observable} from 'rxjs';
 

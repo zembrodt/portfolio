@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, TemplateRef} from '@angular/core';
 import {Project} from '../projects/projects.component';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 import {Observable} from 'rxjs';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';

@@ -4,7 +4,7 @@ import {SkillsComponent} from '../skills/skills.component';
 import {VisibleService} from '../../services/visible.service';
 import {Observable, Subject, Subscription} from 'rxjs';
 import {TimelineComponent} from '../timeline/timeline.component';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 
 export interface Experience {

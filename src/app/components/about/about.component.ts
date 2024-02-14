@@ -2,7 +2,7 @@ import {Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2} from 
 import {Observable, Subject, Subscription} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {VisibleService} from '../../services/visible.service';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {ScreenState} from '../../core/screen/screen.state';
 
 const ABOUT_IMG_DURATION = 1000;

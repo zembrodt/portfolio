@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {SettingsState} from '../../core/settings/settings.state';
-import {Select, Store} from '@ngxs/store';
+import {Store} from '@ngxs/store';
 import {takeUntil} from 'rxjs/operators';
 import {ToggleTheme} from '../../core/settings/settings.actions';
 import {ScreenState} from '../../core/screen/screen.state';
