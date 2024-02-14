@@ -22,7 +22,7 @@
   flex: 1 1 0;
   flex-direction: column;
   align-content: flex-start;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 8px;
 
   @media only screen and (min-width: screen.$sm) {
