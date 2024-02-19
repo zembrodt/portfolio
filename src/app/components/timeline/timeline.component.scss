@@ -1,7 +1,7 @@
 :host {
   position: relative;
   display: block;
-  padding-top: 35px;
+  padding-top: 2rem;
 
   & .timeline-content-placeholder {
     width: 100%;
@@ -12,10 +12,10 @@
   display: flex;
   flex-direction: row;
   place-content: stretch center;
-  gap: 48px;
+  gap: 3rem;
 
   &.alternate-entries-gap {
-    gap: 24px;
+    gap: 1.5rem;
   }
 }
 
@@ -34,14 +34,14 @@
 }
 
 .timeline-nodes {
-  min-width: 30px;
+  min-width: 2rem;
 }
 
 .timeline-line {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 8px;
+  width: 0.5rem;
   left: 20%;
   transform: translateX(-50%);
 }

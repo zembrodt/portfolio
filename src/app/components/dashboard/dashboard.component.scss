@@ -5,34 +5,34 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  gap: 256px;
+  gap: 16rem;
 }
 
 #intro {
-  margin-top: 200px;
+  margin-top: 12.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   align-content: center;
 
   &.mobile {
-    margin-top: 100px;
+    margin-top: 6.25rem;
   }
 }
 
 @media only screen and (max-width: screen.$lg) {
   #intro {
-    gap: 32px;
+    gap: 2rem;
   }
 }
 
 @media only screen and (max-width: screen.$md) {
   .content {
-    gap: 128px;
+    gap: 8rem;
   }
 
   #intro {
-    margin-top: 100px;
+    margin-top: 6.25rem;
     flex-direction: column;
   }
 }
@@ -42,7 +42,7 @@
   flex-flow: column;
   align-items: flex-start;
   align-content: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .pic-of-me {
@@ -74,6 +74,6 @@
 }
 
 .blurb {
-  max-width: 500px;
+  max-width: 32rem;
   opacity: 0;
 }
