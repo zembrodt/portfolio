@@ -40,7 +40,7 @@ export class VisibilityComponent implements OnInit, AfterViewInit {
     if (!this.visible) {
       const element = document.querySelector('#visibility-' + this.name) as HTMLElement;
       // Check if element is on screen
-      if (element.offsetTop + this.offset < window.innerHeight + window.pageYOffset) {
+      if (element.offsetTop + this.offset < window.innerHeight + window.scrollY) {
         this.visible = true;
         this.visibleService.toggleVisible(this.name);
         element.animate({

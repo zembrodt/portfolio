@@ -42,7 +42,7 @@
   }
 
   .app-border-line {
-    padding-bottom: 4px;
+    padding-bottom: 0.25rem;
     border-bottom: 1px solid mat.get-color-from-palette($foreground, divider);
   }
 }

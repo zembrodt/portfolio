@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostListener, Inject, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {SettingsState} from '../../core/settings/settings.state';
 import {Store} from '@ngxs/store';
@@ -7,6 +7,7 @@ import {ToggleTheme} from '../../core/settings/settings.actions';
 import {ScreenState} from '../../core/screen/screen.state';
 import {Router} from '@angular/router';
 import {Theme} from '../../core/settings/settings.model';
+import {DOCUMENT} from '@angular/common';
 
 const NAVBAR_ANIMATE_DURATION = 1000;
 const NAVIGATION_PADDING = 12;
@@ -35,7 +36,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   isLtMd$: Observable<boolean>;
   theme$: Observable<string>;
 
-  constructor(private store: Store, private router: Router) {
+  constructor(private store: Store, private router: Router, @Inject(DOCUMENT) private document: Document) {
     this.isLtMd$ = this.store.select(ScreenState.isLtMd);
     this.theme$ = this.store.select(SettingsState.theme);
   }
@@ -74,10 +75,10 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     if (route && route.length > 0 && route !== '/') {
       this.router.navigateByUrl('/' + pageId);
     } else {
-      const targetEl = document.querySelector(pageId) as HTMLElement;
-      const navbarHeight = (document.querySelector('#navbar') as HTMLElement).clientHeight;
+      const targetEl = this.document.querySelector(pageId) as HTMLElement;
+      const navbarHeight = (this.document.querySelector('#navbar') as HTMLElement).clientHeight;
       // Scroll directly to element if going down, scroll up with offset for navbar if scrolling up
-      window.scrollTo(0, targetEl.offsetTop > window.pageYOffset ?
+      window.scrollTo(0, targetEl.offsetTop > window.scrollY ?
         targetEl.offsetTop - NAVIGATION_PADDING :
         targetEl.offsetTop - navbarHeight - NAVIGATION_PADDING);
     }
@@ -101,8 +102,8 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(): void {
-    const navEl = document.querySelector('#navbar') as HTMLElement;
-    if (this.previousOffsetY > window.pageYOffset) {
+    const navEl = this.document.querySelector('#navbar') as HTMLElement;
+    if (this.previousOffsetY > window.scrollY) {
       // Scrolling up
       navEl.animate({
         transform: 'translateY(0%)'
@@ -121,7 +122,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     // Find closest "page" to the center
     this.findPage();
-    this.previousOffsetY = window.pageYOffset;
+    this.previousOffsetY = window.scrollY;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -131,10 +132,10 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private findPage(): void {
     // "line" across the screen used to determine which "page" the user is viewing
-    const pageSelector = Math.floor((window.innerHeight / 3) + window.pageYOffset);
+    const pageSelector = Math.floor((window.innerHeight / 3) + window.scrollY);
     let foundPage = false;
     for (const page of navMap.keys()) {
-      const pageEl = document.querySelector(page) as HTMLElement;
+      const pageEl = this.document.querySelector(page) as HTMLElement;
       if (pageEl && pageSelector >= pageEl.offsetTop && pageSelector < pageEl.offsetTop + pageEl.clientHeight) {
         this.currentPage.next(page);
         foundPage = true;
@@ -151,7 +152,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private updateNavUnderline(pageId: string): void {
-    const navUnderlineEl = document.querySelector('#nav-underline') as HTMLElement;
+    const navUnderlineEl = this.document.querySelector('#nav-underline') as HTMLElement;
     if (navUnderlineEl) {
       // Check if window was resized or page changed
       if (window.innerWidth !== this.previousWindowWidth || window.innerHeight !== this.previousWindowHeight ||
@@ -170,7 +171,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
         }
         // Blur in if previous was intro
         else if (!this.previousPage || this.previousPage.length === 0 || this.previousPage === '#intro') {
-          const navLinkEl = document.querySelector(navMap.get(pageId)) as HTMLElement;
+          const navLinkEl = this.document.querySelector(navMap.get(pageId)) as HTMLElement;
           navUnderlineEl.style.left = String(navLinkEl.offsetLeft) + 'px';
           navUnderlineEl.style.top = String(navLinkEl.offsetTop + navLinkEl.clientHeight) + 'px';
           navUnderlineEl.style.width = String(navLinkEl.clientWidth) + 'px';
@@ -183,7 +184,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
             easing: 'ease-in'
           });
         } else {
-          const navLinkEl = document.querySelector(navMap.get(pageId)) as HTMLElement;
+          const navLinkEl = this.document.querySelector(navMap.get(pageId)) as HTMLElement;
           navUnderlineEl.animate({
             opacity: 1,
             left: String(navLinkEl.offsetLeft) + 'px',

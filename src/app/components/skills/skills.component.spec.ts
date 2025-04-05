@@ -1,10 +1,10 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import { SkillsComponent } from './skills.component';
-import {MockProvider, MockService} from 'ng-mocks';
+import {MockProvider} from 'ng-mocks';
 import {VisibleService} from '../../services/visible.service';
 import {MatCardModule} from '@angular/material/card';
-import {EMPTY, of} from 'rxjs';
+import {of} from 'rxjs';
 import {MatRippleModule} from '@angular/material/core';
 
 describe('SkillsComponent', () => {

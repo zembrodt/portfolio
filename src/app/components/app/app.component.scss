@@ -1,0 +1,6 @@
+@use '../../../styles/properties' as prop;
+
+#portfolio-app {
+  height: 100%;
+  margin-bottom: prop.$footer-height;
+}

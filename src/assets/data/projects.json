@@ -9,6 +9,15 @@
     "technologies": ["Angular", "TypeScript", "Go", "Heroku", "Netlify", "CircleCI", "Codecov"]
   },
   {
+    "title": "Matrix Display",
+    "id": "matrix-display",
+    "projectUrl": null,
+    "githubUrl": "https://github.com/zembrodt/matrix-display",
+    "docsUrl": null,
+    "screenshotUrl": null,
+    "technologies": ["Python", "Flask", "Raspberry Pi"]
+  },
+  {
     "title": "PyMDb",
     "id": "pymdb",
     "projectUrl": null,
@@ -34,15 +43,6 @@
     "docsUrl": null,
     "screenshotUrl": null,
     "technologies": ["Go", "Heroku"]
-  },
-  {
-    "title": "Neat App",
-    "id": "neat-app",
-    "projectUrl": "https://drinkneat.app",
-    "githubUrl": null,
-    "docsUrl": null,
-    "screenshotUrl": null,
-    "technologies": ["Go", "PostgreSQL", "Angular", "TypeScript", "Google Cloud", "Docker"]
   },
   {
     "title": "Open-World Story Generation",
