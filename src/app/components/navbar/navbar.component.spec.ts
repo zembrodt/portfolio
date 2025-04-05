@@ -6,15 +6,18 @@ import {Router} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, of} from 'rxjs';
 import {defineNgxsSelector} from '../../core/testing/ngxs-selector-mock';
 import {Theme} from '../../core/settings/settings.model';
+import {ToggleTheme} from '../../core/settings/settings.actions';
+import {DOCUMENT} from '@angular/common';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
   let router: Router;
   let store: Store;
+  let document: Document;
 
   let isLtMdProducer: BehaviorSubject<boolean>;
   let themeProducer: BehaviorSubject<string>;
@@ -38,9 +41,10 @@ describe('NavbarComponent', () => {
 
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
+    document = TestBed.inject(DOCUMENT);
 
     isLtMdProducer = defineNgxsSelector<NavbarComponent, boolean>(component, 'isLtMd$');
-    themeProducer = defineNgxsSelector<NavbarComponent, string>(component, 'theme$');
+    themeProducer =  defineNgxsSelector<NavbarComponent, string>(component, 'theme$');
 
     spyOn(console, 'error');
     fixture.detectChanges();
@@ -63,6 +67,11 @@ describe('NavbarComponent', () => {
   it('should get the light mode theme icon when theme is light', () => {
     themeProducer.next(Theme.Light);
     expect(component.getThemeIcon()).toEqual('light_mode');
+  });
+
+  it('should toggle the theme on theme change', () => {
+    component.onThemeChange();
+    expect(store.dispatch).toHaveBeenCalledWith(new ToggleTheme());
   });
 
   it('should get the error theme icon when current theme is an invalid value', () => {

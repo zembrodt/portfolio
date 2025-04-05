@@ -1,10 +1,23 @@
 [
   {
+    "title": "Software Engineer",
+    "id": "eastport-analytics",
+    "company": "Eastport Analytics",
+    "companyUrl": "",
+    "dates": "February 2025 - Present",
+    "year": 2025,
+    "technologies": [
+      "Java",
+      "Vue",
+      "Docker"
+    ]
+  },
+  {
     "title": "Senior Software Engineer",
     "id": "flooid-senior",
     "company": "Flooid",
     "companyUrl": "https://www.flooid.com/",
-    "dates": "April 2023 - Present",
+    "dates": "April 2023 - January 2025",
     "year": 2023,
     "technologies": [
       "Java",

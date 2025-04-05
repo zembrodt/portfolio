@@ -1,14 +1,14 @@
 [
   {
-    "title": "Go",
-    "content": "go content",
-    "icon": "go-plain",
-    "featured": true
-  },
-  {
     "title": "Java",
     "content": "",
     "icon": "java-plain",
+    "featured": true
+  },
+  {
+    "title": "Vue",
+    "content": "",
+    "icon": "vuejs-plain",
     "featured": true
   },
   {
@@ -27,6 +27,12 @@
     "title": "JavaScript",
     "content": "",
     "icon": "javascript-plain",
+    "featured": true
+  },
+  {
+    "title": "Go",
+    "content": "go content",
+    "icon": "go-plain",
     "featured": true
   },
   {
